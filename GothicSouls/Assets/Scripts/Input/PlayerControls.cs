@@ -139,12 +139,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         },
         {
             ""name"": ""Player Actions"",
-            ""id"": ""d9046902-439a-4d9c-a333-e6f3768a4231"",
+            ""id"": ""ccc894fe-cf19-4247-a58b-5bb84b4f1232"",
             ""actions"": [
                 {
                     ""name"": ""Roll"",
                     ""type"": ""Button"",
-                    ""id"": ""a20b1264-4546-46b0-9a09-99461b279191"",
+                    ""id"": ""e196afe5-7a6f-44c6-9982-235e981fde17"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -154,7 +154,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""b97b6a06-d37e-4ea4-b51f-4b4a638efca7"",
+                    ""id"": ""d2a8c244-4f16-4637-8181-d2d5b9adcdb0"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -165,7 +165,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4a0d8051-6b73-46f7-a90a-352217eac6cb"",
+                    ""id"": ""c4c7dad4-04dd-4fed-b249-6441b22ad43b"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
