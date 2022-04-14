@@ -19,6 +19,8 @@ namespace SG
         public int currentRightWeaponIndex;
         public int currentLeftWeaponIndex;
 
+        public List<WeaponItem> weaponsInventory;
+
         private void Awake()
         {
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();

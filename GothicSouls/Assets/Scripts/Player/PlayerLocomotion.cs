@@ -190,7 +190,6 @@ namespace SG
                 {
                     if (inAirTimer > 0.5f)
                     {
-                        Debug.Log("youy were in the air for: " + inAirTimer);
                         animatorHandler.PlayTargetAnimation("Land", true);
                         inAirTimer = 0;
                     }
