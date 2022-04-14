@@ -6,6 +6,7 @@ namespace SG
 {
     public class CameraHandler : MonoBehaviour
     {
+        #region FIELDS
         public Transform targetTransform;
         public Transform cameraTransform;
         public Transform cameraPivotTransform;
@@ -30,6 +31,7 @@ namespace SG
         public float cameraSphereRaidus = 0.2f;
         public float cameraCollisionOffSet = 0.2f;
         public float minimumCollisionOffset = 0.2f;
+        #endregion
 
         private void Awake()
         {
@@ -37,6 +39,7 @@ namespace SG
             myTransform = transform;
             defaultPosition = cameraTransform.localPosition.z;
             ignoreLayers = ~(1 << 8 | 1 << 9 | 1 << 10);
+            targetTransform = FindObjectOfType<PlayerManager>().transform;
         }
 
         public void FollowTarget(float delta)

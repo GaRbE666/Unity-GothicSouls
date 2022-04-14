@@ -6,6 +6,7 @@ namespace SG
 {
     public class PlayerManager : MonoBehaviour
     {
+        #region FIELDS
         InputHandler inputHandler;
         Animator anim;
         CameraHandler cameraHandler;
@@ -17,10 +18,12 @@ namespace SG
         public bool isSprinting;
         public bool isInAir;
         public bool isGrounded;
+        public bool canDoCombo;
+        #endregion
 
         private void Awake()
         {
-            cameraHandler = CameraHandler.singleton;
+            cameraHandler = FindObjectOfType<CameraHandler>();
         }
 
         private void Start()
@@ -34,6 +37,7 @@ namespace SG
         {
             float delta = Time.deltaTime;
             isInteracting = anim.GetBool("isInteracting");
+            canDoCombo = anim.GetBool("canDoCombo");
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
@@ -58,7 +62,10 @@ namespace SG
             inputHandler.sprintFlag = false;
             inputHandler.rb_Input = false;
             inputHandler.rt_Input = false;
-
+            inputHandler.d_Pad_Up = false;
+            inputHandler.d_Pad_Down = false;
+            inputHandler.d_Pad_Left = false;
+            inputHandler.d_Pad_Right = false;
 
             if (isInAir)
             {

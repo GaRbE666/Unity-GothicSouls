@@ -396,6 +396,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6909708390507412871}
   - component: {fileID: 6909708390487042343}
+  - component: {fileID: 8112040569073391930}
+  - component: {fileID: 6162730481703439066}
   m_Layer: 0
   m_Name: BasicSword
   m_TagString: Untagged
@@ -452,3 +454,28 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1484801985589367343}
   m_Enabled: 1
+--- !u!65 &8112040569073391930
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909708390507569575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08090979, y: 0.78304774, z: 0.036931213}
+  m_Center: {x: -0.0016153156, y: 0.39966306, z: 0.00026504166}
+--- !u!114 &6162730481703439066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909708390507569575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99ae20cac360c84eaa15d1c2dd518a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

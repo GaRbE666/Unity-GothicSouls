@@ -6,10 +6,11 @@ namespace SG
 {
     public class PlayerLocomotion : MonoBehaviour
     {
+        #region FIELDS
         PlayerManager playerManager;
         Transform cameraObject;
         InputHandler inputHandler;
-       public Vector3 moveDirection;
+        public Vector3 moveDirection;
 
         [HideInInspector] public Transform myTransform;
         [HideInInspector] public AnimatorHandler animatorHandler;
@@ -30,8 +31,7 @@ namespace SG
         [SerializeField] private float sprintSpeed = 7;
         [SerializeField] private float rotationSpeed = 10;
         [SerializeField] private float fallingSpeed = 45;
-
-
+        #endregion
 
         private void Start()
         {
@@ -196,7 +196,7 @@ namespace SG
                     }
                     else
                     {
-                        animatorHandler.PlayTargetAnimation("Locomotion", false);
+                        animatorHandler.PlayTargetAnimation("Empty", false);
                         inAirTimer = 0;
                     }
 
@@ -224,16 +224,13 @@ namespace SG
                 }
             }
 
-            if (playerManager.isGrounded)
+            if (playerManager.isInteracting || inputHandler.moveAmount > 0)
             {
-                if (playerManager.isInteracting || inputHandler.moveAmount > 0)
-                {
-                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
-                }
-                else
-                {
-                    myTransform.position = targetPosition;
-                }
+                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
+            }
+            else
+            {
+                myTransform.position = targetPosition;
             }
         }
         #endregion
