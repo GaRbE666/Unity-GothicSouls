@@ -11,11 +11,15 @@ namespace SG
 
         DamageCollider leftHandDamageCollider;
         DamageCollider rightHandDamageCollider;
+        
         Animator animator;
+
+        QuickSlotsUI quickSlotsUI; 
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
 
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
@@ -37,7 +41,7 @@ namespace SG
             {
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
-
+                quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
                 #region HANDLE LEFT WEAPON IDLE ANIMATIONS 
                 if (weaponItem != null)
                 {
@@ -53,7 +57,7 @@ namespace SG
             {
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
-
+                quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
                 #region HANDLE RIGHT WEAPON IDLE ANIMATIONS
                 if (weaponItem != null)
                 {

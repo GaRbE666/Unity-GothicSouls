@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6468f7ee474b047ae89e95cbee107d, type: 3}
   m_Name: VikingSword
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 5da0362a2f9cb6742a1765bc1b98ccaa, type: 3}
   itemName: Viking Sword
   modelPrefab: {fileID: 1924920441546308, guid: 4b64f29b658691645b21cd47ffcf8d53, type: 3}
   isUnarmed: 0
