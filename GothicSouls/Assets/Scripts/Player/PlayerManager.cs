@@ -12,6 +12,10 @@ namespace SG
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
 
+        InteractableUI interactableUI;
+        public GameObject interactableUIGameObject;
+        public GameObject itemInteractableGameObject;
+
         public bool isInteracting;
 
         [Header("Player Flags")]
@@ -31,6 +35,7 @@ namespace SG
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponentInChildren<Animator>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
+            interactableUI = FindObjectOfType<InteractableUI>();
         }
 
         private void Update()
@@ -38,11 +43,13 @@ namespace SG
             float delta = Time.deltaTime;
             isInteracting = anim.GetBool("isInteracting");
             canDoCombo = anim.GetBool("canDoCombo");
+            //anim.SetBool("isInAir", isInAir);
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            //playerLocomotion.HandleJumping();
 
             CheckForInteractableObject();
         }
@@ -69,6 +76,8 @@ namespace SG
             inputHandler.d_Pad_Left = false;
             inputHandler.d_Pad_Right = false;
             inputHandler.a_Input = false;
+            //inputHandler.jump_Input = false;
+            inputHandler.inventory_Input = false;
 
             if (isInAir)
             {
@@ -84,21 +93,31 @@ namespace SG
             {
                 if (hit.collider.CompareTag("Interactable"))
                 {
-                    Debug.Log("Un objeto!!!");
                     Interactable interactableObject = hit.collider.GetComponent<Interactable>();
 
                     if (interactableObject != null)
                     {
                         string interactableText = interactableObject.interactableText;
-                        //Set the ui text to the interactable object´s text
-                        //set the text pop up to true
+                        interactableUI.interactableText.text = interactableText;
+                        interactableUIGameObject.SetActive(true);
 
                         if (inputHandler.a_Input)
                         {
-                            Debug.Log("Entro");
                             hit.collider.GetComponent<Interactable>().Interact(this);
                         }
                     }
+                }
+            }
+            else
+            {
+                if (interactableUIGameObject != null)
+                {
+                    interactableUIGameObject.SetActive(false);
+                }
+
+                if (itemInteractableGameObject != null && inputHandler.a_Input)
+                {
+                    itemInteractableGameObject.SetActive(false);
                 }
             }
         }

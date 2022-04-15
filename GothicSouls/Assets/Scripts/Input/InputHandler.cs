@@ -15,6 +15,9 @@ namespace SG
         public bool a_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool jump_Input;
+        public bool inventory_Input;
+
         public bool d_Pad_Up;
         public bool d_Pad_Down;
         public bool d_Pad_Left;
@@ -23,6 +26,7 @@ namespace SG
         public bool rollFlag;
         public bool sprintFlag;
         public bool comboFlag;
+        public bool inventoryFlag;
         public float rollInputTimer;
  
 
@@ -30,6 +34,7 @@ namespace SG
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
+        UIManager uiManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -40,6 +45,7 @@ namespace SG
             playerAttacker = GetComponent<PlayerAttacker>();
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
+            uiManager = FindObjectOfType<UIManager>();
         }
 
         public void OnEnable()
@@ -66,6 +72,8 @@ namespace SG
             HandleAttackInput(delta);
             HandleQuickSlotsInput();
             HandleInteractingButtonInput();
+            //HandleJumpInput();
+            HandleInventoryInput();
         }
 
         public void MoveInput(float delta)
@@ -133,8 +141,8 @@ namespace SG
 
         private void HandleQuickSlotsInput()
         {
-            inputActions.PlayerQuickSlots.DPadRight.performed += inputActions => d_Pad_Right = true;
-            inputActions.PlayerQuickSlots.DPadLeft.performed += inputActions => d_Pad_Left = true;
+            inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
+            inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
 
             if (d_Pad_Right)
             {
@@ -148,7 +156,35 @@ namespace SG
 
         private void HandleInteractingButtonInput()
         {
-            inputActions.PlayerActions.A.performed += inputActions => a_Input = true;
+            inputActions.PlayerActions.A.performed += i => a_Input = true;
+        }
+
+        //private void HandleJumpInput()
+        //{
+        //    inputActions.PlayerActions.Jump.performed += inputActions => jump_Input = true;
+        //}
+
+        private void HandleInventoryInput()
+        {
+            inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
+
+            if (inventory_Input)
+            {
+                inventoryFlag = !inventoryFlag;
+
+                if (inventoryFlag)
+                {
+                    uiManager.OpenSelectWindow();
+                    uiManager.UpdateUI();
+                    uiManager.hudWindow.SetActive(false);
+                }
+                else
+                {
+                    uiManager.CloseSelectWindow();
+                    uiManager.CloseAllInventoryWindows();
+                    uiManager.hudWindow.SetActive(true);
+                }
+            }
         }
     }
 }
