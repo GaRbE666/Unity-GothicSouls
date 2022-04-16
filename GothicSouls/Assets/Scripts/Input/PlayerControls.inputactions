@@ -22,6 +22,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LockOnTargetLeft",
+                    "type": "Button",
+                    "id": "81f00304-c76b-498c-95f5-282374cacee7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LockOnTargetRight",
+                    "type": "Button",
+                    "id": "386fb6fd-f700-430a-aee4-85ee667f3ca7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -110,6 +128,50 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfd7acbf-5712-439d-983d-5b3c1cf3da9d",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "Tap(duration=0.2,pressPoint=1)",
+                    "processors": "AxisDeadzone(min=0.1,max=1)",
+                    "groups": "Gamepad",
+                    "action": "LockOnTargetLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b5ce278-af73-41e2-b9f6-200b362bb49a",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "LockOnTargetLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fb2ae07-ffad-4e71-95e2-9f2bd6f6e989",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "Tap(duration=0.2,pressPoint=1)",
+                    "processors": "AxisDeadzone(min=0.1,max=1)",
+                    "groups": "Gamepad",
+                    "action": "LockOnTargetRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93fabae1-246d-48c7-aad6-082c24521989",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "LockOnTargetRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
