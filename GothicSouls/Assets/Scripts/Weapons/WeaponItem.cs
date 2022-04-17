@@ -16,10 +16,11 @@ namespace SG
         public string th_idle;
 
         [Header("One Handed Attack Animations")]
-        public string OH_Light_Attack_1;
-        public string OH_Light_Attack_2;
-        public string OH_Light_Attack_3;
-        public string OH_Heavy_Attack_1;
+        public string oh_light_attack_01;
+        public string oh_light_attack_02;
+        public string oh_heavy_attack_01;
+        public string th_light_attack_01;
+        public string th_light_attack_02;
 
         [Header("Stamina Costs")]
         public int baseStamina;
