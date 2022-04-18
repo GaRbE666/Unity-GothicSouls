@@ -19,7 +19,7 @@ namespace SG
             currentHealth = maxHealth;
         }
 
-        private int SetMaxHealthFromHealthLevel()
+        private float SetMaxHealthFromHealthLevel()
         {
             maxHealth = healthLevel * 10;
             return maxHealth;
