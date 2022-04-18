@@ -6,16 +6,24 @@ namespace SG
 {
     public class PlayerAttacker : MonoBehaviour
     {
+        #region FIELDS
         AnimatorHandler animatorHandler;
+        PlayerManager playerManager;
+        PlayerStats playerStats;
+        PlayerInventory playerInventory;
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
         public string lastAttack;
+        #endregion
 
         private void Awake()
         {
-            animatorHandler = GetComponentInChildren<AnimatorHandler>();
-            weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
-            inputHandler = GetComponent<InputHandler>();
+            animatorHandler = GetComponent<AnimatorHandler>();
+            playerManager = GetComponentInParent<PlayerManager>();
+            playerStats = GetComponentInParent<PlayerStats>();
+            playerInventory = GetComponentInParent<PlayerInventory>();
+            weaponSlotManager = GetComponent<WeaponSlotManager>();
+            inputHandler = GetComponentInParent<InputHandler>();
 
         }
 
@@ -69,5 +77,61 @@ namespace SG
                 lastAttack = weapon.oh_light_attack_01;
             }
         }
+
+        #region INPUT ACTIONS
+        public void HandleRBAction()
+        {
+            if (playerInventory.rightWeapon.isMeleeWeapon)
+            {
+                PerformRBMeleeAction();
+            }
+            else if (playerInventory.rightWeapon.isSpellCaster || playerInventory.rightWeapon.isFaithCaster || playerInventory.rightWeapon.isPyroCaster)
+            {
+                PerformRBMagicAction(playerInventory.rightWeapon);
+            }
+        }
+        #endregion
+
+        #region ATTACK ACTIONS
+        private void PerformRBMeleeAction()
+        {
+            if (playerManager.canDoCombo)
+            {
+                inputHandler.comboFlag = true;
+                HandleWeaponCombo(playerInventory.rightWeapon);
+                inputHandler.comboFlag = false;
+            }
+            else
+            {
+                if (playerManager.isInteracting)
+                {
+                    return;
+                }
+                if (playerManager.canDoCombo)
+                {
+                    return;
+                }
+                animatorHandler.anim.SetBool("isUsingRightHand", true);
+                HandleLightAttack(playerInventory.rightWeapon);
+            }
+        }
+
+        private void PerformRBMagicAction(WeaponItem weapon)
+        {
+            if (weapon.isFaithCaster)
+            {
+                if (playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
+                {
+                    //CHECK FOR FP
+                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                }
+            }
+        }
+
+        private void SuccessfullyCastSpell()
+        {
+            playerInventory.currentSpell.SucsessfullyCastSpell(animatorHandler, playerStats);
+        }
+        #endregion
     }
 }
