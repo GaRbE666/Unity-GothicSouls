@@ -118,12 +118,23 @@ namespace SG
 
         private void PerformRBMagicAction(WeaponItem weapon)
         {
+            if (playerManager.isInteracting)
+            {
+                return;
+            }
+
             if (weapon.isFaithCaster)
             {
                 if (playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
                 {
-                    //CHECK FOR FP
-                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    {
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    }
+                    else
+                    {
+                        animatorHandler.PlayTargetAnimation("No", true);
+                    }
                 }
             }
         }

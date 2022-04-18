@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6468f7ee474b047ae89e95cbee107d, type: 3}
   m_Name: BasicStaff
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: cbbcc453294d05a4a961167102dcf8cf, type: 3}
   itemName: Staff
   modelPrefab: {fileID: 39781888601151633, guid: 82b98b2a59169064ab620ddbcf7db6c2, type: 3}
   isUnarmed: 0
