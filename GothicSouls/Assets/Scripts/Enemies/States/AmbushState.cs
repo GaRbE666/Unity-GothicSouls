@@ -31,10 +31,10 @@ namespace SG
                 if (CharacterStats != null)
                 {
                     Vector3 targetsDirection = CharacterStats.transform.position - enemyManager.transform.position;
-                    enemyManager.viewableAngle = Vector3.Angle(targetsDirection, enemyManager.transform.forward);
+                    float viewableAngle = Vector3.Angle(targetsDirection, enemyManager.transform.forward);
 
-                    if (enemyManager.viewableAngle > enemyManager.minimumDetectionAngle 
-                        && enemyManager.viewableAngle < enemyManager.maximumDetectionAngle)
+                    if (viewableAngle > enemyManager.minimumDetectionAngle 
+                        && viewableAngle < enemyManager.maximumDetectionAngle)
                     {
                         enemyManager.currentTarget = CharacterStats;
                         isSleeping = false;

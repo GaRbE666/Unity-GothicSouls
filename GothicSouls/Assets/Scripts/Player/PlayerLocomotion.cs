@@ -32,6 +32,9 @@ namespace SG
         [SerializeField] private float sprintSpeed = 7;
         [SerializeField] private float rotationSpeed = 10;
         [SerializeField] private float fallingSpeed = 45;
+
+        public CapsuleCollider characterCollider;
+        public CapsuleCollider characterCollisionBlockerCollider;
         #endregion
 
         private void Awake()
@@ -51,6 +54,7 @@ namespace SG
 
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+            Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider);
         }
 
         #region MOVEMENT

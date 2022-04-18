@@ -11,10 +11,8 @@ namespace SG
         {
             PlayerStats playerStats = other.GetComponent<PlayerStats>();
 
-            Debug.Log("Entro en el trigger");
             if (playerStats != null)
             {
-                Debug.Log("Hago daño");
                 playerStats.TakeDamage(damage);
             }
         }

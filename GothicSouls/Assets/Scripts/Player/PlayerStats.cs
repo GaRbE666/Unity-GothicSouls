@@ -45,6 +45,12 @@ namespace SG
 
         public void TakeDamage(int damage)
         {
+            Debug.Log("Entro aqui");
+            if (isDead)
+            {
+                return;
+            }
+
             currentHealth -= damage;
 
             healthBar.SetCurrentHealth(currentHealth);
@@ -55,6 +61,7 @@ namespace SG
             {
                 currentHealth = 0;
                 animatorHandle.PlayTargetAnimation("Dead", true);
+                isDead = true;
             }
         }
 
