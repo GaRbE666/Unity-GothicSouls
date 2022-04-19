@@ -141,6 +141,37 @@ CapsuleCollider:
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!1 &964198511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 964198512}
+  m_Layer: 11
+  m_Name: Combat Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &964198512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964198511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1931136693}
+  m_Father: {fileID: 2278664629242357195}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1695409632
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +182,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1695409633}
   - component: {fileID: 1695409634}
-  m_Layer: 9
+  - component: {fileID: 1695409635}
+  m_Layer: 12
   m_Name: Back Stab Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,11 +212,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695409632}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.39873764, y: 1, z: 0.030921936}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1695409635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695409632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b652cbb76c14b48b6080921021f9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backStabberStandPoint: {fileID: 1931136693}
 --- !u!1 &1835389924
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +292,36 @@ Transform:
   - {fileID: 1695409633}
   m_Father: {fileID: 2278664629242357195}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1931136692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1931136693}
+  m_Layer: 11
+  m_Name: Back Stabber Standing Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1931136693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931136692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 964198512}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2036369131
 GameObject:
@@ -316,6 +391,7 @@ Transform:
   - {fileID: 54855662}
   - {fileID: 1860693223}
   - {fileID: 1835389925}
+  - {fileID: 964198512}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -362,7 +438,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockOnTransform: {fileID: 54855662}
-  backStabCollider: {fileID: 1695409634}
+  backStabBoxCollider: {fileID: 0}
+  backStabCollider: {fileID: 0}
+  pendingCriticalDamage: 0
   interactableUIGameObject: {fileID: 0}
   itemInteractableGameObject: {fileID: 0}
   isInteracting: 0
@@ -458,8 +536,8 @@ MonoBehaviour:
   leftWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   unarmedWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   weaponsInRightHandSlot:
-  - {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
   - {fileID: 11400000, guid: 27a62b8507369c34b9400e91d4326ff7, type: 2}
+  - {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
   weaponsInLeftHandSlot:
   - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   - {fileID: 11400000, guid: 27a62b8507369c34b9400e91d4326ff7, type: 2}
@@ -3238,9 +3316,9 @@ GameObject:
   - component: {fileID: 6595451189103209445}
   - component: {fileID: 6595451189084716763}
   - component: {fileID: 6595451189095712155}
-  - component: {fileID: 6595451189103114186}
   - component: {fileID: 6595451189103114180}
   - component: {fileID: 36350091}
+  - component: {fileID: 2057734427}
   m_Layer: 9
   m_Name: Knight_Errant_Optimized
   m_TagString: Untagged
@@ -3329,20 +3407,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6595451189103114186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6595451189103114181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c2fbafdb7a13e45b2c4f5b12f482e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  canRotate: 1
 --- !u!114 &6595451189103114180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3356,6 +3420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingWeapon: {fileID: 0}
+  leftHandDamageCollider: {fileID: 0}
+  rightHandDamageCollider: {fileID: 0}
 --- !u!114 &36350091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3369,6 +3435,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastAttack: 
+--- !u!114 &2057734427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6595451189103114181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9ed1f1c967eca4babbdcd8c88794a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  canRotate: 0
 --- !u!1 &6595451189103114183
 GameObject:
   m_ObjectHideFlags: 0

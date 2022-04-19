@@ -52,6 +52,7 @@ namespace SG
             HandleRecoveryTimer();
 
             isInteracting = enemyAnimationManager.anim.GetBool("isInteracting");
+            enemyAnimationManager.anim.SetBool("isDead", enemyStats.isDead);
         }
 
         private void FixedUpdate()

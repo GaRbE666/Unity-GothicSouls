@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 7930846519638701045}
   - component: {fileID: 7955677935375002723}
   - component: {fileID: 7947728010623737655}
+  - component: {fileID: 8094669683044789959}
+  - component: {fileID: 6089770910303983394}
   m_Layer: 0
   m_Name: VikingSword
   m_TagString: Untagged
@@ -112,6 +114,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8094669683044789959
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933226703941231439}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11496112, y: 0.76292175, z: 0.019100023}
+  m_Center: {x: 0.00087811274, y: 0.42503998, z: -0.0004295023}
+--- !u!114 &6089770910303983394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933226703941231439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99ae20cac360c84eaa15d1c2dd518a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponDamage: 25
 --- !u!1 &8958858055069208590
 GameObject:
   m_ObjectHideFlags: 0

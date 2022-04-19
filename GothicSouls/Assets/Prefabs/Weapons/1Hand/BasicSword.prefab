@@ -378,14 +378,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2972224735453806706}
-  m_LocalRotation: {x: 0.01263208, y: -0.0116463415, z: -0.67774296, w: 0.73509824}
-  m_LocalPosition: {x: 0.0737, y: 0.1085, z: -0.0214}
+  m_LocalRotation: {x: 0.036848977, y: -0.02747971, z: -0.6472317, w: 0.7609062}
+  m_LocalPosition: {x: 0.0589, y: 0.1157, z: -0.0062}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 6909708390507412871}
   m_Father: {fileID: 1484801985591660745}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.16, y: -1.962, z: -85.353}
+  m_LocalEulerAnglesHint: {x: 1.175, y: -5.137, z: -80.822}
 --- !u!1 &6909708390507569575
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,3 +479,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99ae20cac360c84eaa15d1c2dd518a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWeaponDamage: 25

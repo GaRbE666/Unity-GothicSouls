@@ -7,7 +7,7 @@ namespace SG
     public class PlayerAttacker : MonoBehaviour
     {
         #region FIELDS
-        AnimatorHandler animatorHandler;
+        PlayerAnimatorManager animatorHandler;
         PlayerManager playerManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
@@ -19,7 +19,7 @@ namespace SG
 
         private void Awake()
         {
-            animatorHandler = GetComponent<AnimatorHandler>();
+            animatorHandler = GetComponent<PlayerAnimatorManager>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
@@ -154,6 +154,7 @@ namespace SG
                 transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
             {
                 CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+                DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
 
                 if (enemyCharacterManager != null)
                 {
@@ -168,10 +169,11 @@ namespace SG
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    //rotate us towards that transform
+                    int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                    enemyCharacterManager.pendingCriticalDamage = criticalDamage;
+
                     animatorHandler.PlayTargetAnimation("Back Stab", true);
                     enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
-                    //make enemy play animation
                     //do damage
                 }
             }
