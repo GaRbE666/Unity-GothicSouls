@@ -252,6 +252,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CriticalAttack",
+                    "type": "Button",
+                    "id": "d7d46cbc-c9a5-46aa-9cf8-f1adf3e01864",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -281,7 +290,7 @@
                     "name": "",
                     "id": "3e4ecc60-60ad-4082-a2d6-7efe7423b6e8",
                     "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "RB",
@@ -292,7 +301,7 @@
                     "name": "",
                     "id": "e8a3adf2-3513-4feb-b530-cd4b0ab6c73c",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "RB",
@@ -428,6 +437,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de6c3224-9efa-40a6-a0b1-9baac7a244c9",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CriticalAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9addfa9b-dc7d-4591-91d1-6a329388aa16",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "CriticalAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

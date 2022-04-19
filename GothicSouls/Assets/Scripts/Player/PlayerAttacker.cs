@@ -14,6 +14,7 @@ namespace SG
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
         public string lastAttack;
+        LayerMask backStabLayer = 1 << 12;
         #endregion
 
         private void Awake()
@@ -144,5 +145,36 @@ namespace SG
             playerInventory.currentSpell.SucsessfullyCastSpell(animatorHandler, playerStats);
         }
         #endregion
+
+        public void AttemptBackStabOrRiposte()
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(inputHandler.critialAttackRayCastStartPoint.position,
+                transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
+            {
+                CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+
+                if (enemyCharacterManager != null)
+                {
+                    //CHECK FOR TEAM I.D (so you can back stab fiends or yourserf?)
+                    playerManager.transform.position = enemyCharacterManager.backStabCollider.backStabberStandPoint.position;
+
+                    Vector3 rotationDirecton = playerManager.transform.root.eulerAngles;
+                    rotationDirecton = hit.transform.position - playerManager.transform.position;
+                    rotationDirecton.y = 0;
+                    rotationDirecton.Normalize();
+                    Quaternion tr = Quaternion.LookRotation(rotationDirecton);
+                    Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
+                    playerManager.transform.rotation = targetRotation;
+
+                    //rotate us towards that transform
+                    animatorHandler.PlayTargetAnimation("Back Stab", true);
+                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
+                    //make enemy play animation
+                    //do damage
+                }
+            }
+        }
     }
 }
