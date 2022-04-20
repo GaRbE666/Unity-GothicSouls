@@ -30,6 +30,11 @@ namespace SG
 
         public void HandleWeaponCombo(WeaponItem weapon)
         {
+            if (playerStats.currentStamina <= 0)
+            {
+                return;
+            }
+
             if (inputHandler.comboFlag)
             {
                 animatorHandler.anim.SetBool("canDoCombo", false);
@@ -48,6 +53,11 @@ namespace SG
 
         public void HandleLightAttack(WeaponItem weapon)
         {
+            if (playerStats.currentStamina <= 0)
+            {
+                return;
+            }
+
             weaponSlotManager.attackingWeapon = weapon;
 
             if (inputHandler.twoHandFlag)
@@ -65,6 +75,11 @@ namespace SG
 
         public void HandleHeavyAttack(WeaponItem weapon)
         {
+            if (playerStats.currentStamina <= 0)
+            {
+                return;
+            }
+
             weaponSlotManager.attackingWeapon = weapon;
 
             if (inputHandler.twoHandFlag)
@@ -148,6 +163,11 @@ namespace SG
 
         public void AttemptBackStabOrRiposte()
         {
+            if (playerStats.currentStamina <= 0)
+            {
+                return;
+            }
+
             RaycastHit hit;
 
             if (Physics.Raycast(inputHandler.critialAttackRayCastStartPoint.position,

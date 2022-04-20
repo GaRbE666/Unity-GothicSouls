@@ -10727,46 +10727,6 @@ PrefabInstance:
       propertyPath: itemInteractableGameObject
       value: 
       objectReference: {fileID: 6443617461070815326}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.094377115
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.037780534
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.9833549
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.15059453
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 17.656
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 190.536
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278664629481791739, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -362.76
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c4fe795640a55b449ca67d84dcd9c80, type: 3}
 --- !u!95 &3416063794432758387
@@ -14433,6 +14393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  canRotate: 0
 --- !u!1 &6443617459989840600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1380780175873742150, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
@@ -14895,6 +14856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  canRotate: 0
 --- !u!114 &7526090424476163617
 MonoBehaviour:
   m_ObjectHideFlags: 0

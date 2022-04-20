@@ -12,6 +12,7 @@ namespace SG
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
         PlayerStats playerStats;
+        PlayerAnimatorManager playerAnimatorManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -33,15 +34,17 @@ namespace SG
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
             backStabCollider = GetComponentInChildren<BackStabCollider>();
-        }
-
-        private void Start()
-        {
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponentInChildren<Animator>();
             playerStats = GetComponent<PlayerStats>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
             interactableUI = FindObjectOfType<InteractableUI>();
+            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
+        }
+
+        private void Start()
+        {
+
         }
 
         private void Update()
@@ -57,6 +60,7 @@ namespace SG
             anim.SetBool("isDead", playerStats.isDead);
 
             inputHandler.TickInput(delta);
+            playerAnimatorManager.canRotate = anim.GetBool("canRotate");
             playerLocomotion.HandleRollingAndSprinting(delta);
             //playerLocomotion.HandleJumping();
             playerStats.RegenerateStamina();
@@ -67,8 +71,10 @@ namespace SG
         private void FixedUpdate()
         {
             float delta = Time.fixedDeltaTime;
-            playerLocomotion.HandleMovement(delta);
+
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleMovement(delta);
+            playerLocomotion.HandleRotation(delta);
         }
 
         private void LateUpdate()
