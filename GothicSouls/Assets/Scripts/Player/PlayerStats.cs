@@ -6,6 +6,7 @@ namespace SG
 {
     public class PlayerStats : CharacterStats
     {
+        #region FIELDS
         PlayerManager playerManager;
 
         HealthBar healthBar;
@@ -15,6 +16,7 @@ namespace SG
 
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
+        #endregion
 
         private void Awake()
         {
@@ -145,6 +147,11 @@ namespace SG
             }
 
             focusPointsBar.SetCurrentFocusPoints(currentFocusPoints);
+        }
+
+        public void AddSouls(int souls)
+        {
+            soulCount = soulCount + souls;
         }
     }
 }

@@ -14,6 +14,8 @@ namespace SG
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
         public string lastAttack;
+
+        LayerMask riposteLayer = 1 << 13;
         LayerMask backStabLayer = 1 << 12;
         #endregion
 
@@ -170,8 +172,7 @@ namespace SG
 
             RaycastHit hit;
 
-            if (Physics.Raycast(inputHandler.critialAttackRayCastStartPoint.position,
-                transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
+            if (Physics.Raycast(inputHandler.critialAttackRayCastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
             {
                 CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
                 DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
@@ -179,7 +180,7 @@ namespace SG
                 if (enemyCharacterManager != null)
                 {
                     //CHECK FOR TEAM I.D (so you can back stab fiends or yourserf?)
-                    playerManager.transform.position = enemyCharacterManager.backStabCollider.backStabberStandPoint.position;
+                    playerManager.transform.position = enemyCharacterManager.backStabCollider.criticalDamagerStandPoint.position;
 
                     Vector3 rotationDirecton = playerManager.transform.root.eulerAngles;
                     rotationDirecton = hit.transform.position - playerManager.transform.position;
@@ -195,6 +196,31 @@ namespace SG
                     animatorHandler.PlayTargetAnimation("Back Stab", true);
                     enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
                     //do damage
+                }
+            }
+            else if (Physics.Raycast(inputHandler.critialAttackRayCastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, 0.7f, riposteLayer))
+            {
+                CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+                DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
+
+                if (enemyCharacterManager != null && enemyCharacterManager.canBeRiposted)
+                {
+                    Debug.Log("Entro");
+                    playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamagerStandPoint.position;
+
+                    Vector3 rotationDirection = playerManager.transform.rotation.eulerAngles;
+                    rotationDirection = hit.transform.position - playerManager.transform.position;
+                    rotationDirection.y = 0;
+                    rotationDirection.Normalize();
+                    Quaternion tr = Quaternion.LookRotation(rotationDirection);
+                    Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
+                    playerManager.transform.rotation = targetRotation;
+
+                    int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                    enemyCharacterManager.pendingCriticalDamage = criticalDamage;
+
+                    animatorHandler.PlayTargetAnimation("Riposte", true);
+                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Riposted", true);
                 }
             }
         }

@@ -10,8 +10,11 @@ namespace SG
         public Transform lockOnTransform;
 
         [Header("Combar Colliders")]
-        public BoxCollider backStabBoxCollider;
-        public BackStabCollider backStabCollider;
+        public CriticalDamageCollider backStabCollider;
+        public CriticalDamageCollider riposteCollider;
+
+        [Header("Combar Flags")]
+        public bool canBeRiposted;
 
         //Damage will be inflicted during an animation event
         //Used in backstab or riposte animations

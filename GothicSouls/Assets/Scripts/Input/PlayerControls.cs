@@ -283,6 +283,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LT"",
+                    ""type"": ""Button"",
+                    ""id"": ""5fdf79cf-eb24-4084-9feb-5fcc33c4d42e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -483,6 +492,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""CriticalAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65e0c873-7e43-4f7d-90a9-4bbd5051670f"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca0d4ad6-0482-42d4-8407-2fa8812dad08"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""LT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -649,6 +680,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_LockOn = m_PlayerActions.FindAction("LockOn", throwIfNotFound: true);
         m_PlayerActions_Y = m_PlayerActions.FindAction("Y", throwIfNotFound: true);
         m_PlayerActions_CriticalAttack = m_PlayerActions.FindAction("CriticalAttack", throwIfNotFound: true);
+        m_PlayerActions_LT = m_PlayerActions.FindAction("LT", throwIfNotFound: true);
         // Player Quick Slots
         m_PlayerQuickSlots = asset.FindActionMap("Player Quick Slots", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadUp = m_PlayerQuickSlots.FindAction("D-Pad Up", throwIfNotFound: true);
@@ -780,6 +812,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_LockOn;
     private readonly InputAction m_PlayerActions_Y;
     private readonly InputAction m_PlayerActions_CriticalAttack;
+    private readonly InputAction m_PlayerActions_LT;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -793,6 +826,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
         public InputAction @Y => m_Wrapper.m_PlayerActions_Y;
         public InputAction @CriticalAttack => m_Wrapper.m_PlayerActions_CriticalAttack;
+        public InputAction @LT => m_Wrapper.m_PlayerActions_LT;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -829,6 +863,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @CriticalAttack.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnCriticalAttack;
                 @CriticalAttack.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnCriticalAttack;
                 @CriticalAttack.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnCriticalAttack;
+                @LT.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLT;
+                @LT.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLT;
+                @LT.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLT;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -860,6 +897,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @CriticalAttack.started += instance.OnCriticalAttack;
                 @CriticalAttack.performed += instance.OnCriticalAttack;
                 @CriticalAttack.canceled += instance.OnCriticalAttack;
+                @LT.started += instance.OnLT;
+                @LT.performed += instance.OnLT;
+                @LT.canceled += instance.OnLT;
             }
         }
     }
@@ -957,6 +997,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnLockOn(InputAction.CallbackContext context);
         void OnY(InputAction.CallbackContext context);
         void OnCriticalAttack(InputAction.CallbackContext context);
+        void OnLT(InputAction.CallbackContext context);
     }
     public interface IPlayerQuickSlotsActions
     {
