@@ -26,6 +26,9 @@ namespace SG
         public string th_light_attack_01;
         public string th_light_attack_02;
 
+        [Header("Weapon Art")]
+        public string weapon_art;
+
         [Header("Stamina Costs")]
         public int baseStamina;
         public float lightAttackMultiplier;
@@ -36,5 +39,6 @@ namespace SG
         public bool isFaithCaster;
         public bool isPyroCaster;
         public bool isMeleeWeapon;
+        public bool isShieldWeapon;
     }
 }

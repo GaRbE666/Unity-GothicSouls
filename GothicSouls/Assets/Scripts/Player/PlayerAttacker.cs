@@ -108,6 +108,18 @@ namespace SG
                 PerformRBMagicAction(playerInventory.rightWeapon);
             }
         }
+
+        public void HandleLTAction()
+        {
+            if (playerInventory.leftWeapon.isShieldWeapon)
+            {
+                PerformLTWeaponArt(inputHandler.twoHandFlag);
+            }
+            else if(playerInventory.leftWeapon.isMeleeWeapon)
+            {
+
+            }
+        }
         #endregion
 
         #region ATTACK ACTIONS
@@ -154,6 +166,23 @@ namespace SG
                         animatorHandler.PlayTargetAnimation("No", true);
                     }
                 }
+            }
+        }
+
+        private void PerformLTWeaponArt(bool isTwoHanding)
+        {
+            if (playerManager.isInteracting)
+            {
+                return;
+            }
+
+            if (isTwoHanding)
+            {
+                
+            }
+            else
+            {
+                animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.weapon_art, true);
             }
         }
 

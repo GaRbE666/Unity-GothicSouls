@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saff
       objectReference: {fileID: 0}
+    - target: {fileID: 39781888601151633, guid: 82b98b2a59169064ab620ddbcf7db6c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7559923144274237911, guid: 82b98b2a59169064ab620ddbcf7db6c2, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -429,6 +433,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1736031216
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.204
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.083011955
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.093235806
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.659769
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.741027
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -96.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 165.657
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458656559, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710867458954511, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
+      propertyPath: m_Name
+      value: Knight_Errant_Shield
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d21b6652dcb5b3419555dde9f843936, type: 3}
 --- !u!1 &1748663951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,6 +3709,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingWeapon: {fileID: 0}
+  leftHandDamageCollider: {fileID: 0}
+  rightHandDamageCollider: {fileID: 0}
 --- !u!1 &1511393987046402105
 GameObject:
   m_ObjectHideFlags: 0
@@ -5086,6 +5149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockOnTransform: {fileID: 0}
+  backStabCollider: {fileID: 0}
+  riposteCollider: {fileID: 0}
+  canBeRiposted: 0
+  pendingCriticalDamage: 0
   interactableUIGameObject: {fileID: 0}
   itemInteractableGameObject: {fileID: 0}
   isInteracting: 0
@@ -5118,6 +5185,8 @@ MonoBehaviour:
   y_Input: 0
   rb_Input: 0
   rt_Input: 0
+  lt_Input: 0
+  critical_Attack_Input: 0
   jump_Input: 0
   inventory_Input: 0
   d_Pad_Up: 0
@@ -5134,6 +5203,7 @@ MonoBehaviour:
   lockOnFlag: 0
   inventoryFlag: 0
   rollInputTimer: 0
+  critialAttackRayCastStartPoint: {fileID: 0}
 --- !u!114 &5828012317418732084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5160,6 +5230,7 @@ MonoBehaviour:
   sprintSpeed: 7
   rotationSpeed: 10
   fallingSpeed: 45
+  rollStaminaCost: 15
   characterCollider: {fileID: 0}
   characterCollisionBlockerCollider: {fileID: 0}
 --- !u!136 &5828012317418732085
@@ -5249,6 +5320,10 @@ MonoBehaviour:
   staminaLevel: 10
   maxStamina: 0
   currentStamina: 0
+  focusLevel: 10
+  maxFocusPoints: 0
+  currentFocusPoints: 0
+  soulCount: 0
   isDead: 0
   staminaRegenerationAmount: 1
   staminaRegenTimer: 0
