@@ -10,6 +10,11 @@ namespace SG
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationManager enemyAnimatorManager)
         {
+            if (enemyManager.isInteracting)
+            {
+                return this;
+            }
+
             if (enemyManager.isPreformingAction)
             {
                 enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
@@ -26,9 +31,6 @@ namespace SG
             }
 
             HandleRotateTowardsTarget(enemyManager);
-
-            enemyManager.navmeshAgent.transform.localPosition = Vector3.zero;
-            enemyManager.navmeshAgent.transform.localRotation = Quaternion.identity;
 
             if (distanceFromTarget <= enemyManager.maximumAttackRange)
             {

@@ -22,6 +22,9 @@ namespace SG
         public float rotationSpeed = 15;
         public float maximumAttackRange = 1.5f;
 
+        [Header("Combat Flags")]
+        public bool canDoCombo;
+
         [Header("A.I Settings")]
         public float detectionRadius = 20;
         //The higer and lower, respectively these angles are, the greater detection FIELD OF VEW (basically like eye sight)
@@ -49,14 +52,17 @@ namespace SG
         private void Update()
         {
             HandleRecoveryTimer();
+            HandleStateMachine();
 
             isInteracting = enemyAnimationManager.anim.GetBool("isInteracting");
+            canDoCombo = enemyAnimationManager.anim.GetBool("canDoCombo");
             enemyAnimationManager.anim.SetBool("isDead", enemyStats.isDead);
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            HandleStateMachine();
+            navmeshAgent.transform.localPosition = Vector3.zero;
+            navmeshAgent.transform.localRotation = Quaternion.identity;
         }
 
         private void HandleStateMachine()

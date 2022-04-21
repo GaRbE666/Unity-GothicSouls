@@ -5718,6 +5718,8 @@ MonoBehaviour:
   backStabCollider: {fileID: 0}
   riposteCollider: {fileID: 0}
   canBeRiposted: 0
+  canBeParried: 0
+  isParrying: 0
   pendingCriticalDamage: 0
   currentState: {fileID: 0}
   currentTarget: {fileID: 0}
@@ -9545,6 +9547,8 @@ MonoBehaviour:
   backStabCollider: {fileID: 0}
   riposteCollider: {fileID: 0}
   canBeRiposted: 0
+  canBeParried: 0
+  isParrying: 0
   pendingCriticalDamage: 0
   currentState: {fileID: 0}
   currentTarget: {fileID: 0}
@@ -13945,7 +13949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rightHandWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
-  leftHandWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
+  leftHandWeapon: {fileID: 0}
 --- !u!1 &3416063794440151161
 GameObject:
   m_ObjectHideFlags: 0
@@ -15296,6 +15300,8 @@ MonoBehaviour:
   backStabCollider: {fileID: 2110665315}
   riposteCollider: {fileID: 816082839}
   canBeRiposted: 1
+  canBeParried: 0
+  isParrying: 0
   pendingCriticalDamage: 0
   currentState: {fileID: 7526090423679437479}
   currentTarget: {fileID: 0}
