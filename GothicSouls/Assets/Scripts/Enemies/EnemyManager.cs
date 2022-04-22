@@ -30,8 +30,12 @@ namespace SG
         //The higer and lower, respectively these angles are, the greater detection FIELD OF VEW (basically like eye sight)
         public float maximumDetectionAngle = 50;
         public float minimumDetectionAngle = -50;
-
         public float currentRecoveryTime = 0;
+
+        [Header("A.I Combat Settings")]
+        public bool allowAIToPerformCombos;
+        public float comboLikelyHood;
+
         #endregion
 
         private void Awake()
