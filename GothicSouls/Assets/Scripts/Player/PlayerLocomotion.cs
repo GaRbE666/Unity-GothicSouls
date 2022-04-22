@@ -297,6 +297,7 @@ namespace SG
             }
         }
 
+        //Jump
         //public void HandleJumping()
         //{
         //    if (playerManager.isInteracting)
@@ -304,10 +305,10 @@ namespace SG
         //        return;
         //    }
 
-            //        if (playerStats.currentStamina <= 0)
-            //{
-            //    return;
-            //}
+        //    if (playerStats.currentStamina <= 0)
+        //    {
+        //        return;
+        //    }
 
         //    if (inputHandler.jump_Input)
         //    {

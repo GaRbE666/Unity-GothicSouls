@@ -63,7 +63,7 @@ namespace SG
             return maxFocusPoints;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, string damageAnimation = "receive_hit")
         {
 
             if (playerManager.isInvulnerable)
@@ -80,7 +80,7 @@ namespace SG
 
             healthBar.SetCurrentHealth(currentHealth);
 
-            animatorHandle.PlayTargetAnimation("receive_hit", true);
+            animatorHandle.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {

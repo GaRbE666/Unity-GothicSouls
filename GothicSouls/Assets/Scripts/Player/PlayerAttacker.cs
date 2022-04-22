@@ -8,6 +8,7 @@ namespace SG
     {
         #region FIELDS
         PlayerAnimatorManager animatorHandler;
+        PlayerEquipmentManager playerEquipmentManager;
         PlayerManager playerManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
@@ -22,6 +23,7 @@ namespace SG
         private void Awake()
         {
             animatorHandler = GetComponent<PlayerAnimatorManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
@@ -69,7 +71,7 @@ namespace SG
             }
             else
             {
-                
+
                 animatorHandler.PlayTargetAnimation(weapon.oh_light_attack_01, true);
                 lastAttack = weapon.oh_light_attack_01;
             }
@@ -90,7 +92,7 @@ namespace SG
             }
             else
             {
-                
+
                 animatorHandler.PlayTargetAnimation(weapon.oh_heavy_attack_01, true);
                 lastAttack = weapon.oh_light_attack_01;
             }
@@ -109,13 +111,18 @@ namespace SG
             }
         }
 
+        public void HandleLBAction()
+        {
+            PerformLBBlockingAction();
+        }
+
         public void HandleLTAction()
         {
             if (playerInventory.leftWeapon.isShieldWeapon)
             {
                 PerformLTWeaponArt(inputHandler.twoHandFlag);
             }
-            else if(playerInventory.leftWeapon.isMeleeWeapon)
+            else if (playerInventory.leftWeapon.isMeleeWeapon)
             {
 
             }
@@ -178,7 +185,7 @@ namespace SG
 
             if (isTwoHanding)
             {
-                
+
             }
             else
             {
@@ -189,6 +196,25 @@ namespace SG
         private void SuccessfullyCastSpell()
         {
             playerInventory.currentSpell.SucsessfullyCastSpell(animatorHandler, playerStats);
+        }
+        #endregion
+
+        #region DEFENSE ACTIONS
+        private void PerformLBBlockingAction()
+        {
+            if (playerManager.isInteracting)
+            {
+                return;
+            }
+
+            if (playerManager.isBlocking)
+            {
+                return;
+            }
+
+            animatorHandler.PlayTargetAnimation("Block Start", false, true);
+            playerEquipmentManager.OpenBlockingCollider();
+            playerManager.isBlocking = true;
         }
         #endregion
 

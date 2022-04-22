@@ -38,7 +38,7 @@ namespace SG
             }
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, string damageAnimation = "receive_hit")
         {
             if (isDead)
             {
@@ -47,7 +47,7 @@ namespace SG
 
             currentHealth -= damage;
 
-            enemyAnimationManager.PlayTargetAnimation("receive_hit", true);
+            enemyAnimationManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {

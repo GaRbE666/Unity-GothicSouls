@@ -16,6 +16,7 @@ namespace SG
         public bool y_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool lb_Input;
         public bool lt_Input;
         public bool critical_Attack_Input;
         public bool jump_Input;
@@ -44,6 +45,7 @@ namespace SG
         PlayerInventory playerInventory;
         PlayerManager playerManager;
         PlayerStats playerStats;
+        BlockingCollider blockingCollider;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
         PlayerAnimatorManager animatorHandler;
@@ -62,6 +64,7 @@ namespace SG
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            blockingCollider = GetComponentInChildren<BlockingCollider>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
         }
 
@@ -76,6 +79,8 @@ namespace SG
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
 
                 inputActions.PlayerActions.LT.performed += i => lt_Input = true;
+                inputActions.PlayerActions.LB.started += i => lb_Input = true;
+                inputActions.PlayerActions.LB.canceled += i => lb_Input = false;
                 inputActions.PlayerActions.RB.performed += i => rb_Input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_Input = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
@@ -83,7 +88,7 @@ namespace SG
                 inputActions.PlayerActions.A.performed += i => a_Input = true;
                 inputActions.PlayerActions.Roll.performed += i => b_Input = true;
                 inputActions.PlayerActions.Roll.canceled += i => b_Input = false;
-                //    inputActions.PlayerActions.Jump.performed += inputActions => jump_Input = true;
+                //inputActions.PlayerActions.Jump.performed += inputActions => jump_Input = true; //Jump               
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
                 inputActions.PlayerActions.Y.performed += i => y_Input = true;
@@ -102,7 +107,7 @@ namespace SG
         {
             HandleMoveInput(delta);
             HandleRollInput(delta);
-            HandleAttackInput(delta);
+            HandleCombatInput(delta);
             HandleQuickSlotsInput();
             HandleInventoryInput();
             HandleLockOnInput();
@@ -148,7 +153,7 @@ namespace SG
             }
         }
 
-        private void HandleAttackInput(float delta)
+        private void HandleCombatInput(float delta)
         {
             if (rb_Input)
             {
@@ -169,6 +174,20 @@ namespace SG
                 else
                 {
                     playerAttacker.HandleLTAction();
+                }
+            }
+
+            if (lb_Input)
+            {
+                playerAttacker.HandleLBAction();
+            }
+            else
+            {
+                playerManager.isBlocking = false;
+
+                if (blockingCollider.blockingCollider.enabled)
+                {
+                    blockingCollider.DisableBlockingCollider();
                 }
             }
         }

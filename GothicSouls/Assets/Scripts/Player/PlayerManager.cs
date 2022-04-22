@@ -56,13 +56,14 @@ namespace SG
             isUsingRightHand = anim.GetBool("isUsingRightHand");
             isUsingLeftHand = anim.GetBool("isUsingLeftHand");
             isInvulnerable = anim.GetBool("isInvulnerable");
-            //anim.SetBool("isInAir", isInAir);
+            anim.SetBool("isBlocking", isBlocking);
+            anim.SetBool("isInAir", isInAir); //Jump
             anim.SetBool("isDead", playerStats.isDead);
 
             inputHandler.TickInput(delta);
             playerAnimatorManager.canRotate = anim.GetBool("canRotate");
             playerLocomotion.HandleRollingAndSprinting(delta);
-            //playerLocomotion.HandleJumping();
+            //playerLocomotion.HandleJumping(); //Jump
             playerStats.RegenerateStamina();
 
             CheckForInteractableObject();
@@ -88,7 +89,7 @@ namespace SG
             inputHandler.d_Pad_Left = false;
             inputHandler.d_Pad_Right = false;
             inputHandler.a_Input = false;
-            //inputHandler.jump_Input = false;
+            //inputHandler.jump_Input = false; //Jump
             inputHandler.inventory_Input = false;
 
             float delta = Time.deltaTime;
