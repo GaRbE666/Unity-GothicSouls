@@ -7,6 +7,7 @@ namespace SG
     public class PlayerAttacker : MonoBehaviour
     {
         #region FIELDS
+        CameraHandler cameraHandler;
         PlayerAnimatorManager animatorHandler;
         PlayerEquipmentManager playerEquipmentManager;
         PlayerManager playerManager;
@@ -22,6 +23,7 @@ namespace SG
 
         private void Awake()
         {
+            cameraHandler = FindObjectOfType<CameraHandler>();
             animatorHandler = GetComponent<PlayerAnimatorManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerManager = GetComponentInParent<PlayerManager>();
@@ -166,7 +168,21 @@ namespace SG
                 {
                     if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
                     {
-                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
+                    }
+                    else
+                    {
+                        animatorHandler.PlayTargetAnimation("No", true);
+                    }
+                }
+            }
+            else if (weapon.isPyroCaster)
+            {
+                if (playerInventory.currentSpell != null && playerInventory.currentSpell.isPyroSpell)
+                {
+                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    {
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
                     }
                     else
                     {
@@ -195,7 +211,8 @@ namespace SG
 
         private void SuccessfullyCastSpell()
         {
-            playerInventory.currentSpell.SucsessfullyCastSpell(animatorHandler, playerStats);
+            playerInventory.currentSpell.SucsessfullyCastSpell(animatorHandler, playerStats, cameraHandler, weaponSlotManager);
+            animatorHandler.anim.SetBool("isFiringSpell", true);
         }
         #endregion
 

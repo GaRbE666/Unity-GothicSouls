@@ -43,7 +43,7 @@ namespace SG
             }
         }
 
-        public void TakeDamage(int damage, string damageAnimation = "receive_hit")
+        public override void TakeDamage(int damage, string damageAnimation = "receive_hit")
         {
             if (isDead)
             {
