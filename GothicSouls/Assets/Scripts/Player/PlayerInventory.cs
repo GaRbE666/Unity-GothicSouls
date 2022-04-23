@@ -16,6 +16,7 @@ namespace SG
 
         [Header("Current Equipment")]
         public HelmetEquipment currentHelmetEquipment;
+        public TorsoEquipment currentTorsoEquipment;
 
         public WeaponItem unarmedWeapon;
 
