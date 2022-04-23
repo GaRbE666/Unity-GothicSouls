@@ -231,8 +231,8 @@ namespace SG
 
             if (playerManager.isInAir)
             {
-                rigidbody.AddForce(-Vector3.up * fallingSpeed);
                 rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
+                rigidbody.AddForce(-Vector3.up * fallingSpeed);
             }
 
             Vector3 dir = moveDirection;

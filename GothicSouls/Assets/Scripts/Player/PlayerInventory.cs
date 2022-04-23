@@ -8,10 +8,14 @@ namespace SG
     {
         WeaponSlotManager weaponSlotManager;
 
+        [Header("Quick Slot Items")]
         public SpellItem currentSpell;
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
         public ConsumibleItem currentConsumable;
+
+        [Header("Current Equipment")]
+        public HelmetEquipment currentHelmetEquipment;
 
         public WeaponItem unarmedWeapon;
 
@@ -30,8 +34,6 @@ namespace SG
 
         private void Start()
         {
-            //currentRightWeaponIndex = -1;
-            //currentLeftWeaponIndex = -1;
             rightWeapon = weaponsInRightHandSlot[0];
             leftWeapon = weaponsInLeftHandSlot[0];
             weaponSlotManager.LoadWeaponOnSlot(rightWeapon, false);

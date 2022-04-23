@@ -8,12 +8,26 @@ namespace SG
     {
         InputHandler inputHandler;
         PlayerInventory playerInventory;
+
+        [Header("Equipment Model Changers")]
+        HelmetModelChanger helmetModelChanger;
+        //Chest equiment
+        //Leg equipment
+        //Hand equipment
+
         public BlockingCollider blockingCollider;
 
         private void Awake()
         {
             inputHandler = GetComponentInParent<InputHandler>();
             playerInventory = GetComponentInParent<PlayerInventory>();
+            helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
+        }
+
+        private void Start()
+        {
+            helmetModelChanger.UnEquipAllHelmetModels();
+            helmetModelChanger.EquipHelmetModelByNAme(playerInventory.currentHelmetEquipment.helmetModelName);
         }
 
         public void OpenBlockingCollider()

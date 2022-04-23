@@ -277,7 +277,6 @@ namespace SG
 
                 if (enemyCharacterManager != null && enemyCharacterManager.canBeRiposted)
                 {
-                    Debug.Log("Entro");
                     playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamagerStandPoint.position;
 
                     Vector3 rotationDirection = playerManager.transform.rotation.eulerAngles;

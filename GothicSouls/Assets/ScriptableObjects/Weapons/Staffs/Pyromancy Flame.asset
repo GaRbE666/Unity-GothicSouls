@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6468f7ee474b047ae89e95cbee107d, type: 3}
   m_Name: Pyromancy Flame
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: cbbcc453294d05a4a961167102dcf8cf, type: 3}
+  itemIcon: {fileID: 21300000, guid: f9613366a24d68847934bbbd17f68f22, type: 3}
   itemName: Piromancy Glame
   modelPrefab: {fileID: 1222035716403480753, guid: d8ae65b3ee328924fbf4bfdbc9a6766d, type: 3}
   isUnarmed: 0
