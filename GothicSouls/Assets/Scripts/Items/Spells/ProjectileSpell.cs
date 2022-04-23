@@ -11,7 +11,7 @@ namespace SG
         public float baseDamage;
 
         [Header("Projectile Phyisics")]
-        public float projectileVelocity;
+        public float projectileForwardVelocity;
         public float projectileUpwardVelocity;
         public float projectileMass;
         public bool isEffectedByGravity;
@@ -40,8 +40,8 @@ namespace SG
                 instantiatedSpellFX.transform.rotation = Quaternion.Euler(cameraHandler.cameraPivotTransform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
             }
 
-            rigidbody.AddForce(instantiatedSpellFX.transform.forward * projectileVelocity);
-            rigidbody.AddForce(instantiatedSpellFX.transform.up * projectileVelocity);
+            rigidbody.AddForce(instantiatedSpellFX.transform.forward * projectileForwardVelocity);
+            rigidbody.AddForce(instantiatedSpellFX.transform.up * projectileUpwardVelocity);
             rigidbody.useGravity = isEffectedByGravity;
             rigidbody.mass = projectileMass;
             instantiatedSpellFX.transform.parent = null;
