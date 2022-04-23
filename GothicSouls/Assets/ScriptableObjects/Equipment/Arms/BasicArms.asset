@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175b92350f10c774abbf9d2276a466e8, type: 3}
-  m_Name: SpecialTorso
+  m_Script: {fileID: 11500000, guid: 06c5e969d56f52b40935f599b6833527, type: 3}
+  m_Name: BasicArms
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Special Torso
+  itemName: Arm basic
   physicalDefense: 0
-  torsoModelName: TorsoSpecial
+  armsModelName: ArmsDefault

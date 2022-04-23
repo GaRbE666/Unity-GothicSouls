@@ -12,14 +12,15 @@ namespace SG
         [Header("Equipment Model Changers")]
         HelmetModelChanger helmetModelChanger;
         TorsoModelChanger torsoModelChanger;
-        //Leg equipment
+        HipModelChanger hipModelChanger;
+        ArmsModelChanger armsModelChanger;
         //Hand equipment
 
         [Header("Default Naked Models")]
         public GameObject nakedHeadModel;
         public GameObject nakedTorsoModel;
-        //nakedLegModel;
-        //nakedHandModel;
+        public string nakedHipModel;
+        public GameObject nakedArmsModel;
 
         public BlockingCollider blockingCollider;
 
@@ -29,6 +30,8 @@ namespace SG
             playerInventory = GetComponentInParent<PlayerInventory>();
             helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
             torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
+            hipModelChanger = GetComponentInChildren<HipModelChanger>();
+            armsModelChanger = GetComponentInChildren<ArmsModelChanger>();
         }
 
         private void Start()
@@ -38,6 +41,7 @@ namespace SG
 
         private void EquipAllEquipmentModelsOnStart()
         {
+            //HELMET EQUIPMENT
             helmetModelChanger.UnEquipAllHelmetModels();
             if (playerInventory.currentHelmetEquipment != null)
             {
@@ -49,6 +53,7 @@ namespace SG
                 nakedHeadModel.SetActive(true);
             }
             
+            //TORSO EQUIPMENT
             torsoModelChanger.UnEquipAllTorsoModels();
 
             if (playerInventory.currentTorsoEquipment != null)
@@ -59,6 +64,31 @@ namespace SG
             else
             {
                 nakedTorsoModel.SetActive(true);
+            }
+
+            //HIP EQUIPMENT
+            hipModelChanger.UnEquipAllHipModels();
+
+            if (playerInventory.currentLegEquipment != null)
+            {
+                hipModelChanger.EquipHipModelByNAme(playerInventory.currentLegEquipment.hipModelName);
+            }
+            else
+            {
+                hipModelChanger.EquipHipModelByNAme(nakedHipModel);
+            }
+
+            //ARMS EQUIPMENT
+            armsModelChanger.UnEquipAllArmsModels();
+
+            if (playerInventory.currentArmEquipment != null)
+            {
+                nakedArmsModel.SetActive(false);
+                armsModelChanger.EquipArmsModelByNAme(playerInventory.currentArmEquipment.armsModelName);
+            }
+            else
+            {
+                nakedArmsModel.SetActive(true);
             }
             
         }

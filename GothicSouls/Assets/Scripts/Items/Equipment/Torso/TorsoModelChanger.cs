@@ -25,9 +25,9 @@ namespace SG
 
         public void UnEquipAllTorsoModels()
         {
-            foreach (GameObject helmetModel in torsoModels)
+            foreach (GameObject torsoModel in torsoModels)
             {
-                helmetModel.SetActive(false);
+                torsoModel.SetActive(false);
             }
         }
 
