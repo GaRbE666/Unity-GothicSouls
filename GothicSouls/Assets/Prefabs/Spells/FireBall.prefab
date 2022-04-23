@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7371670413886687282}
   - component: {fileID: 7371670413900870388}
   - component: {fileID: 7371670413900708948}
-  - component: {fileID: 7371670413875687284}
   m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
@@ -4694,18 +4693,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &7371670413875687284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371670413886921746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49fae75ecc0a9f46b41c502f1ac1bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7371670413886921748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4762,7 +4749,6 @@ GameObject:
   - component: {fileID: 7371670413886687286}
   - component: {fileID: 7371670413900870390}
   - component: {fileID: 7371670413900708950}
-  - component: {fileID: 7371670413875687286}
   m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
@@ -9563,18 +9549,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &7371670413875687286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371670413886921750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49fae75ecc0a9f46b41c502f1ac1bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7371670413887123776
 GameObject:
   m_ObjectHideFlags: 0
@@ -14279,7 +14253,6 @@ GameObject:
   - component: {fileID: 7371670413886631270}
   - component: {fileID: 7371670413900785702}
   - component: {fileID: 7371670413900878214}
-  - component: {fileID: 7371670413875856550}
   m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
@@ -18926,39 +18899,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &7371670413875856550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371670413887123780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeae3e9af6e21a14ab40b3002927111a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RandomMoveRadius: 0
-  RandomMoveSpeed: 0
-  RandomRange: 0
-  RandomMoveCoordinates: 0
-  EffectOnHitObject: {fileID: 0}
-  GoLight: {fileID: 0}
-  Acceleration:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  AcceleraionTime: 1
-  IsCenterLightPosition: 0
-  IsLookAt: 0
-  AttachAfterCollision: 0
-  IsRootMove: 1
-  IsLocalSpaceRandomMove: 0
-  IsDeviation: 0
-  SendCollisionMessage: 1
-  ResetParentPositionOnDisable: 0
 --- !u!1 &7371670413887123782
 GameObject:
   m_ObjectHideFlags: 0
@@ -37687,7 +37627,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7371670413886631282}
   - component: {fileID: 7371670413876329574}
-  - component: {fileID: 7371670413875856544}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -37771,24 +37710,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &7371670413875856544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371670413887123794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a756d46fe4caa14ea36974ed86f959d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartDelay: 0
-  FadeInSpeed: 0.05
-  FadeOutDelay: 0
-  FadeOutSpeed: 1
-  FadeOutAfterCollision: 0
-  UseHideStatus: 0
 --- !u!1 &7371670413887123796
 GameObject:
   m_ObjectHideFlags: 0
@@ -42437,7 +42358,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7371670413886631286}
-  - component: {fileID: 7371670413875856546}
   m_Layer: 0
   m_Name: Impact
   m_TagString: Untagged
@@ -42464,21 +42384,6 @@ Transform:
   m_Father: {fileID: 7371670413886631278}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7371670413875856546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371670413887123798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13f3de8ed7cb1e44a9515836082a4cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsReverse: 1
-  TimeDelay: 0
-  IsLookAt: 1
 --- !u!1 &7371670413887123800
 GameObject:
   m_ObjectHideFlags: 0
@@ -47150,7 +47055,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7371670413886631290}
   - component: {fileID: 7371670413876329570}
-  - component: {fileID: 7371670413875856556}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -47234,24 +47138,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &7371670413875856556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371670413887123802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a756d46fe4caa14ea36974ed86f959d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartDelay: 0
-  FadeInSpeed: 0.1
-  FadeOutDelay: 0
-  FadeOutSpeed: 0.1
-  FadeOutAfterCollision: 1
-  UseHideStatus: 0
 --- !u!1 &7371670413887123804
 GameObject:
   m_ObjectHideFlags: 0
@@ -47262,7 +47148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7371670413886631292}
   - component: {fileID: 7371670413876329572}
-  - component: {fileID: 7371670413875856558}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -47346,24 +47231,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &7371670413875856558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371670413887123804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a756d46fe4caa14ea36974ed86f959d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartDelay: 0
-  FadeInSpeed: 0.1
-  FadeOutDelay: 0
-  FadeOutSpeed: 0.1
-  FadeOutAfterCollision: 1
-  UseHideStatus: 0
 --- !u!1 &7371670413887123806
 GameObject:
   m_ObjectHideFlags: 0
