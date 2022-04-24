@@ -8,6 +8,7 @@ namespace SG
     {
         InputHandler inputHandler;
         PlayerInventory playerInventory;
+        PlayerStats playerStats;
 
         [Header("Equipment Model Changers")]
         HelmetModelChanger helmetModelChanger;
@@ -28,6 +29,7 @@ namespace SG
         {
             inputHandler = GetComponentInParent<InputHandler>();
             playerInventory = GetComponentInParent<PlayerInventory>();
+            playerStats = GetComponentInParent<PlayerStats>();
             helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
             torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
             hipModelChanger = GetComponentInChildren<HipModelChanger>();
@@ -47,10 +49,13 @@ namespace SG
             {
                 nakedHeadModel.SetActive(false);
                 helmetModelChanger.EquipHelmetModelByNAme(playerInventory.currentHelmetEquipment.helmetModelName);
+                playerStats.physicialDamageAbsorptionHead = playerInventory.currentHelmetEquipment.physicalDefense;
+                Debug.Log("Head Absorption is " + playerStats.physicialDamageAbsorptionHead + "%");
             }
             else
             {
                 nakedHeadModel.SetActive(true);
+                playerStats.physicialDamageAbsorptionHead = 0;
             }
             
             //TORSO EQUIPMENT
@@ -60,10 +65,13 @@ namespace SG
             {
                 nakedTorsoModel.SetActive(false);
                 torsoModelChanger.EquipTorsoModelByNAme(playerInventory.currentTorsoEquipment.torsoModelName);
+                playerStats.physicialDamageAbsorptionBody = playerInventory.currentTorsoEquipment.physicalDefense;
+                Debug.Log("Body Absorption is " + playerStats.physicialDamageAbsorptionBody + "%");
             }
             else
             {
                 nakedTorsoModel.SetActive(true);
+                playerStats.physicialDamageAbsorptionBody = 0;
             }
 
             //HIP EQUIPMENT
@@ -72,10 +80,13 @@ namespace SG
             if (playerInventory.currentLegEquipment != null)
             {
                 hipModelChanger.EquipHipModelByNAme(playerInventory.currentLegEquipment.hipModelName);
+                playerStats.physicialDamageAbsorptionLegs = playerInventory.currentLegEquipment.physicalDefense;
+                Debug.Log("Leg Absorption is " + playerStats.physicialDamageAbsorptionLegs + "%");
             }
             else
             {
                 hipModelChanger.EquipHipModelByNAme(nakedHipModel);
+                playerStats.physicialDamageAbsorptionLegs = 0;
             }
 
             //ARMS EQUIPMENT
@@ -85,10 +96,13 @@ namespace SG
             {
                 nakedArmsModel.SetActive(false);
                 armsModelChanger.EquipArmsModelByNAme(playerInventory.currentArmEquipment.armsModelName);
+                playerStats.physicialDamageAbsorptionHands = playerInventory.currentArmEquipment.physicalDefense;
+                Debug.Log("Hands Absorption is " + playerStats.physicialDamageAbsorptionHands + "%");
             }
             else
             {
                 nakedArmsModel.SetActive(true);
+                playerStats.physicialDamageAbsorptionHands = 0;
             }
             
         }

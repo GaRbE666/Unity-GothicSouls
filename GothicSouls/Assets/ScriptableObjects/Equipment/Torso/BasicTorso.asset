@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Basic Torso
-  physicalDefense: 0
+  physicalDefense: 12.5
   torsoModelName: TorsoDefault

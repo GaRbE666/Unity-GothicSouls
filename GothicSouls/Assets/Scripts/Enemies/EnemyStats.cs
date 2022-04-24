@@ -45,14 +45,9 @@ namespace SG
 
         public override void TakeDamage(int damage, string damageAnimation = "receive_hit")
         {
-            if (isDead)
-            {
-                return;
-            }
+            base.TakeDamage(damage, damageAnimation = "receive_hit");
 
-            currentHealth -= damage;
             enemyHealthBar.SetHealth(currentHealth);
-
             enemyAnimationManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)

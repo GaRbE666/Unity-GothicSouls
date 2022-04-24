@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Arm basic
-  physicalDefense: 0
+  physicalDefense: 6.5
   armsModelName: ArmsDefault

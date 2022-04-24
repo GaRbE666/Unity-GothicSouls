@@ -71,22 +71,16 @@ namespace SG
                 return;
             }
 
-            if (isDead)
-            {
-                return;
-            }
-
-            currentHealth -= damage;
+            base.TakeDamage(damage, damageAnimation = "receive_hit");
 
             healthBar.SetCurrentHealth(currentHealth);
-
             animatorHandle.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                animatorHandle.PlayTargetAnimation("Dead", true);
                 isDead = true;
+                animatorHandle.PlayTargetAnimation("Dead", true);
             }
         }
 
