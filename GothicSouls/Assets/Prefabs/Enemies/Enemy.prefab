@@ -4704,6 +4704,7 @@ MonoBehaviour:
   isDead: 0
   enemyHealthBar: {fileID: 8782457466461233021}
   soulsAwardedOnDeath: 50
+  isBoss: 0
 --- !u!114 &1266503071349184036
 MonoBehaviour:
   m_ObjectHideFlags: 0

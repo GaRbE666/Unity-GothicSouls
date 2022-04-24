@@ -7,7 +7,8 @@ namespace SG
 {
     public class EnemyStats : CharacterStats
     {
-        EnemyAnimationManager enemyAnimationManager;
+        EnemyManager enemyManager;
+        EnemyAnimatorManager enemyAnimationManager;
         EnemyBossManager enemyBossManager;
         public EnemyHealthBar enemyHealthBar;
         public int soulsAwardedOnDeath = 50;
@@ -16,7 +17,8 @@ namespace SG
 
         private void Awake()
         {
-            enemyAnimationManager = GetComponentInChildren<EnemyAnimationManager>();
+            enemyManager = GetComponent<EnemyManager>();
+            enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
@@ -40,7 +42,14 @@ namespace SG
         {
             currentHealth -= damage;
 
-            enemyHealthBar.SetHealth(currentHealth);
+            if (!isBoss)
+            {
+                enemyHealthBar.SetHealth(currentHealth);
+            }
+            else if (isBoss && enemyBossManager != null)
+            {
+                enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+            }
 
             if (currentHealth <= 0)
             {
@@ -59,7 +68,7 @@ namespace SG
             }
             else if(isBoss && enemyBossManager != null)
             {
-                enemyBossManager.UpdateBossHealthBar(currentHealth);
+                enemyBossManager.UpdateBossHealthBar(currentHealth,  maxHealth);
             }
             
             enemyAnimationManager.PlayTargetAnimation(damageAnimation, true);

@@ -6,6 +6,9 @@ namespace SG
 {
     public class ResetAnimatorBool : StateMachineBehaviour
     {
+        public string isInvulnerable = "isInvulnerable";
+        public bool isInvulnerableStatus = false;
+
         public string isInteractingBool = "isInteracting";
         public bool isInteractingStatus = false;
 
@@ -24,6 +27,7 @@ namespace SG
             animator.SetBool(isFiringSpellBool, isFiringSpellStatus);
             animator.SetBool(isRotatingWithRootMotion, isrotatingWithRootMotionStatus);
             animator.SetBool(canRotate, canRotateStatus);
+            animator.SetBool(isInvulnerable, isInvulnerableStatus);
         }
     }
 }

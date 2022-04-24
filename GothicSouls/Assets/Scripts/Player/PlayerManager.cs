@@ -27,7 +27,6 @@ namespace SG
         public bool canDoCombo;
         public bool isUsingRightHand;
         public bool isUsingLeftHand;
-        public bool isInvulnerable;
         #endregion
 
         private void Awake()
@@ -40,11 +39,6 @@ namespace SG
             playerLocomotion = GetComponent<PlayerLocomotion>();
             interactableUI = FindObjectOfType<InteractableUI>();
             playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
-        }
-
-        private void Start()
-        {
-
         }
 
         private void Update()
@@ -151,6 +145,17 @@ namespace SG
             playerLocomotion.rigidbody.velocity = Vector3.zero; // Stop the player from ice skating
             transform.position = playerStandsHereWhenOpeningChest.transform.position;
             playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
+        }
+
+        public void PassThroughFogWallInteraction(Transform fogWallEntrance)
+        {
+            playerLocomotion.rigidbody.velocity = Vector3.zero; // Stop the player from ice skating
+
+            Vector3 rotationDirection = fogWallEntrance.transform.forward;
+            Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);
+            transform.rotation = turnRotation;
+
+            playerAnimatorManager.PlayTargetAnimation("Pass Through Fog", true);
         }
 
         #endregion

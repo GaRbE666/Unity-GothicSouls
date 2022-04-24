@@ -10,11 +10,11 @@ namespace SG
         public EnemyAttackAction[] enemyAttacks;
         public PursueTargetState pursueTargetState;
 
-        bool randomDestinationSet = false;
-        float verticalMovementValue = 0;
-        float horizontalMovementValue = 0;
+        protected bool randomDestinationSet = false;
+        protected float verticalMovementValue = 0;
+        protected float horizontalMovementValue = 0;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
             enemyAnimatorManager.anim.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
@@ -53,7 +53,7 @@ namespace SG
 
             return this;
         }
-        private void HandleRotateTowardsTarget(EnemyManager enemyManager)
+        protected void HandleRotateTowardsTarget(EnemyManager enemyManager)
         {
             //Rotate manually
             if (enemyManager.isPreformingAction)
@@ -83,12 +83,12 @@ namespace SG
             }
         }
 
-        private void DecideCirclingAction(EnemyAnimationManager enemyAnimationManager)
+        protected void DecideCirclingAction(EnemyAnimatorManager enemyAnimationManager)
         {
             WalkAroundTarget(enemyAnimationManager);
         }
 
-        private void WalkAroundTarget(EnemyAnimationManager enemyAnimationManager)
+        protected void WalkAroundTarget(EnemyAnimatorManager enemyAnimationManager)
         {
             verticalMovementValue = 0.5f;
 
@@ -104,7 +104,7 @@ namespace SG
             }
         }
 
-        private void GetNewAttack(EnemyManager enemyManager)
+        protected virtual void GetNewAttack(EnemyManager enemyManager)
         {
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
             float viewableAngle = Vector3.Angle(targetDirection, transform.forward);

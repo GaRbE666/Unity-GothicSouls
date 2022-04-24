@@ -9,7 +9,7 @@ namespace SG
     {
         #region FIELDS
         EnemyLocomotionManager enemyLocomotionManager;
-        EnemyAnimationManager enemyAnimationManager;
+        EnemyAnimatorManager enemyAnimationManager;
         EnemyStats enemyStats; 
         
         public State currentState;
@@ -34,6 +34,7 @@ namespace SG
 
         [Header("A.I Combat Settings")]
         public bool allowAIToPerformCombos;
+        public bool isPhaseShifting;
         public float comboLikelyHood;
 
         #endregion
@@ -41,7 +42,7 @@ namespace SG
         private void Awake()
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-            enemyAnimationManager = GetComponentInChildren<EnemyAnimationManager>();
+            enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
             enemyStats = GetComponent<EnemyStats>();
             enemyRigidBody = GetComponent<Rigidbody>();
             navmeshAgent = GetComponentInChildren<NavMeshAgent>();
@@ -60,6 +61,8 @@ namespace SG
 
             isRotatingWithRootMotion = enemyAnimationManager.anim.GetBool("isRotatingWithRootMotion");
             isInteracting = enemyAnimationManager.anim.GetBool("isInteracting");
+            isPhaseShifting = enemyAnimationManager.anim.GetBool("isPhaseShifting");
+            isInvulnerable = enemyAnimationManager.anim.GetBool("isInvulnerable");
             canDoCombo = enemyAnimationManager.anim.GetBool("canDoCombo");
             canRotate = enemyAnimationManager.anim.GetBool("canRotate");
             enemyAnimationManager.anim.SetBool("isDead", enemyStats.isDead);

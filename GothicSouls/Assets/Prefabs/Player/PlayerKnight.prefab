@@ -603,6 +603,8 @@ MonoBehaviour:
   canBeParried: 0
   isParrying: 0
   isBlocking: 0
+  isRotatingWithRootMotion: 0
+  canRotate: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
   interactableUIGameObject: {fileID: 0}
@@ -703,10 +705,10 @@ MonoBehaviour:
   rightWeapon: {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
   leftWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   currentConsumable: {fileID: 11400000, guid: c7087d9af53a9d14d999e68f4c6d7b87, type: 2}
-  currentHelmetEquipment: {fileID: 0}
-  currentTorsoEquipment: {fileID: 0}
-  currentLegEquipment: {fileID: 0}
-  currentArmEquipment: {fileID: 0}
+  currentHelmetEquipment: {fileID: 11400000, guid: 8a0a8b5959ad409439524ba0926d51b3, type: 2}
+  currentTorsoEquipment: {fileID: 11400000, guid: be217778de4acc64f8cc9eb38f4c6e28, type: 2}
+  currentLegEquipment: {fileID: 11400000, guid: ff8c4df058345f2428978d345709440e, type: 2}
+  currentArmEquipment: {fileID: 11400000, guid: ba4f42a472a49f141b0c097a4ba3bc35, type: 2}
   unarmedWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   weaponsInRightHandSlot:
   - {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
@@ -739,6 +741,10 @@ MonoBehaviour:
   maxFocusPoints: 0
   currentFocusPoints: 0
   soulCount: 0
+  physicialDamageAbsorptionHead: 0
+  physicialDamageAbsorptionBody: 0
+  physicialDamageAbsorptionLegs: 0
+  physicialDamageAbsorptionHands: 0
   isDead: 0
   staminaRegenerationAmount: 20
   staminaRegenTimer: 0

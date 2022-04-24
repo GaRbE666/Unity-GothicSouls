@@ -4,15 +4,19 @@ using UnityEngine;
 
 namespace SG
 {
-    public class EnemyAnimationManager : AnimatorManager
+    public class EnemyAnimatorManager : AnimatorManager
     {
         EnemyManager enemyManager;
+        EnemyBossManager enemyBossManager;
         EnemyStats enemyStats;
+
+
 
         private void Awake()
         {
             anim = GetComponent<Animator>();
             enemyManager = GetComponentInParent<EnemyManager>();
+            enemyBossManager = GetComponentInParent<EnemyBossManager>();
             enemyStats = GetComponentInParent<EnemyStats>();
         }
 
@@ -86,6 +90,14 @@ namespace SG
                     soulCountBar.SetSoulSountText(playerStats.soulCount);
                 }
             }
+        }
+
+        public void InstantiateBossParticleFX()
+        {
+            BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
+
+            GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFXTransform.transform);
+            phaseFX.GetComponent<PSMeshRendererUpdater>().MeshObject = phaseFX.gameObject.GetComponent<DamageCollider>().gameObject;
         }
 
         private void OnAnimatorMove()

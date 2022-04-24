@@ -47,13 +47,9 @@ namespace SG
 
             physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
 
-            Debug.Log("Total Damage Absorption is " + totalPhysicalDamageAbsorption + "%");
-
             float finalDamage = physicalDamage; // + fireDamage + magicDamage + lighting Damage + darkDamage;
 
             currentHealth -= finalDamage;
-
-            Debug.Log("Total Damage Dealt is " + finalDamage);
 
             if (currentHealth <= 0)
             {
