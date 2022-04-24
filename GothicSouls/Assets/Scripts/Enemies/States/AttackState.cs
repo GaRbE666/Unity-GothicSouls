@@ -27,7 +27,6 @@ namespace SG
             if (willDoComboOnNextAttack && enemyManager.canDoCombo)
             {
                 AttackTargetWithCombo(enemyAnimatorManager, enemyManager);
-                enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
             }
 
             if (!hasPerformedAttack)

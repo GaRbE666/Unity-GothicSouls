@@ -14,7 +14,7 @@ namespace SG
         {
             #region HANDLE ENEMY TARGET DETECTION
             Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
-
+            
             for (int i = 0; i < colliders.Length; i++)
             {
                 CharacterStats characterStats = colliders[i].transform.GetComponent<CharacterStats>();
@@ -44,6 +44,11 @@ namespace SG
                 return this;
             }
             #endregion
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, 10);
         }
     }
 }
