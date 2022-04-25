@@ -45,6 +45,18 @@ namespace SG
             focusPointsBar.SetCurrentFocusPoints(currentFocusPoints);
         }
 
+        public override void HandlePoiseResetTimer()
+        {
+            if (poiseResetTimer > 0)
+            {
+                poiseResetTimer -= Time.deltaTime;
+            }
+            else if(poiseResetTimer <= 0 && playerManager.isInteracting)
+            {
+                totalPoiseDefense = armorPoiseBonus;
+            }
+        }
+
         private float SetMaxHealthFromHealthLevel()
         {
             maxHealth = healthLevel * 10;
@@ -95,7 +107,7 @@ namespace SG
             }
         }
 
-        public void TakeStaminaDamage(int damage)
+        public void TakeStaminaDamage(float damage)
         {
             currentStamina -= damage;
             staminaBar.SetCurrentStamina(currentStamina);

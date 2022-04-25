@@ -497,6 +497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
   enabledDamageColliderOnStartUp: 0
+  poiseBreak: 0
+  offensivePoiseDefence: 0
   currentWeaponDamage: 25
 --- !u!1 &6909708390507569575
 GameObject:
@@ -593,4 +595,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
   enabledDamageColliderOnStartUp: 0
+  poiseBreak: 0
+  offensivePoiseDefence: 0
   currentWeaponDamage: 25

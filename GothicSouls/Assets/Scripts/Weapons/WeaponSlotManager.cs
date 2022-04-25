@@ -6,6 +6,7 @@ namespace SG
 {
     public class WeaponSlotManager : MonoBehaviour
     {
+        #region FIELDS
         PlayerManager playerManager;
         PlayerInventory playerInventory;
 
@@ -24,6 +25,7 @@ namespace SG
 
         PlayerStats playerStats;
         InputHandler inputHandler;
+        #endregion
 
         private void Awake()
         {
@@ -118,12 +120,14 @@ namespace SG
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
+            leftHandDamageCollider.poiseBreak = playerInventory.leftWeapon.poiseBreak;
         }
 
         private void LoadRightWeaponDamageCollider()
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
+            rightHandDamageCollider.poiseBreak = playerInventory.rightWeapon.poiseBreak;
         }
 
         public void OpenDamageCollider()
@@ -141,8 +145,15 @@ namespace SG
 
         public void CloseDamageCollider()
         {
-            rightHandDamageCollider.DisableDamageCollider();
-            leftHandDamageCollider.DisableDamageCollider();
+            if (rightHandDamageCollider != null)
+            {
+                rightHandDamageCollider.DisableDamageCollider();
+            }
+
+            if (leftHandDamageCollider != null)
+            {
+                leftHandDamageCollider.DisableDamageCollider();
+            }
         }
         #endregion
 
@@ -155,6 +166,18 @@ namespace SG
         public void DrainStaminaHeavyAttack()
         {
             playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
+        }
+        #endregion
+
+        #region HANDLE WEAPON´S POISE BONUS
+        public void GrantWeaponAttackingPoiseBonus()
+        {
+            playerStats.totalPoiseDefense = playerStats.totalPoiseDefense + attackingWeapon.offensivePoiseBonus;
+        }
+
+        public void ResetWeaponAttackingPoiseBonus()
+        {
+            playerStats.totalPoiseDefense = playerStats.armorPoiseBonus;
         }
         #endregion
     }

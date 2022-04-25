@@ -37,7 +37,7 @@ namespace SG
         [Header("Stamina Costs")]
         [SerializeField] private int rollStaminaCost = 15;
         private int backstepStaminaCost = 12;
-        int sprintStaminaCost = 1;
+        float sprintStaminaCost = .6f;
 
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;

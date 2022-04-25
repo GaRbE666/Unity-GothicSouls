@@ -6,6 +6,7 @@ namespace SG
 {
     public class EnemyWeaponSlotManager : MonoBehaviour
     {
+        #region FIELDS
         public WeaponItem rightHandWeapon;
         public WeaponItem leftHandWeapon;
 
@@ -15,7 +16,21 @@ namespace SG
         DamageCollider leftHandDamageCollider;
         DamageCollider rightHandDamageCollider;
 
+        EnemyStats enemyStats;
+        #endregion
+
         private void Awake()
+        {
+            enemyStats = GetComponentInParent<EnemyStats>();
+            LoadWeaponHolderSlots();
+        }
+
+        private void Start()
+        {
+            LoadWeaponsOnBothHands();
+        }
+
+        private void LoadWeaponHolderSlots()
         {
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
@@ -29,11 +44,6 @@ namespace SG
                     rightHandSlot = weaponSlot;
                 }
             }
-        }
-
-        private void Start()
-        {
-            LoadWeaponsOnBothHands();
         }
 
         public void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
@@ -108,5 +118,17 @@ namespace SG
         {
             //anim.SetBool("canDoCombo", false);
         }
+
+        #region HANDLE WEAPON´S POISE BONUS
+        public void GrantWeaponAttackingPoiseBonus()
+        {
+            enemyStats.totalPoiseDefense = enemyStats.totalPoiseDefense + enemyStats.offensivePoiseBonus;
+        }
+
+        public void ResetWeaponAttackingPoiseBonus()
+        {
+            enemyStats.totalPoiseDefense = enemyStats.armorPoiseBonus;
+        }
+        #endregion
     }
 }

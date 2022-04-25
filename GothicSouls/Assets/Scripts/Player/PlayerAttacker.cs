@@ -90,7 +90,8 @@ namespace SG
 
             if (inputHandler.twoHandFlag)
             {
-
+                animatorHandler.PlayTargetAnimation(weapon.th_heavy_attack_01, true);
+                lastAttack = weapon.th_light_attack_01;
             }
             else
             {

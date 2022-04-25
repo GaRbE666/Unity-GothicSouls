@@ -6,6 +6,7 @@ namespace SG
 {
     public class CharacterStats : MonoBehaviour
     {
+        #region FIELDS
         public int healthLevel = 10;
         public float maxHealth;
         public float currentHealth;
@@ -20,6 +21,13 @@ namespace SG
 
         public int soulCount = 0;
 
+        [Header("Poise")]
+        public float totalPoiseDefense; // The total poise during damage calculation
+        public float offensivePoiseBonus; // The poise you Gain during an attack with a weapon
+        public float armorPoiseBonus; //The posie you Gain from wearing what ever you have equipped
+        public float totalPoiseResetTime = 15;
+        public float poiseResetTimer = 0;
+
         [Header("Armor Absorptions")]
         public float physicialDamageAbsorptionHead;
         public float physicialDamageAbsorptionBody;
@@ -31,6 +39,17 @@ namespace SG
         //Magic Absoprtion
         //Dark Absorption
         public bool isDead;
+        #endregion
+
+        protected virtual void Update()
+        {
+            HandlePoiseResetTimer();
+        }
+
+        private void Start()
+        {
+            totalPoiseDefense = armorPoiseBonus;
+        }
 
         public virtual void TakeDamage(int physicalDamage, string damageAnimation = "receive_hit")
         {
@@ -55,6 +74,18 @@ namespace SG
             {
                 currentHealth = 0;
                 isDead = true;
+            }
+        }
+
+        public virtual void HandlePoiseResetTimer()
+        {
+            if (poiseResetTimer > 0)
+            {
+                poiseResetTimer -= Time.deltaTime;
+            }
+            else
+            {
+                totalPoiseDefense = armorPoiseBonus;
             }
         }
     }

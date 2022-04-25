@@ -7,6 +7,7 @@ namespace SG
 {
     public class EnemyStats : CharacterStats
     {
+        #region FIELDS
         EnemyManager enemyManager;
         EnemyAnimatorManager enemyAnimationManager;
         EnemyBossManager enemyBossManager;
@@ -14,6 +15,7 @@ namespace SG
         public int soulsAwardedOnDeath = 50;
 
         public bool isBoss;
+        #endregion
 
         private void Awake()
         {
@@ -56,6 +58,12 @@ namespace SG
                 currentHealth = 0;
                 isDead = true;
             }
+        }
+
+        public void BreakGuard()
+        {
+            Debug.Log("Rompo guardia");
+            enemyAnimationManager.PlayTargetAnimation("Break Guard", true);
         }
 
         public override void TakeDamage(int damage, string damageAnimation = "receive_hit")

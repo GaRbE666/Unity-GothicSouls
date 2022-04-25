@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a144aae082d4f478dce882e7a9ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshObject: {fileID: 0}
+  MeshObject: {fileID: 100000, guid: 0a6823f76f8769544a7425d7478a6717, type: 3}
   StartScaleMultiplier: 1
   Color: {r: 0, g: 0, b: 0, a: 1}
   IsActive: 1

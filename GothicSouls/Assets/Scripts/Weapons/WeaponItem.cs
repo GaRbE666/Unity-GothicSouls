@@ -14,6 +14,10 @@ namespace SG
         public int baseDamage = 25;
         public int criticalDamageMultiplier = 4;
 
+        [Header("Poise")]
+        public float poiseBreak;
+        public float offensivePoiseBonus;
+
         [Header("Absorption")]
         public float physicalDamageAbsorption;
 
@@ -28,6 +32,7 @@ namespace SG
         public string oh_heavy_attack_01;
         public string th_light_attack_01;
         public string th_light_attack_02;
+        public string th_heavy_attack_01;
 
         [Header("Weapon Art")]
         public string weapon_art;

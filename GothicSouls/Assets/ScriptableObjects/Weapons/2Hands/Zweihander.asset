@@ -16,6 +16,11 @@ MonoBehaviour:
   itemName: Zweihand
   modelPrefab: {fileID: 1352495976566250, guid: 0de84623a598cdf4598ea1aafd0c7935, type: 3}
   isUnarmed: 0
+  baseDamage: 25
+  criticalDamageMultiplier: 4
+  poiseBreak: 110
+  offensivePoiseBonus: 75
+  physicalDamageAbsorption: 0
   right_hand_idle: Right_Arm_Idle_01
   left_hand_idle: Left_Arm_Idle_01
   th_idle: TH_idle_01
@@ -24,6 +29,8 @@ MonoBehaviour:
   oh_heavy_attack_01: OH_Heavy_Attack_01
   th_light_attack_01: TH_Sword_Attack_01
   th_light_attack_02: TH_Sword_Attack_02
+  th_heavy_attack_01: TH_Heavy_Sword_Attack_01
+  weapon_art: 
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
@@ -31,3 +38,4 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0

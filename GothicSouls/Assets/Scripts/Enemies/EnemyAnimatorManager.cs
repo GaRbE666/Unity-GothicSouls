@@ -97,7 +97,7 @@ namespace SG
             BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
 
             GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFXTransform.transform);
-            phaseFX.GetComponent<PSMeshRendererUpdater>().MeshObject = phaseFX.gameObject.GetComponent<DamageCollider>().gameObject;
+            
         }
 
         private void OnAnimatorMove()

@@ -479,7 +479,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dfafa82e952de1b4cbb174d4099fdcc7, type: 2}
+  m_Motion: {fileID: 7400000, guid: c76074477e31c394190ec015686e7452, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -549,7 +549,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5895688536823161940}
-    m_Position: {x: 340, y: -120, z: 0}
+    m_Position: {x: 340, y: -130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4067621056852472986}
     m_Position: {x: -240, y: -180, z: 0}
@@ -1443,6 +1443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71f279f107a009488c629a8461243a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInvulnerable: isInvulnerable
+  isInvulnerableStatus: 0
   isInteractingBool: isInteracting
   isInteractingStatus: 0
   isFiringSpellBool: isFiringSpell
@@ -1917,6 +1919,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71f279f107a009488c629a8461243a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInvulnerable: isInvulnerable
+  isInvulnerableStatus: 0
   isInteractingBool: isInteracting
   isInteractingStatus: 0
   isFiringSpellBool: isFiringSpell
