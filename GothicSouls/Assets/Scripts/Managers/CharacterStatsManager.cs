@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SG
 {
-    public class CharacterStats : MonoBehaviour
+    public class CharacterStatsManager : MonoBehaviour
     {
         #region FIELDS
         public int healthLevel = 10;
@@ -20,6 +20,7 @@ namespace SG
         public float currentFocusPoints;
 
         public int soulCount = 0;
+        public int soulsAwardedOnDeath = 50;
 
         [Header("Poise")]
         public float totalPoiseDefense; // The total poise during damage calculation
@@ -77,6 +78,16 @@ namespace SG
             }
         }
 
+        public virtual void TakeDamageNoAnimation(int damage)
+        {
+            currentHealth -= damage;
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+            }
+        }
         public virtual void HandlePoiseResetTimer()
         {
             if (poiseResetTimer > 0)

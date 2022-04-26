@@ -12,7 +12,7 @@ namespace SG
 
         bool hasCollided = false;
 
-        CharacterStats spellTarget;
+        CharacterStatsManager spellTarget;
         Rigidbody rigidbody;
         Vector3 impactNormal; //Used to rotate the impact particles
 
@@ -37,7 +37,7 @@ namespace SG
         {
             if (!hasCollided)
             {
-                spellTarget = collision.transform.GetComponent<CharacterStats>();
+                spellTarget = collision.transform.GetComponent<CharacterStatsManager>();
 
                 if (spellTarget != null)
                 {

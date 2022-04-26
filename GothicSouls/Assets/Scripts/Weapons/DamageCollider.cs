@@ -39,7 +39,7 @@ namespace SG
         {
             if (collision.tag == "Player")
             {
-                PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+                PlayerStatsManager playerStats = collision.GetComponent<PlayerStatsManager>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
@@ -81,7 +81,7 @@ namespace SG
 
             if (collision.tag == "Enemy")
             {
-                EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+                EnemyStatsManager enemyStats = collision.GetComponent<EnemyStatsManager>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 

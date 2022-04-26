@@ -9,7 +9,7 @@ namespace SG
         public string bossName;
 
         UIBossHealthBar bossHealthBar;
-        EnemyStats enemyStats;
+        EnemyStatsManager enemyStats;
         EnemyAnimatorManager enemyAnimatorManager;
         BossCombatStanceState bossCombatStanceState;
 
@@ -19,8 +19,8 @@ namespace SG
         private void Awake()
         {
             bossHealthBar = FindObjectOfType<UIBossHealthBar>();
-            enemyStats = GetComponent<EnemyStats>();
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyStats = GetComponent<EnemyStatsManager>();
+            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
         }
 
@@ -43,8 +43,8 @@ namespace SG
 
         public void ShiftToSecondPhase()
         {
-            enemyAnimatorManager.anim.SetBool("isInvulnerable", true);
-            enemyAnimatorManager.anim.SetBool("isPhaseShifting", true);
+            enemyAnimatorManager.animator.SetBool("isInvulnerable", true);
+            enemyAnimatorManager.animator.SetBool("isPhaseShifting", true);
             enemyAnimatorManager.PlayTargetAnimation("Boss Phase Shift", true);
             bossCombatStanceState.hasPhaseShifted = true;
         }

@@ -15,7 +15,7 @@ namespace SG
 
         public PursueTargetState pursueTargetState;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
             if (isSleeping && enemyManager.isInteracting == false)
             {
@@ -26,7 +26,7 @@ namespace SG
 
             for (int i = 0; i < colliders.Length; i++)
             {
-                CharacterStats CharacterStats = colliders[i].transform.GetComponent<CharacterStats>();
+                CharacterStatsManager CharacterStats = colliders[i].transform.GetComponent<CharacterStatsManager>();
 
                 if (CharacterStats != null)
                 {

@@ -7,6 +7,7 @@ namespace SG
 {
     public class EnemyLocomotionManager : MonoBehaviour
     {
+        #region FIELDS
         EnemyManager enemyManager;
         EnemyAnimatorManager enemyAnimationManager;
 
@@ -14,11 +15,12 @@ namespace SG
         public CapsuleCollider characterCollisionBlockerCollider;
 
         public LayerMask detectionLayer;
+        #endregion
 
         private void Awake()
         {
             enemyManager = GetComponent<EnemyManager>();
-            enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
         }
 
         private void Start()

@@ -5,22 +5,19 @@ using UnityEngine.UI;
 
 namespace SG
 {
-    public class EnemyStats : CharacterStats
+    public class EnemyStatsManager : CharacterStatsManager
     {
         #region FIELDS
-        EnemyManager enemyManager;
         EnemyAnimatorManager enemyAnimationManager;
-        EnemyBossManager enemyBossManager;
+        EnemyBossManager enemyBossManager; 
         public EnemyHealthBar enemyHealthBar;
-        public int soulsAwardedOnDeath = 50;
 
         public bool isBoss;
         #endregion
 
         private void Awake()
         {
-            enemyManager = GetComponent<EnemyManager>();
-            enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
@@ -40,9 +37,9 @@ namespace SG
             return maxHealth;
         }
 
-        public void TakeDamageNoAnimation(int damage)
+        public override void TakeDamageNoAnimation(int damage)
         {
-            currentHealth -= damage;
+            base.TakeDamageNoAnimation(damage);
 
             if (!isBoss)
             {
@@ -51,12 +48,6 @@ namespace SG
             else if (isBoss && enemyBossManager != null)
             {
                 enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
-            }
-
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                isDead = true;
             }
         }
 

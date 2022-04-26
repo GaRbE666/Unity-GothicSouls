@@ -8,82 +8,23 @@ namespace SG
     {
         EnemyManager enemyManager;
         EnemyBossManager enemyBossManager;
-        EnemyStats enemyStats;
 
-
-
-        private void Awake()
+        protected override void Awake()
         {
-            anim = GetComponent<Animator>();
-            enemyManager = GetComponentInParent<EnemyManager>();
-            enemyBossManager = GetComponentInParent<EnemyBossManager>();
-            enemyStats = GetComponentInParent<EnemyStats>();
-        }
-
-        public override void TakeCriticalDamageAnimationEvent()
-        {
-            enemyStats.TakeDamageNoAnimation(enemyManager.pendingCriticalDamage);
-            enemyManager.pendingCriticalDamage = 0;
-        }
-
-        public void CanRotate()
-        {
-            anim.SetBool("canRotate", true);
-        }
-
-        public void StopRotation()
-        {
-            anim.SetBool("canRotate", false);
-        }
-
-        public void Enablecombo()
-        {
-            anim.SetBool("canDoCombo", true);
-        }
-
-        public void DisableCombo()
-        {
-            anim.SetBool("canDoCombo", false);
-        }
-
-        public void EnableIsInvulnerable()
-        {
-            anim.SetBool("isInvulnerable", true);
-        }
-
-        public void DisableIsInvulnerable()
-        {
-            anim.SetBool("isInvulnerable", false);
-        }
-
-        public void EnableIsParrying()
-        {
-            enemyManager.isParrying = true;
-        }
-
-        public void DisableIsParrying()
-        {
-            enemyManager.isParrying = false;
-        }
-
-        public void EnableCanBeRiposted()
-        {
-            enemyManager.canBeRiposted = true;
-        }
-
-        public void DisableCanBeRiposted()
-        {
-            enemyManager.canBeRiposted = false;
+            base.Awake();
+            animator = GetComponent<Animator>();
+            enemyManager = GetComponent<EnemyManager>();
+            enemyBossManager = GetComponent<EnemyBossManager>();
         }
 
         public void AwardSoulsOnDeath()
         {
-            PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+            PlayerStatsManager playerStats = FindObjectOfType<PlayerStatsManager>();
             SoulCountBar soulCountBar = FindObjectOfType<SoulCountBar>();
 
             if (playerStats != null)
             {
-                playerStats.AddSouls(enemyStats.soulsAwardedOnDeath);
+                playerStats.AddSouls(characterStatsManager.soulsAwardedOnDeath);
 
                 if (soulCountBar != null)
                 {
@@ -104,14 +45,14 @@ namespace SG
         {
             float delta = Time.deltaTime;
             enemyManager.enemyRigidBody.drag = 0;
-            Vector3 deltaPosition = anim.deltaPosition;
+            Vector3 deltaPosition = animator.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
             enemyManager.enemyRigidBody.velocity = velocity;
 
             if (enemyManager.isRotatingWithRootMotion)
             {
-                enemyManager.transform.rotation *= anim.deltaRotation;
+                enemyManager.transform.rotation *= animator.deltaRotation;
             }
         }
     }

@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace SG
 {
-    public class PlayerLocomotion : MonoBehaviour
+    public class PlayerLocomotionManager : MonoBehaviour
     {
         #region FIELDS
         CameraHandler cameraHandler;
         PlayerManager playerManager;
-        PlayerStats playerStats;
+        PlayerStatsManager playerStatsManager;
         Transform cameraObject;
         InputHandler inputHandler;
         public Vector3 moveDirection;
 
         [HideInInspector] public Transform myTransform;
-        [HideInInspector] public PlayerAnimatorManager animatorHandler;
+        [HideInInspector] public PlayerAnimatorManager playerAnimationManager;
 
         public new Rigidbody rigidbody;
         public GameObject normalCamera;
@@ -49,16 +49,14 @@ namespace SG
             playerManager = GetComponent<PlayerManager>();
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
-            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
-            playerStats = GetComponent<PlayerStats>();
+            playerAnimationManager = GetComponent<PlayerAnimatorManager>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
         }
 
         private void Start()
         {
             cameraObject = Camera.main.transform;
             myTransform = transform;
-            animatorHandler.Initialize();
-
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider);
@@ -70,7 +68,7 @@ namespace SG
 
         public void HandleRotation(float delta)
         {
-            if (animatorHandler.canRotate)
+            if (playerAnimationManager.canRotate)
             {
                 if (inputHandler.lockOnFlag)
                 {
@@ -154,7 +152,7 @@ namespace SG
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
                 moveDirection *= speed;
-                playerStats.TakeStaminaDamage(sprintStaminaCost);
+                playerStatsManager.TakeStaminaDamage(sprintStaminaCost);
             }
             else
             {
@@ -176,22 +174,22 @@ namespace SG
 
             if (inputHandler.lockOnFlag && inputHandler.sprintFlag == false)
             {
-                animatorHandler.UpdateAnimatorValues(inputHandler.vertical, inputHandler.horizontal, playerManager.isSprinting);
+                playerAnimationManager.UpdateAnimatorValues(inputHandler.vertical, inputHandler.horizontal, playerManager.isSprinting);
             }
             else
             {
-                animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
+                playerAnimationManager.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
             }
         }
 
         public void HandleRollingAndSprinting(float dleta)
         {
-            if (animatorHandler.anim.GetBool("isInteracting"))
+            if (playerAnimationManager.animator.GetBool("isInteracting"))
             {
                 return;
             }
 
-            if (playerStats.currentStamina <= 0)
+            if (playerStatsManager.currentStamina <= 0)
             {
                 return;
             }
@@ -203,16 +201,16 @@ namespace SG
 
                 if (inputHandler.moveAmount > 0)
                 {
-                    animatorHandler.PlayTargetAnimation("Rolling", true);
+                    playerAnimationManager.PlayTargetAnimation("Rolling", true);
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
-                    playerStats.TakeStaminaDamage(rollStaminaCost);
+                    playerStatsManager.TakeStaminaDamage(rollStaminaCost);
                 }
                 else
                 {
-                    animatorHandler.PlayTargetAnimation("Backstep", true);
-                    playerStats.TakeStaminaDamage(backstepStaminaCost);
+                    playerAnimationManager.PlayTargetAnimation("Backstep", true);
+                    playerStatsManager.TakeStaminaDamage(backstepStaminaCost);
                 }
             }
         }
@@ -254,12 +252,12 @@ namespace SG
                 {
                     if (inAirTimer > 0.5f)
                     {
-                        animatorHandler.PlayTargetAnimation("Land", true);
+                        playerAnimationManager.PlayTargetAnimation("Land", true);
                         inAirTimer = 0;
                     }
                     else
                     {
-                        animatorHandler.PlayTargetAnimation("Empty", false);
+                        playerAnimationManager.PlayTargetAnimation("Empty", false);
                         inAirTimer = 0;
                     }
 
@@ -277,7 +275,7 @@ namespace SG
                 {
                     if (playerManager.isInteracting == false)
                     {
-                        animatorHandler.PlayTargetAnimation("Falling", true);
+                        playerAnimationManager.PlayTargetAnimation("Falling", true);
                     }
 
                     Vector3 vel = rigidbody.velocity;

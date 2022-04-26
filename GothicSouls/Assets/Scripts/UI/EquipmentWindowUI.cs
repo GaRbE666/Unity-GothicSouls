@@ -13,7 +13,7 @@ namespace SG
 
         public HandEquipmentSlotUI[] handEquipmentSlotUI;
 
-        public void LoadWeaponOnEquipmentScreen(PlayerInventory playerInventory)
+        public void LoadWeaponOnEquipmentScreen(PlayerInventoryManager playerInventory)
         {
             for (int i = 0; i < handEquipmentSlotUI.Length; i++)
             {

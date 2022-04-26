@@ -10,20 +10,16 @@ namespace SG
         #region FIELDS
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimationManager;
-        EnemyStats enemyStats; 
+        EnemyStatsManager enemyStatsManager; 
         
         public State currentState;
-        public CharacterStats currentTarget;
+        public CharacterStatsManager currentTarget;
         public NavMeshAgent navmeshAgent;
         public Rigidbody enemyRigidBody;
 
-        public bool isPreformingAction;
-        public bool isInteracting;
+        public bool isPreformingAction; 
         public float rotationSpeed = 15;
         public float maximumAggroRadius = 1.5f;
-
-        [Header("Combat Flags")]
-        public bool canDoCombo;
 
         [Header("A.I Settings")]
         public float detectionRadius = 20;
@@ -42,8 +38,8 @@ namespace SG
         private void Awake()
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-            enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
-            enemyStats = GetComponent<EnemyStats>();
+            enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
+            enemyStatsManager = GetComponent<EnemyStatsManager>();
             enemyRigidBody = GetComponent<Rigidbody>();
             navmeshAgent = GetComponentInChildren<NavMeshAgent>();
             navmeshAgent.enabled = false;
@@ -59,13 +55,13 @@ namespace SG
             HandleRecoveryTimer();
             HandleStateMachine();
 
-            isRotatingWithRootMotion = enemyAnimationManager.anim.GetBool("isRotatingWithRootMotion");
-            isInteracting = enemyAnimationManager.anim.GetBool("isInteracting");
-            isPhaseShifting = enemyAnimationManager.anim.GetBool("isPhaseShifting");
-            isInvulnerable = enemyAnimationManager.anim.GetBool("isInvulnerable");
-            canDoCombo = enemyAnimationManager.anim.GetBool("canDoCombo");
-            canRotate = enemyAnimationManager.anim.GetBool("canRotate");
-            enemyAnimationManager.anim.SetBool("isDead", enemyStats.isDead);
+            isRotatingWithRootMotion = enemyAnimationManager.animator.GetBool("isRotatingWithRootMotion");
+            isInteracting = enemyAnimationManager.animator.GetBool("isInteracting");
+            isPhaseShifting = enemyAnimationManager.animator.GetBool("isPhaseShifting");
+            isInvulnerable = enemyAnimationManager.animator.GetBool("isInvulnerable");
+            canDoCombo = enemyAnimationManager.animator.GetBool("canDoCombo");
+            canRotate = enemyAnimationManager.animator.GetBool("canRotate");
+            enemyAnimationManager.animator.SetBool("isDead", enemyStatsManager.isDead);
         }
 
         private void LateUpdate()
@@ -78,7 +74,7 @@ namespace SG
         {
             if (currentState != null)
             {
-                State nextState = currentState.Tick(this, enemyStats, enemyAnimationManager);
+                State nextState = currentState.Tick(this, enemyStatsManager, enemyAnimationManager);
 
                 if (nextState != null)
                 {

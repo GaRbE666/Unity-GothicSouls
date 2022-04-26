@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SG
 {
-    public class PlayerStats : CharacterStats
+    public class PlayerStatsManager : CharacterStatsManager
     {
         #region FIELDS
         PlayerManager playerManager;
@@ -12,7 +12,7 @@ namespace SG
         HealthBar healthBar;
         StaminaBar staminaBar;
         FocusPointBar focusPointsBar;
-        PlayerAnimatorManager animatorHandle;
+        PlayerAnimatorManager playerAnimatorManager;
 
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
@@ -24,7 +24,7 @@ namespace SG
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointsBar = FindObjectOfType<FocusPointBar>();
-            animatorHandle = GetComponentInChildren<PlayerAnimatorManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         }
 
         private void Start()
@@ -86,25 +86,20 @@ namespace SG
             base.TakeDamage(damage, damageAnimation = "receive_hit");
 
             healthBar.SetCurrentHealth(currentHealth);
-            animatorHandle.PlayTargetAnimation(damageAnimation, true);
+            playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
                 isDead = true;
-                animatorHandle.PlayTargetAnimation("Dead", true);
+                playerAnimatorManager.PlayTargetAnimation("Dead", true);
             }
         }
 
-        public void TakeDamageNoAnimation(int damage)
+        public override void TakeDamageNoAnimation(int damage)
         {
-            currentHealth -= damage;
-
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                isDead = true;
-            }
+            base.TakeDamageNoAnimation(damage);
+            healthBar.SetCurrentHealth(currentHealth);
         }
 
         public void TakeStaminaDamage(float damage)
