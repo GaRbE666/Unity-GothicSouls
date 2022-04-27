@@ -7,6 +7,7 @@ namespace SG
     public class EnemyAnimatorManager : AnimatorManager
     {
         EnemyManager enemyManager;
+        EnemyEffectsManager enemyEffectsManager;
         EnemyBossManager enemyBossManager;
 
         protected override void Awake()
@@ -15,6 +16,7 @@ namespace SG
             animator = GetComponent<Animator>();
             enemyManager = GetComponent<EnemyManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
+            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
         }
 
         public void AwardSoulsOnDeath()
@@ -39,6 +41,11 @@ namespace SG
 
             GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFXTransform.transform);
             
+        }
+
+        public void PlayWeaponTrailFX()
+        {
+            enemyEffectsManager.PlayWeaponFX(false);
         }
 
         private void OnAnimatorMove()

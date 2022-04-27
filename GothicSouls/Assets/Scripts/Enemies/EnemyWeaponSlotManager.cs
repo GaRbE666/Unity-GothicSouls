@@ -11,11 +11,13 @@ namespace SG
         public WeaponItem leftHandWeapon;
 
         EnemyStatsManager enemyStatsManager;
+        EnemyEffectsManager enemyEffectsManager;
         #endregion
 
         private void Awake()
         {
             enemyStatsManager = GetComponent<EnemyStatsManager>();
+            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
             LoadWeaponHolderSlots();
         }
 
@@ -75,11 +77,13 @@ namespace SG
             {
                 leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
                 leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
+                enemyEffectsManager.leftWeaponFX = leftHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
             }
             else
             {
                 rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
                 rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
+                enemyEffectsManager.rightWeaponFX = rightHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
             }
         }
 

@@ -46,6 +46,7 @@ namespace SG
         private void AttackTarget(EnemyAnimatorManager enemyAnimationManager, EnemyManager enemyManager)
         {
             enemyAnimationManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+            enemyAnimationManager.PlayWeaponTrailFX();
             enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
             hasPerformedAttack = true;
         }
@@ -54,6 +55,7 @@ namespace SG
         {
             willDoComboOnNextAttack = false;
             enemyAnimationManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+            enemyAnimationManager.PlayWeaponTrailFX();
             enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
             currentAttack = null;
         }

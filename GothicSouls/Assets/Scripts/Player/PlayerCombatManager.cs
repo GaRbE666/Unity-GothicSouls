@@ -15,6 +15,7 @@ namespace SG
         PlayerStatsManager playerStatsManager;
         PlayerInventoryManager playerInventoryManager;
         PlayerWeaponSlotManager playerWeaponSlotManager;
+        PlayerEffectsManager playerEffectsManager;
 
         public string lastAttack;
 
@@ -31,6 +32,7 @@ namespace SG
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
             inputHandler = GetComponent<InputHandler>();
 
         }
@@ -155,6 +157,8 @@ namespace SG
                 playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
                 HandleLightAttack(playerInventoryManager.rightWeapon);
             }
+
+            playerEffectsManager.PlayWeaponFX(false);
         }
 
         private void PerformRBMagicAction(WeaponItem weapon)
