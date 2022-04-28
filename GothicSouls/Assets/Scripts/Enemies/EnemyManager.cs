@@ -10,7 +10,8 @@ namespace SG
         #region FIELDS
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimationManager;
-        EnemyStatsManager enemyStatsManager; 
+        EnemyStatsManager enemyStatsManager;
+        EnemyEffectsManager enemyEffectsManager;
         
         public State currentState;
         public CharacterStatsManager currentTarget;
@@ -40,6 +41,7 @@ namespace SG
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
+            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
             enemyRigidBody = GetComponent<Rigidbody>();
             navmeshAgent = GetComponentInChildren<NavMeshAgent>();
             navmeshAgent.enabled = false;
@@ -62,6 +64,11 @@ namespace SG
             canDoCombo = enemyAnimationManager.animator.GetBool("canDoCombo");
             canRotate = enemyAnimationManager.animator.GetBool("canRotate");
             enemyAnimationManager.animator.SetBool("isDead", enemyStatsManager.isDead);
+        }
+
+        private void FixedUpdate()
+        {
+            enemyEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()

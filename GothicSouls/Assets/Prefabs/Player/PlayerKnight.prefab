@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 3331410170774394690}
   - component: {fileID: 3331410170774394691}
   - component: {fileID: 3331410170774394692}
+  - component: {fileID: 1026036501}
   m_Layer: 11
   m_Name: PlayerKnight
   m_TagString: Player
@@ -606,6 +607,7 @@ Transform:
   - {fileID: 139502229876982867}
   - {fileID: 139502229560430278}
   - {fileID: 139502228415850479}
+  - {fileID: 3482378431564037372}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -716,7 +718,7 @@ MonoBehaviour:
   currentSpell: {fileID: 0}
   rightWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   leftWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
-  currentConsumable: {fileID: 0}
+  currentConsumable: {fileID: 11400000, guid: c7087d9af53a9d14d999e68f4c6d7b87, type: 2}
   currentHelmetEquipment: {fileID: 11400000, guid: 8a0a8b5959ad409439524ba0926d51b3, type: 2}
   currentTorsoEquipment: {fileID: 11400000, guid: be217778de4acc64f8cc9eb38f4c6e28, type: 2}
   currentLegEquipment: {fileID: 11400000, guid: ff8c4df058345f2428978d345709440e, type: 2}
@@ -771,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689859250334764db86d90477ee6a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthLevel: 1200
+  healthLevel: 10
   maxHealth: 0
   currentHealth: 0
   staminaLevel: 10
@@ -781,6 +783,7 @@ MonoBehaviour:
   maxFocusPoints: 0
   currentFocusPoints: 0
   soulCount: 0
+  soulsAwardedOnDeath: 50
   totalPoiseDefense: 0
   offensivePoiseBonus: 0
   armorPoiseBonus: 0
@@ -808,24 +811,24 @@ MonoBehaviour:
   lockOnTransform: {fileID: 139502229876982867}
   backStabCollider: {fileID: 139502228701437161}
   riposteCollider: {fileID: 139502229475877600}
+  isInteracting: 0
   canBeRiposted: 0
   canBeParried: 0
+  canDoCombo: 0
   isParrying: 0
   isBlocking: 0
   isInvulnerable: 0
+  isUsingRightHand: 0
+  isUsingLeftHand: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
+  isSprinting: 0
+  isInAir: 0
+  isGrounded: 1
   isFiringSpell: 0
   pendingCriticalDamage: 0
   interactableUIGameObject: {fileID: 0}
   itemInteractableGameObject: {fileID: 0}
-  isInteracting: 0
-  isSprinting: 0
-  isInAir: 0
-  isGrounded: 1
-  canDoCombo: 0
-  isUsingRightHand: 0
-  isUsingLeftHand: 0
 --- !u!114 &3331410170774394689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,12 +855,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dbfb59f32a7e34ba21f59585283641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackingWeapon: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   leftHandSlot: {fileID: 0}
   rightHandSlot: {fileID: 0}
+  backSlot: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
+  attackingWeapon: {fileID: 0}
 --- !u!114 &3331410170774394690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,9 +904,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f161e4245cfdb7147be39d711eadfdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightWeaponFX: {fileID: 0}
+  leftWeaponFX: {fileID: 0}
+  isPoisoned: 0
+  poisonBuildup: 0
+  poisonAmount: 100
+  defaultPoisonAmount: 0
+  poisonTimer: 2
+  poisonDamage: 10
   currentParticleFX: {fileID: 0}
   instantiatedFXModel: {fileID: 0}
   amountToBeHealed: 0
+--- !u!114 &1026036501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139502229593646818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25605942980869488a7816a396ae56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodDecal: {fileID: 3136605153214515430, guid: 45eef0a861a8a8946b4c23fb9f4f779a, type: 3}
+  prefabs:
+  - {fileID: 2656253210798625995, guid: a78e9ef18b366424b84e0c7410d2fe72, type: 3}
+  - {fileID: 5865290276592450837, guid: 42a28376f729c864a81abf66add7a418, type: 3}
+  - {fileID: 764304066602274965, guid: 4a322f29a9e1fa54f90223de8bcf3a28, type: 3}
+  - {fileID: 7935733108997359171, guid: e822d59151d3597428b0b63bf25355e7, type: 3}
+  - {fileID: 4288107571095694937, guid: c3f8938673a07704e93ac52eee18f410, type: 3}
+  - {fileID: 1165703760847671896, guid: bb596cd440832554089a7125852e836f, type: 3}
+  - {fileID: 4152240900433254336, guid: 6d3629f845b40e24fb51d381e84bbc77, type: 3}
+  - {fileID: 6463355840203370170, guid: 70ead61ff20b23b4e97b90d8e8997ecd, type: 3}
+  - {fileID: 5170585893340993107, guid: 7b88f11816abaa34c9e02cbaa8485321, type: 3}
+  - {fileID: 2629016494315086251, guid: 5776aed3bb070e54cb09a11c8a6a5831, type: 3}
+  - {fileID: 3034872428933141512, guid: 52d94bfe44b09ff4b9e9788e9a86a778, type: 3}
+  - {fileID: 2360933683143488451, guid: 730678b8a5330c449ada55bde83402ce, type: 3}
+  - {fileID: 5016170632959171363, guid: c3ed06559a66b724b91c3124e75ddec9, type: 3}
+  - {fileID: 8859926575668995837, guid: 097a30048e9007141899f834041a5ac7, type: 3}
+  - {fileID: 5936082179827903908, guid: cb58ece77d11ef945aecd072f2e46a8d, type: 3}
+  - {fileID: 5494213943435191861, guid: db51fe09adf27d640b4e10018c2d76ba, type: 3}
+  - {fileID: 5371219466416337994, guid: f9e099178c81bee439a79eecec91dacb, type: 3}
+  directional: {fileID: 0}
+  bloodInstancePosition: {fileID: 3482378431564037372}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &139502229718218854
 GameObject:
   m_ObjectHideFlags: 0
@@ -12192,6 +12238,36 @@ Transform:
   - {fileID: 2629126421582384951}
   - {fileID: 2629126421582384899}
   m_Father: {fileID: 2629126421582384933}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4767587707216632340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3482378431564037372}
+  m_Layer: 11
+  m_Name: BloodInstancePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3482378431564037372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4767587707216632340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 139502229593646819}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6178599330778045904

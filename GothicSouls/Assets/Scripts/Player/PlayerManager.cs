@@ -13,6 +13,7 @@ namespace SG
         PlayerLocomotionManager playerLocomotion;
         PlayerStatsManager playerStatsManager;
         PlayerAnimatorManager playerAnimatorManager;
+        PlayerEffectsManager playerEffectsManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -27,6 +28,7 @@ namespace SG
             animator = GetComponent<Animator>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerLocomotion = GetComponent<PlayerLocomotionManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         }
@@ -61,6 +63,7 @@ namespace SG
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRotation(delta);
+            playerEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()

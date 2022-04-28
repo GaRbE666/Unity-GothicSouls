@@ -13,8 +13,9 @@ namespace SG
         public GameObject instantiatedFXModel;
         public int amountToBeHealed;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
         }

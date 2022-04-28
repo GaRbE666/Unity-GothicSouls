@@ -8,8 +8,8 @@ namespace SG
     public class EnemyStatsManager : CharacterStatsManager
     {
         #region FIELDS
-        EnemyAnimatorManager enemyAnimationManager;
-        EnemyBossManager enemyBossManager; 
+        EnemyAnimatorManager enemyAnimatorManager;
+        EnemyBossManager enemyBossManager;
         public EnemyHealthBar enemyHealthBar;
 
         public bool isBoss;
@@ -17,7 +17,7 @@ namespace SG
 
         private void Awake()
         {
-            enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
+            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
@@ -51,10 +51,35 @@ namespace SG
             }
         }
 
+        public override void TakePoisonDamage(int damage)
+        {
+            if (isDead)
+            {
+                return;
+            }
+
+            base.TakePoisonDamage(damage);
+
+            if (!isBoss)
+            {
+                enemyHealthBar.SetHealth(currentHealth);
+            }
+            else if (isBoss && enemyBossManager != null)
+            {
+                enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+            }
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+                enemyAnimatorManager.PlayTargetAnimation("Dead", true);
+            }
+        }
+
         public void BreakGuard()
         {
-            Debug.Log("Rompo guardia");
-            enemyAnimationManager.PlayTargetAnimation("Break Guard", true);
+            enemyAnimatorManager.PlayTargetAnimation("Break Guard", true);
         }
 
         public override void TakeDamage(int damage, string damageAnimation = "receive_hit")
@@ -70,7 +95,7 @@ namespace SG
                 enemyBossManager.UpdateBossHealthBar(currentHealth,  maxHealth);
             }
             
-            enemyAnimationManager.PlayTargetAnimation(damageAnimation, true);
+            enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {
@@ -81,7 +106,7 @@ namespace SG
         private void HandleDeath()
         {
             currentHealth = 0;
-            enemyAnimationManager.PlayTargetAnimation("Dead", true);
+            enemyAnimatorManager.PlayTargetAnimation("Dead", true);
             isDead = true; 
         }
     }

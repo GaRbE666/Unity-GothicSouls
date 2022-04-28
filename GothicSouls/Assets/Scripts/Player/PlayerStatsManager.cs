@@ -96,6 +96,24 @@ namespace SG
             }
         }
 
+        public override void TakePoisonDamage(int damage)
+        {
+            if (isDead)
+            {
+                return;
+            }
+
+            base.TakePoisonDamage(damage);
+            healthBar.SetCurrentHealth(currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+                playerAnimatorManager.PlayTargetAnimation("Dead", true);
+            }
+        }
+
         public override void TakeDamageNoAnimation(int damage)
         {
             base.TakeDamageNoAnimation(damage);
