@@ -24,7 +24,7 @@ namespace SG
         [SerializeField] private float groundDetectionRayStartPoint = 0.5f;
         [SerializeField] private float minimumDistanceNeededToBeginFall = 1f;
         [SerializeField] private float groundDirectionRayDistance = 0.2f;
-        LayerMask ignoreForGroundCheck;
+        public LayerMask groundLayer;
         public float inAirTimer;
 
         [Header("Movement Stats")]
@@ -58,7 +58,6 @@ namespace SG
             cameraObject = Camera.main.transform;
             myTransform = transform;
             playerManager.isGrounded = true;
-            ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider);
         }
 
@@ -241,7 +240,7 @@ namespace SG
 
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red, 0.1f, false);
 
-            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
+            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, groundLayer))
             {
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
