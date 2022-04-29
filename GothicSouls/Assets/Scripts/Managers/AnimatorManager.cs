@@ -86,7 +86,7 @@ namespace SG
 
         public virtual void TakeCriticalDamageAnimationEvent()
         {
-            characterStatsManager.TakeDamageNoAnimation(characterManager.pendingCriticalDamage);
+            characterStatsManager.TakeDamageNoAnimation(characterManager.pendingCriticalDamage, 0);
             characterManager.pendingCriticalDamage = 0;
         }
     }

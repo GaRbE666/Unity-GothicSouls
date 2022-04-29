@@ -35,7 +35,11 @@ namespace SG
         public float physicialDamageAbsorptionLegs;
         public float physicialDamageAbsorptionHands;
 
-        //fire Absorption
+        public float fireDamageAbsorptionHead;
+        public float fireDamageAbsorptionBody;
+        public float fireDamageAbsorptionLegs;
+        public float fireDamageAbsorptionHands;
+
         //LightingAbsorption
         //Magic Absoprtion
         //Dark Absorption
@@ -52,7 +56,7 @@ namespace SG
             totalPoiseDefense = armorPoiseBonus;
         }
 
-        public virtual void TakeDamage(int physicalDamage, string damageAnimation = "receive_hit")
+        public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "receive_hit")
         {
             if (isDead)
             {
@@ -67,9 +71,17 @@ namespace SG
 
             physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
 
-            float finalDamage = physicalDamage; // + fireDamage + magicDamage + lighting Damage + darkDamage;
+            float totalFireDamageAbsorption = 1 -
+                (1 - fireDamageAbsorptionHead / 100) *
+                (1 - fireDamageAbsorptionBody / 100) *
+                (1 - fireDamageAbsorptionLegs / 100) *
+                (1 - fireDamageAbsorptionHands / 100);
 
-            currentHealth -= finalDamage;
+            fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
+
+            float finalDamage = physicalDamage + fireDamage; // + magicDamage + lighting Damage + darkDamage;
+
+            currentHealth -= Mathf.RoundToInt(currentHealth - finalDamage);
 
             if (currentHealth <= 0)
             {
@@ -78,9 +90,32 @@ namespace SG
             }
         }
 
-        public virtual void TakeDamageNoAnimation(int damage)
+        public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
-            currentHealth -= damage;
+            if (isDead)
+            {
+                return;
+            }
+
+            float totalPhysicalDamageAbsorption = 1 -
+                (1 - physicialDamageAbsorptionHead / 100) *
+                (1 - physicialDamageAbsorptionBody / 100) *
+                (1 - physicialDamageAbsorptionLegs / 100) *
+                (1 - physicialDamageAbsorptionHands / 100);
+
+            physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
+
+            float totalFireDamageAbsorption = 1 -
+                (1 - fireDamageAbsorptionHead / 100) *
+                (1 - fireDamageAbsorptionBody / 100) *
+                (1 - fireDamageAbsorptionLegs / 100) *
+                (1 - fireDamageAbsorptionHands / 100);
+
+            fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
+
+            float finalDamage = physicalDamage + fireDamage; // + magicDamage + lighting Damage + darkDamage;
+
+            currentHealth -= Mathf.RoundToInt(currentHealth - finalDamage);
 
             if (currentHealth <= 0)
             {

@@ -6,9 +6,12 @@ namespace SG
 {
     public class BlockingCollider : MonoBehaviour
     {
+        #region FIELDS
         public BoxCollider blockingCollider;
 
         public float blockingPhysicalDamageAbsoption;
+        public float blockingFireDamageAbsorption;
+        #endregion
 
         private void Awake()
         {

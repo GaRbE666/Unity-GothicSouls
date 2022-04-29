@@ -13,7 +13,7 @@ namespace SG
 
             if (playerStats != null)
             {
-                playerStats.TakeDamage(damage);
+                playerStats.TakeDamage(damage, 0);
             }
         }
     }

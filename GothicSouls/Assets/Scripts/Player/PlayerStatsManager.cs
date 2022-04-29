@@ -9,7 +9,7 @@ namespace SG
         #region FIELDS
         PlayerManager playerManager;
 
-        HealthBar healthBar;
+        public HealthBar healthBar;
         StaminaBar staminaBar;
         FocusPointBar focusPointsBar;
         PlayerAnimatorManager playerAnimatorManager;
@@ -21,7 +21,6 @@ namespace SG
         private void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
-            healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointsBar = FindObjectOfType<FocusPointBar>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
@@ -75,7 +74,7 @@ namespace SG
             return maxFocusPoints;
         }
 
-        public override void TakeDamage(int damage, string damageAnimation = "receive_hit")
+        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "receive_hit")
         {
 
             if (playerManager.isInvulnerable)
@@ -83,7 +82,7 @@ namespace SG
                 return;
             }
 
-            base.TakeDamage(damage, damageAnimation = "receive_hit");
+            base.TakeDamage(physicalDamage, fireDamage, damageAnimation = "receive_hit");
 
             healthBar.SetCurrentHealth(currentHealth);
             playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
@@ -114,9 +113,9 @@ namespace SG
             }
         }
 
-        public override void TakeDamageNoAnimation(int damage)
+        public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
-            base.TakeDamageNoAnimation(damage);
+            base.TakeDamageNoAnimation(physicalDamage, fireDamage);
             healthBar.SetCurrentHealth(currentHealth);
         }
 

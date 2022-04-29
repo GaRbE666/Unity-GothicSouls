@@ -41,7 +41,7 @@ namespace SG
 
                 if (spellTarget != null)
                 {
-                    spellTarget.TakeDamage(currentWeaponDamage);
+                    spellTarget.TakeDamage(0, fireDamage);
                 }
 
                 hasCollided = true;
