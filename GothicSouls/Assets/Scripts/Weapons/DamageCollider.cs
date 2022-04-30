@@ -10,6 +10,9 @@ namespace SG
         protected Collider damageCollider;
         public bool enabledDamageColliderOnStartUp = false;
 
+        [Header("Team I.D")]
+        public int teamIDNumber = 0;
+
         [Header("Poise")]
         public float poiseBreak;
         public float offensivePoiseDefence;
@@ -50,6 +53,11 @@ namespace SG
 
                 if (enemyManager != null)
                 {
+                    if (enemyStats.teamIDNumber == teamIDNumber)
+                    {
+                        return;
+                    }
+
                     if (enemyManager.isParrying)
                     {
                         characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
@@ -70,6 +78,11 @@ namespace SG
 
                 if (enemyStats != null)
                 {
+                    if (enemyStats.teamIDNumber == teamIDNumber)
+                    {
+                        return;
+                    }
+
                     enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                     enemyStats.totalPoiseDefense = enemyStats.armorPoiseBonus - poiseBreak;
 

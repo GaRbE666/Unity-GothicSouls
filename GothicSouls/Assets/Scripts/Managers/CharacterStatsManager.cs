@@ -7,6 +7,9 @@ namespace SG
     public class CharacterStatsManager : MonoBehaviour
     {
         #region FIELDS
+        [Header("Team I.D")]
+        public int teamIDNumber = 0;
+
         public int healthLevel = 10;
         public float maxHealth;
         public float currentHealth;

@@ -31,6 +31,8 @@ namespace SG
         public string oh_light_attack_01;
         public string oh_light_attack_02;
         public string oh_heavy_attack_01;
+
+        [Header("Two Handed ")]
         public string th_light_attack_01;
         public string th_light_attack_02;
         public string th_heavy_attack_01;

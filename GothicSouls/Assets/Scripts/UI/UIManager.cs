@@ -6,8 +6,10 @@ namespace SG
 {
     public class UIManager : MonoBehaviour
     {
+        #region FIELDS
         public PlayerInventoryManager playerInventory;
         public EquipmentWindowUI equipmentWindowUI;
+        private QuickSlotsUI quickSlotsUI;
 
         [Header("UI Windows")]
         public GameObject hudWindow;
@@ -25,11 +27,19 @@ namespace SG
         public GameObject weaponInventorySlotPrefab;
         public Transform weaponInevntorySlotsParent;
         WeaponInventorySlot[] weaponInventorySlots;
+        #endregion
+
+        private void Awake()
+        {
+            quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
+        }
 
         private void Start()
         {
             weaponInventorySlots = weaponInevntorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerInventory);
+            quickSlotsUI.UpdateCurrentSpellIcon(playerInventory.currentSpell);
+            quickSlotsUI.UpdateCurrentConsumableIcon(playerInventory.currentConsumable);
         }
 
         public void UpdateUI()

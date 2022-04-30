@@ -6,6 +6,7 @@ namespace SG
 {
     public class SpellDamageCollider : DamageCollider
     {
+        #region FIELDS
         public GameObject impactParticles;
         public GameObject projectileParticles;
         public GameObject muzzleParticles;
@@ -14,7 +15,9 @@ namespace SG
 
         CharacterStatsManager spellTarget;
         Rigidbody rigidbody;
+
         Vector3 impactNormal; //Used to rotate the impact particles
+        #endregion
 
         private void Awake()
         {
@@ -39,7 +42,7 @@ namespace SG
             {
                 spellTarget = collision.transform.GetComponent<CharacterStatsManager>();
 
-                if (spellTarget != null)
+                if (spellTarget != null && spellTarget.teamIDNumber != teamIDNumber)
                 {
                     spellTarget.TakeDamage(0, fireDamage);
                 }
