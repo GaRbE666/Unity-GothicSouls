@@ -282,14 +282,16 @@ namespace SG
 
                 twoHandFlag = !twoHandFlag;
 
-                if (twoHandFlag)
+                if (twoHandFlag && !playerInventoryManager.rightWeapon.isUnarmed)
                 {
                     weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                    playerManager.isTwoHandingWeapon = true;
                 }
                 else
                 {
                     weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
                     weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
+                    playerManager.isTwoHandingWeapon = false;
                 }
             }
         }
