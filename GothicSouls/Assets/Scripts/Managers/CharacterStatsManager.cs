@@ -66,7 +66,7 @@ namespace SG
             totalPoiseDefense = armorPoiseBonus;
         }
 
-        public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "receive_hit")
+        public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
         {
             if (isDead)
             {
@@ -92,8 +92,8 @@ namespace SG
             fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
 
             float finalDamage = physicalDamage + fireDamage; // + magicDamage + lighting Damage + darkDamage;
-
-            currentHealth -= Mathf.RoundToInt(currentHealth - finalDamage);
+     
+            currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
 
             if (currentHealth <= 0)
             {

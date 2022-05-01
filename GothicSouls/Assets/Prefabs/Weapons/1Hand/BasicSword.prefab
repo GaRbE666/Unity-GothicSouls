@@ -366,9 +366,9 @@ MonoBehaviour:
   characterManager: {fileID: 0}
   enabledDamageColliderOnStartUp: 0
   teamIDNumber: 0
-  poiseBreak: 0
+  poiseBreak: 25
   offensivePoiseDefence: 0
-  physicalDamage: 0
+  physicalDamage: 25
   fireDamage: 0
   magicDamage: 0
   lightningDamage: 0

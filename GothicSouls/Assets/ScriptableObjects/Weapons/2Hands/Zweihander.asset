@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Zweihand
   modelPrefab: {fileID: 1352495976566250, guid: 0de84623a598cdf4598ea1aafd0c7935, type: 3}
   isUnarmed: 0
-  weaponController: {fileID: 0}
+  weaponController: {fileID: 22100000, guid: 5b92ec5b33070f14a90a4bda3c0215c8, type: 2}
   offHandIdleAnimation: Left_Arm_Idle_01
   weaponType: 4
   physicalDamage: 0

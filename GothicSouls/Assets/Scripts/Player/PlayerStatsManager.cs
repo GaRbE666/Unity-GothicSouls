@@ -75,7 +75,7 @@ namespace SG
             return maxFocusPoints;
         }
 
-        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "receive_hit")
+        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
         {
 
             if (playerManager.isInvulnerable)
@@ -83,7 +83,7 @@ namespace SG
                 return;
             }
 
-            base.TakeDamage(physicalDamage, fireDamage, damageAnimation = "receive_hit");
+            base.TakeDamage(physicalDamage, fireDamage, damageAnimation);
 
             healthBar.SetCurrentHealth(currentHealth);
             playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);

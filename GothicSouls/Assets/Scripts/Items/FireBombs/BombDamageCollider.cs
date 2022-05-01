@@ -6,6 +6,7 @@ namespace SG
 {
     public class BombDamageCollider : DamageCollider
     {
+        #region FIELDS
         [Header("Explosive Damage & Radius")]
         public int explosiveRadius = 1;
         public int explosionDamage;
@@ -16,6 +17,7 @@ namespace SG
         public Rigidbody bombRigidBody;
         private bool hasCollided = false;
         public GameObject impactParticles;
+        #endregion
 
         protected override void Awake()
         {
@@ -37,7 +39,7 @@ namespace SG
                 {
                     if (character.teamIDNumber != teamIDNumber)
                     {
-                        character.TakeDamage(0, explosionDamage);
+                        character.TakeDamage(0, explosionDamage, currentDamageAnimation);
                     }  
                 }
 
@@ -58,7 +60,7 @@ namespace SG
                 {
                     if (character.teamIDNumber != teamIDNumber)
                     {
-                        character.TakeDamage(0, explosionSplashDamage);
+                        character.TakeDamage(0, explosionSplashDamage, currentDamageAnimation);
                     }
                 }
             }

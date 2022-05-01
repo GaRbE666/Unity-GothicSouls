@@ -22,7 +22,7 @@ MonoBehaviour:
   physicalDamage: 25
   fireDamage: 0
   criticalDamageMultiplier: 4
-  poiseBreak: 0
+  poiseBreak: 25
   offensivePoiseBonus: 0
   physicalDamageAbsorption: 80
   baseStamina: 20
