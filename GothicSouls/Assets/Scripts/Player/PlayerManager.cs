@@ -20,8 +20,9 @@ namespace SG
         public GameObject itemInteractableGameObject;
         #endregion
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             cameraHandler = FindObjectOfType<CameraHandler>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
             inputHandler = GetComponent<InputHandler>();
@@ -58,8 +59,9 @@ namespace SG
             CheckForInteractableObject();
         }
 
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
             float delta = Time.fixedDeltaTime;
 
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);

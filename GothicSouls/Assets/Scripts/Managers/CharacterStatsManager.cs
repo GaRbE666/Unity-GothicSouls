@@ -7,6 +7,8 @@ namespace SG
     public class CharacterStatsManager : MonoBehaviour
     {
         #region FIELDS
+        CharacterAnimatorManager characterAnimatorManager;
+
         [Header("Team I.D")]
         public int teamIDNumber = 0;
 
@@ -49,6 +51,11 @@ namespace SG
         public bool isDead;
         #endregion
 
+        protected virtual void Awake()
+        {
+            characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+        }
+
         protected virtual void Update()
         {
             HandlePoiseResetTimer();
@@ -65,6 +72,8 @@ namespace SG
             {
                 return;
             }
+
+            characterAnimatorManager.EraseHandIKForWeapon();
 
             float totalPhysicalDamageAbsorption = 1 -
                 (1 - physicialDamageAbsorptionHead / 100) *

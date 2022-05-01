@@ -6,6 +6,10 @@ namespace SG
 {
     public class CharacterManager : MonoBehaviour
     {
+        #region FIELDS
+        CharacterAnimatorManager characterAnimatorManager;
+        CharacterWeaponSlotManager characterWeaponSlotManager;
+
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
 
@@ -41,5 +45,17 @@ namespace SG
         //Damage will be inflicted during an animation event
         //Used in backstab or riposte animations
         public int pendingCriticalDamage;
+        #endregion
+
+        protected virtual void Awake()
+        {
+            characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+            characterWeaponSlotManager = GetComponent<CharacterWeaponSlotManager>();
+        }
+
+        protected virtual void FixedUpdate()
+        {
+            characterAnimatorManager.CheckHandIKWeight(characterWeaponSlotManager.rightHandIKTarget, characterWeaponSlotManager.leftHandIKTarget, isTwoHandingWeapon);
+        }
     }
 }

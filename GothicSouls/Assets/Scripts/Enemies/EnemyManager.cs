@@ -36,8 +36,9 @@ namespace SG
 
         #endregion
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
@@ -68,8 +69,9 @@ namespace SG
             enemyAnimationManager.animator.SetBool("isDead", enemyStatsManager.isDead);
         }
 
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
             enemyEffectsManager.HandleAllBuildUpEffects();
         }
 

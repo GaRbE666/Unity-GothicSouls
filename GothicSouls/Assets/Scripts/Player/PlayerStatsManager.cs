@@ -18,8 +18,9 @@ namespace SG
         public float staminaRegenTimer = 0;
         #endregion
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             playerManager = GetComponent<PlayerManager>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointsBar = FindObjectOfType<FocusPointBar>();
