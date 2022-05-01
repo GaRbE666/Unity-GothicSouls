@@ -9,6 +9,7 @@ namespace SG
         public GameObject spellWarmUpFX;
         public GameObject spellCastFX;
         public string spellAnimation;
+        public string spellLeftAnimation;
 
         [Header("Spell Cost")]
         public int focusPointCost;
@@ -22,12 +23,12 @@ namespace SG
         [TextArea]
         public string spellDescription;
 
-        public virtual void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, PlayerWeaponSlotManager weaponSlotManager)
+        public virtual void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, PlayerWeaponSlotManager weaponSlotManager, bool isLeftHanded)
         {
             //Debug.Log("You attempt to cast a spell!");
         }
 
-        public virtual void SucsessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, CameraHandler cameraHandler, PlayerWeaponSlotManager weaponSlotManager)
+        public virtual void SucsessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, CameraHandler cameraHandler, PlayerWeaponSlotManager weaponSlotManager, bool isLeftHanded)
         {
             //Debug.Log("You sucsessfully casy a spell!");
             playerStats.DeductFocusPoints(focusPointCost);

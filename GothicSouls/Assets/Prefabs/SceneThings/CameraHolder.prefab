@@ -136,9 +136,9 @@ MonoBehaviour:
   enviromentLayer:
     serializedVersion: 2
     m_Bits: 1
-  lookSpeed: 0.003
-  followSpeed: 0.1
-  pivotSpeed: 0.001
+  lookSpeed: 250
+  followSpeed: 50
+  pivotSpeed: 250
   minimumPivot: -35
   maximumPivot: 35
   cameraSphereRaidus: 0.2

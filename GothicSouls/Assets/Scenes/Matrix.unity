@@ -5356,7 +5356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eafb729dda7104bbdaae9fd8f49f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
 --- !u!1 &675167453
 GameObject:
   m_ObjectHideFlags: 0
@@ -18720,6 +18719,14 @@ MonoBehaviour:
   isGrounded: 1
   isFiringSpell: 0
   pendingCriticalDamage: 0
+  inputHandler: {fileID: 0}
+  playerWeaponSlotManager: {fileID: 0}
+  playerCombatManager: {fileID: 0}
+  playerLocomotion: {fileID: 0}
+  playerInventoryManager: {fileID: 0}
+  playerStatsManager: {fileID: 0}
+  playerAnimatorManager: {fileID: 0}
+  playerEffectsManager: {fileID: 0}
   interactableUIGameObject: {fileID: 8305339174337490029}
   itemInteractableGameObject: {fileID: 8305339175404031723}
 --- !u!54 &729014438402649985
@@ -18858,8 +18865,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpell: {fileID: 11400000, guid: e3dcfbede5d714e4391dc8dffbfe1333, type: 2}
-  rightWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
-  leftWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
   currentConsumable: {fileID: 11400000, guid: 3d3c1690872a1ef4b841959cedc84eb6, type: 2}
   currentHelmetEquipment: {fileID: 11400000, guid: 8a0a8b5959ad409439524ba0926d51b3, type: 2}
   currentTorsoEquipment: {fileID: 11400000, guid: be217778de4acc64f8cc9eb38f4c6e28, type: 2}
@@ -18869,7 +18876,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   weaponsInLeftHandSlot:
-  - {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
+  - {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
   - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   currentRightWeaponIndex: -1
   currentLeftWeaponIndex: -1
@@ -18928,10 +18935,10 @@ MonoBehaviour:
   x_Input: 0
   y_Input: 0
   rb_Input: 0
+  hold_rb_Input: 0
   rt_Input: 0
   lb_Input: 0
   lt_Input: 0
-  critical_Attack_Input: 0
   jump_Input: 0
   inventory_Input: 0
   d_Pad_Up: 0
@@ -18946,6 +18953,7 @@ MonoBehaviour:
   sprintFlag: 0
   comboFlag: 0
   lockOnFlag: 0
+  fireFlag: 0
   inventoryFlag: 0
   rollInputTimer: 0
   critialAttackRayCastStartPoint: {fileID: 729014438220517125}
@@ -19235,6 +19243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3bfda9c65e3ba4e8004b02ab106ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oh_light_attack_01: OH_Light_Attack_01
+  oh_light_attack_02: OH_Light_Attack_02
+  oh_heavy_attack_01: OH_Heavy_Attack_01
+  th_light_attack_01: TH_Light_Attack_01
+  th_light_attack_02: TH_Light_Attack_02
+  th_heavy_attack_01: TH_Heavy_Attack_01
+  weapon_art: Weapon_Art
   lastAttack: 
 --- !u!114 &2722968769817386555
 MonoBehaviour:
@@ -33565,14 +33580,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7348037014483852356, guid: f853231922a43eb45a35d41739f777c0, type: 3}
-      propertyPath: lookSpeed
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348037014483852356, guid: f853231922a43eb45a35d41739f777c0, type: 3}
-      propertyPath: pivotSpeed
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 7348037014483852356, guid: f853231922a43eb45a35d41739f777c0, type: 3}
       propertyPath: targetTransform
       value: 

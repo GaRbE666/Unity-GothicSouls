@@ -18,15 +18,15 @@ namespace SG
         PlayerEffectsManager playerEffectsManager;
 
         [Header("Attack Animations")]
-        private string oh_light_attack_01 = "OH_Light_Attack_01";
-        private string oh_light_attack_02 = "OH_Light_Attack_02";
-        private string oh_heavy_attack_01 = "OH_Heavy_Attack_01";
+        public string oh_light_attack_01 = "OH_Light_Attack_01";
+        public string oh_light_attack_02 = "OH_Light_Attack_02";
+        public string oh_heavy_attack_01 = "OH_Heavy_Attack_01";
 
-        private string th_light_attack_01 = "TH_Light_Attack_01";
-        private string th_light_attack_02 = "TH_Light_Attack_02";
-        private string th_heavy_attack_01 = "TH_Heavy_Attack_01";
+        public string th_light_attack_01 = "TH_Light_Attack_01";
+        public string th_light_attack_02 = "TH_Light_Attack_02";
+        public string th_heavy_attack_01 = "TH_Heavy_Attack_01";
 
-        string weapon_art = "Weapon_Art";
+        public string weapon_art = "Weapon_Art";
 
         public string lastAttack;
 
@@ -48,23 +48,44 @@ namespace SG
 
         }
 
+        public void HandleHoldRBAction()
+        {
+            if (playerManager.isTwoHandingWeapon)
+            {
+                PerformRBRangedAction();
+            }
+            else
+            {
+
+            }
+        }
+
         public void HandleRBAction()
         {
             playerAnimatorManager.EraseHandIKForWeapon();
 
-            if (playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
+            if (playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword ||playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
             {
                 PerformRBMeleeAction();
             }
             else if (playerInventoryManager.rightWeapon.weaponType == WeaponType.SpellCaster || playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster || playerInventoryManager.rightWeapon.weaponType == WeaponType.PyromancyCaster)
             {
-                PerformRBMagicAction(playerInventoryManager.rightWeapon);
+                PerformMagicAction(playerInventoryManager.rightWeapon, true);
             }
         }
 
-        public void HandleLBAction()
+        public void HandleRTAction()
         {
-            PerformLBBlockingAction();
+            playerAnimatorManager.EraseHandIKForWeapon();
+
+            if (playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
+            {
+                PerformRTMeleeAction();
+            }
+            else if (playerInventoryManager.rightWeapon.weaponType == WeaponType.SpellCaster || playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster || playerInventoryManager.rightWeapon.weaponType == WeaponType.PyromancyCaster)
+            {
+                PerformMagicAction(playerInventoryManager.rightWeapon, true);
+            }
         }
 
         public void HandleLTAction()
@@ -79,9 +100,20 @@ namespace SG
             }
         }
 
+        public void HandleLBAction()
+        {
+            if (playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield || playerInventoryManager.leftWeapon.weaponType == WeaponType.StraightSword)
+            {
+                PerformLBBlockingAction();
+            }
+            else if (playerInventoryManager.leftWeapon.weaponType == WeaponType.FaithCaster || playerInventoryManager.leftWeapon.weaponType == WeaponType.PyromancyCaster)
+            {
+                PerformMagicAction(playerInventoryManager.leftWeapon, true);
+                playerAnimatorManager.animator.SetBool("isUsingLeftHand", true);
+            }
+        }
 
-
-        public void HandleWeaponCombo(WeaponItem weapon)
+        private void HandleLightWeaponCombo(WeaponItem weapon)
         {
             if (playerStatsManager.currentStamina <= 0)
             {
@@ -90,7 +122,7 @@ namespace SG
 
             if (inputHandler.comboFlag)
             {
-                playerAnimatorManager.animator.SetBool("canDoCombo", false);
+                playerAnimatorManager.animator.SetBool("CanDoCombo", false);
 
                 if (lastAttack == oh_light_attack_01)
                 {
@@ -101,10 +133,31 @@ namespace SG
                     playerAnimatorManager.PlayTargetAnimation(th_light_attack_02, true);
                 }
             }
-
         }
 
-        public void HandleLightAttack(WeaponItem weapon)
+        private void HandleHeavyWeaponCombo(WeaponItem weapon)
+        {
+            if (playerStatsManager.currentStamina <= 0)
+            {
+                return;
+            }
+
+            if (inputHandler.comboFlag)
+            {
+                playerAnimatorManager.animator.SetBool("CanDoCombo", false);
+
+                if (lastAttack == oh_heavy_attack_01)
+                {
+                    playerAnimatorManager.PlayTargetAnimation(oh_heavy_attack_01, true);
+                }
+                else if (lastAttack == th_heavy_attack_01)
+                {
+                    playerAnimatorManager.PlayTargetAnimation(th_heavy_attack_01, true);
+                }
+            }
+        }
+
+        private void HandleHeavyAttack(WeaponItem weapon)
         {
             if (playerStatsManager.currentStamina <= 0)
             {
@@ -116,29 +169,7 @@ namespace SG
             if (inputHandler.twoHandFlag)
             {
                 playerAnimatorManager.PlayTargetAnimation(th_light_attack_01, true);
-                lastAttack = th_light_attack_01;
-            }
-            else
-            {
-
-                playerAnimatorManager.PlayTargetAnimation(oh_light_attack_01, true);
-                lastAttack = oh_light_attack_01;
-            }
-        }
-
-        public void HandleHeavyAttack(WeaponItem weapon)
-        {
-            if (playerStatsManager.currentStamina <= 0)
-            {
-                return;
-            }
-
-            playerWeaponSlotManager.attackingWeapon = weapon;
-
-            if (inputHandler.twoHandFlag)
-            {
-                playerAnimatorManager.PlayTargetAnimation(th_heavy_attack_01, true);
-                lastAttack = th_light_attack_01;
+                lastAttack = th_heavy_attack_01;
             }
             else
             {
@@ -148,14 +179,14 @@ namespace SG
             }
         }
 
-
-
         private void PerformRBMeleeAction()
         {
+            playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
+
             if (playerManager.canDoCombo)
             {
                 inputHandler.comboFlag = true;
-                HandleWeaponCombo(playerInventoryManager.rightWeapon);
+                HandleLightWeaponCombo(playerInventoryManager.rightWeapon);
                 inputHandler.comboFlag = false;
             }
             else
@@ -168,11 +199,50 @@ namespace SG
                 {
                     return;
                 }
+
                 playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
-                HandleLightAttack(playerInventoryManager.rightWeapon);
+                //HandleLightAttack(playerInventoryManager.rightWeapon);
+            }
+            playerEffectsManager.PlayWeaponFX(false);
+        }
+
+        private void PerformRTMeleeAction()
+        {
+            playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
+
+            if (playerManager.canDoCombo)
+            {
+                inputHandler.comboFlag = true;
+                HandleHeavyWeaponCombo(playerInventoryManager.rightWeapon);
+                inputHandler.comboFlag = false;
+            }
+            else
+            {
+                if (playerManager.isInteracting)
+                {
+                    return;
+                }
+                if (playerManager.canDoCombo)
+                {
+                    return;
+                }
+
+                //playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
+                HandleHeavyAttack(playerInventoryManager.rightWeapon);
+            }
+            playerEffectsManager.PlayWeaponFX(false);
+        }
+
+        private void PerformRBRangedAction()
+        {
+            if (playerStatsManager.currentStamina <= 0)
+            {
+                return;
             }
 
-            playerEffectsManager.PlayWeaponFX(false);
+            playerAnimatorManager.EraseHandIKForWeapon();
+            playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
+            
         }
 
         private void PerformLBBlockingAction()
@@ -192,7 +262,7 @@ namespace SG
             playerManager.isBlocking = true;
         }
 
-        private void PerformRBMagicAction(WeaponItem weapon)
+        private void PerformMagicAction(WeaponItem weapon, bool isLeftHanded)
         {
             if (playerManager.isInteracting)
             {
@@ -205,7 +275,7 @@ namespace SG
                 {
                     if (playerStatsManager.currentFocusPoints >= playerInventoryManager.currentSpell.focusPointCost)
                     {
-                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager, isLeftHanded);
                     }
                     else
                     {
@@ -219,7 +289,7 @@ namespace SG
                 {
                     if (playerStatsManager.currentFocusPoints >= playerInventoryManager.currentSpell.focusPointCost)
                     {
-                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager, isLeftHanded);
                     }
                     else
                     {
@@ -246,11 +316,9 @@ namespace SG
             }
         }
 
-
-
         private void SuccessfullyCastSpell()
         {
-            playerInventoryManager.currentSpell.SucsessfullyCastSpell(playerAnimatorManager, playerStatsManager, cameraHandler, playerWeaponSlotManager);
+            playerInventoryManager.currentSpell.SucsessfullyCastSpell(playerAnimatorManager, playerStatsManager, cameraHandler, playerWeaponSlotManager, playerManager.isUsingLeftHand);
             playerAnimatorManager.animator.SetBool("isFiringSpell", true);
         }
 

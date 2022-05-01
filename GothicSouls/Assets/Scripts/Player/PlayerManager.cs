@@ -7,13 +7,16 @@ namespace SG
     public class PlayerManager : CharacterManager
     {
         #region FIELDS
-        InputHandler inputHandler;
         Animator animator;
         CameraHandler cameraHandler;
-        PlayerLocomotionManager playerLocomotion;
-        PlayerStatsManager playerStatsManager;
-        PlayerAnimatorManager playerAnimatorManager;
-        PlayerEffectsManager playerEffectsManager;
+        public InputHandler inputHandler;
+        public PlayerWeaponSlotManager playerWeaponSlotManager;
+        public PlayerCombatManager playerCombatManager;
+        public PlayerLocomotionManager playerLocomotion;
+        public PlayerInventoryManager playerInventoryManager;
+        public PlayerStatsManager playerStatsManager;
+        public PlayerAnimatorManager playerAnimatorManager;
+        public PlayerEffectsManager playerEffectsManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -27,6 +30,9 @@ namespace SG
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
             inputHandler = GetComponent<InputHandler>();
             animator = GetComponent<Animator>();
+            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            playerCombatManager = GetComponent<PlayerCombatManager>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerLocomotion = GetComponent<PlayerLocomotionManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
@@ -45,6 +51,7 @@ namespace SG
             isInvulnerable = animator.GetBool("isInvulnerable");
             isFiringSpell = animator.GetBool("isFiringSpell");
             animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
+            animator.SetBool("isInAir", isInAir);
             animator.SetBool("isUnarmed", isUnarmed);
             animator.SetBool("isBlocking", isBlocking);
             //anim.SetBool("isInAir", isInAir); //Jump
@@ -88,8 +95,8 @@ namespace SG
 
             if (cameraHandler != null)
             {
-                cameraHandler.FollowTarget(delta);
-                cameraHandler.HandleCameraRotation(delta, inputHandler.mouseX, inputHandler.mouseY);
+                cameraHandler.FollowTarget();
+                cameraHandler.HandleCameraRotation();
             }
 
             if (isInAir)

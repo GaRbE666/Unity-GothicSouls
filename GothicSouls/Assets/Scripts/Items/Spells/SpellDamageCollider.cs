@@ -19,8 +19,9 @@ namespace SG
         Vector3 impactNormal; //Used to rotate the impact particles
         #endregion
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             rigidbody = GetComponent<Rigidbody>();
         }
 

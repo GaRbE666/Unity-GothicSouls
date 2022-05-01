@@ -15,11 +15,13 @@ namespace SG
         public bool a_Input;
         public bool x_Input;
         public bool y_Input;
+
         public bool rb_Input;
+        public bool hold_rb_Input;
         public bool rt_Input;
         public bool lb_Input;
         public bool lt_Input;
-        public bool critical_Attack_Input;
+
         public bool jump_Input;
         public bool inventory_Input;
 
@@ -36,6 +38,7 @@ namespace SG
         public bool sprintFlag;
         public bool comboFlag;
         public bool lockOnFlag;
+        public bool fireFlag;
         public bool inventoryFlag;
         public float rollInputTimer;
 
@@ -86,6 +89,9 @@ namespace SG
                 inputActions.PlayerActions.LB.started += i => lb_Input = true;
                 inputActions.PlayerActions.LB.canceled += i => lb_Input = false;
                 inputActions.PlayerActions.RB.performed += i => rb_Input = true;
+                inputActions.PlayerActions.HoldRB.performed += i => hold_rb_Input = true;
+                inputActions.PlayerActions.HoldRB.canceled += i => hold_rb_Input = false;
+                inputActions.PlayerActions.HoldRB.canceled += i => fireFlag = true;
                 inputActions.PlayerActions.RT.performed += i => rt_Input = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
@@ -97,7 +103,6 @@ namespace SG
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
                 inputActions.PlayerActions.Y.performed += i => y_Input = true;
-                inputActions.PlayerActions.CriticalAttack.performed += i => critical_Attack_Input = true;
             }
 
             inputActions.Enable();
@@ -114,18 +119,24 @@ namespace SG
             {
                 return;
             }
-            HandleMoveInput(delta);
-            HandleRollInput(delta);
-            HandleCombatInput(delta);
+            HandleMoveInput();
+            HandleRollInput();
+
+            HandleTapRBInput();
+            HandleTapRTInput();
+            HandleTapLTInput();
+            HandleHoldRBInput();
+
             HandleQuickSlotsInput();
             HandleInventoryInput();
+
             HandleLockOnInput();
             HandleTwoHandInput();
-            HandleCriticalAttackInput();
             HandleUseConsumableInput();
+            HandleLBInput();
         }
 
-        public void HandleMoveInput(float delta)
+        public void HandleMoveInput()
         {
             horizontal = movementInput.x;
             vertical = movementInput.y;
@@ -134,11 +145,11 @@ namespace SG
             mouseY = cameraInput.y;
         }
 
-        private void HandleRollInput(float delta)
+        private void HandleRollInput()
         {
             if (b_Input)
             {
-                rollInputTimer += delta;
+                rollInputTimer += Time.deltaTime;
 
                 if (playerStatsManager.currentStamina <= 0)
                 {
@@ -163,36 +174,56 @@ namespace SG
             }
         }
 
-        private void HandleCombatInput(float delta)
+        private void HandleTapRBInput()
         {
             if (rb_Input)
             {
-                playerCombatManager.HandleRBAction();
+                playerManager.UpdateWhichHandCharacterIsUsing(true);
+                playerInventoryManager.rightWeapon.tap_RB_Action.PerformAction(playerManager);
             }
+        }
 
+        private void HandleTapRTInput()
+        {
             if (rt_Input)
             {
-                playerCombatManager.HandleHeavyAttack(playerInventoryManager.rightWeapon);
+                playerManager.UpdateWhichHandCharacterIsUsing(true);
+                playerInventoryManager.rightWeapon.tap_RT_Action.PerformAction(playerManager);
             }
+        }
 
+        private void HandleTapLTInput()
+        {
             if (lt_Input)
             {
-                if (twoHandFlag)
+                if (playerManager.isTwoHandingWeapon)
                 {
-
+                    playerManager.UpdateWhichHandCharacterIsUsing(true);
+                    playerInventoryManager.rightWeapon.tap_LT_Action.PerformAction(playerManager);
                 }
                 else
                 {
-                    playerCombatManager.HandleLTAction();
+                    playerManager.UpdateWhichHandCharacterIsUsing(true);
+                    playerInventoryManager.leftWeapon.tap_LT_Action.PerformAction(playerManager);
                 }
+            }
+        }
+
+        private void HandleLBInput()
+        {
+            if (playerManager.isInAir || playerManager.isFiringSpell)
+            {
+                lb_Input = false;
+                return;
             }
 
             if (lb_Input)
             {
                 playerCombatManager.HandleLBAction();
             }
-            else
+            else if (lb_Input == false)
             {
+
                 playerManager.isBlocking = false;
 
                 if (blockingCollider.blockingCollider.enabled)
@@ -302,11 +333,11 @@ namespace SG
             }
         }
 
-        private void HandleCriticalAttackInput()
+        private void HandleHoldRBInput()
         {
-            if (critical_Attack_Input)
+            if (hold_rb_Input)
             {
-                critical_Attack_Input = false;
+                hold_rb_Input = false;
                 playerCombatManager.AttemptBackStabOrRiposte();
             }
         }

@@ -17,13 +17,14 @@ MonoBehaviour:
   spellWarmUpFX: {fileID: 9186895085223023638, guid: 75330b0faa7add14582e16ecf19173c3, type: 3}
   spellCastFX: {fileID: 7700898027153652382, guid: f3118335ecab1134d88102822f93c5b3, type: 3}
   spellAnimation: Unarmed_Spell_Throw_start
+  spellLeftAnimation: Unarmed-Spell_LThrow_start
   focusPointCost: 0
   isFaithSpell: 0
   isMagicSpell: 0
   isPyroSpell: 1
   spellDescription: 
   baseDamage: 75
-  projectileForwardVelocity: 300
-  projectileUpwardVelocity: 150
-  projectileMass: 25
+  projectileForwardVelocity: 400
+  projectileUpwardVelocity: 200
+  projectileMass: 10
   isEffectedByGravity: 1

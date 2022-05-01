@@ -57,5 +57,19 @@ namespace SG
         {
             characterAnimatorManager.CheckHandIKWeight(characterWeaponSlotManager.rightHandIKTarget, characterWeaponSlotManager.leftHandIKTarget, isTwoHandingWeapon);
         }
+
+        public virtual void UpdateWhichHandCharacterIsUsing(bool usingRightHand)
+        {
+            if (usingRightHand)
+            {
+                isUsingRightHand = true;
+                isUsingLeftHand = false;
+            }
+            else
+            {
+                isUsingLeftHand = true;
+                isUsingRightHand = false;
+            }
+        }
     }
 }

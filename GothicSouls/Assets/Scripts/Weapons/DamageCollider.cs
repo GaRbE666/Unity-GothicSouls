@@ -25,8 +25,8 @@ namespace SG
         public int lightningDamage;
         public int dakrDamage;
 
-        bool shieldHasBeenHit;
-        bool hasBeenParried;
+        protected bool shieldHasBeenHit;
+        protected bool hasBeenParried;
         protected string currentDamageAnimation;
         #endregion
 
@@ -48,7 +48,7 @@ namespace SG
             damageCollider.enabled = false;
         }
 
-        private void OnTriggerEnter(Collider collision)
+        protected virtual void OnTriggerEnter(Collider collision)
         {
             if (collision.tag == "Character")
             {
