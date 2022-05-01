@@ -6,6 +6,12 @@ namespace SG
 {
     public class ResetAnimatorBool : StateMachineBehaviour
     {
+        public string isUsingRightHand = "isUsingRightHand";
+        public bool isUsingRightHandStatus = false;
+
+        public string isUsingLeftHand = "isUsingLeftHand";
+        public bool isUsingLeftHandStatus = false;
+
         public string isInvulnerable = "isInvulnerable";
         public bool isInvulnerableStatus = false;
 
@@ -28,6 +34,8 @@ namespace SG
             animator.SetBool(isRotatingWithRootMotion, isrotatingWithRootMotionStatus);
             animator.SetBool(canRotate, canRotateStatus);
             animator.SetBool(isInvulnerable, isInvulnerableStatus);
+            animator.SetBool(isUsingRightHand, isUsingRightHandStatus);
+            animator.SetBool(isUsingLeftHand, isUsingLeftHandStatus);
         }
     }
 }

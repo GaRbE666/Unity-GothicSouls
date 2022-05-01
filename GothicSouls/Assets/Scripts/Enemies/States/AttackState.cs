@@ -45,6 +45,8 @@ namespace SG
 
         private void AttackTarget(EnemyAnimatorManager enemyAnimationManager, EnemyManager enemyManager)
         {
+            enemyAnimationManager.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
+            enemyAnimationManager.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
             enemyAnimationManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
             enemyAnimationManager.PlayWeaponTrailFX();
             enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
@@ -53,6 +55,8 @@ namespace SG
 
         private void AttackTargetWithCombo(EnemyAnimatorManager enemyAnimationManager, EnemyManager enemyManager)
         {
+            enemyAnimationManager.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
+            enemyAnimationManager.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
             willDoComboOnNextAttack = false;
             enemyAnimationManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
             enemyAnimationManager.PlayWeaponTrailFX();

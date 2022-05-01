@@ -114,6 +114,7 @@ namespace SG
             }
             else
             {
+                Debug.Log(playerInventory.leftWeapon);
                 blockingCollider.SetColliderDamageAbsorption(playerInventory.leftWeapon);
             }
             

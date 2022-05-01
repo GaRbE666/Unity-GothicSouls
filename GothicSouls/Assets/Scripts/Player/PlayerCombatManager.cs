@@ -50,6 +50,8 @@ namespace SG
 
         public void HandleRBAction()
         {
+            playerAnimatorManager.EraseHandIKForWeapon();
+
             if (playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
             {
                 PerformRBMeleeAction();
@@ -283,7 +285,7 @@ namespace SG
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Back Stab", true);
-                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
+                    enemyCharacterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
                     //do damage
                 }
             }
@@ -308,7 +310,7 @@ namespace SG
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Riposte", true);
-                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Riposted", true);
+                    enemyCharacterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Riposted", true);
                 }
             }
         }
