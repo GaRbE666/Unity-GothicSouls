@@ -17,7 +17,7 @@ MonoBehaviour:
   modelPrefab: {fileID: 39781888601151633, guid: 82b98b2a59169064ab620ddbcf7db6c2, type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 5b92ec5b33070f14a90a4bda3c0215c8, type: 2}
-  offHandIdleAnimation: Left Arm Idle_01
+  offHandIdleAnimation: Left_Arm_Idle_01
   weaponType: 1
   physicalDamage: 0
   fireDamage: 0
@@ -29,8 +29,8 @@ MonoBehaviour:
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0
   hold_RB_Action: {fileID: 0}
-  tap_RB_Action: {fileID: 0}
-  tap_LB_Action: {fileID: 0}
+  tap_RB_Action: {fileID: 11400000, guid: 2d77644157fde154d95dfc23b384699c, type: 2}
+  tap_LB_Action: {fileID: 11400000, guid: 2d77644157fde154d95dfc23b384699c, type: 2}
   hold_LB_Action: {fileID: 0}
   tap_RT_Action: {fileID: 0}
   hold_RT_Action: {fileID: 0}

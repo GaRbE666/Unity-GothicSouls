@@ -25,9 +25,6 @@ namespace SG
         public DamageCollider leftHandDamageCollider;
         public DamageCollider rightHandDamageCollider;
 
-        [Header("Attacking Weapon")]
-        public WeaponItem attackingWeapon;
-
         [Header("Hand IK Targets")]
         public RightHandIKTarget rightHandIKTarget;
         public LeftHandIKTarget leftHandIKTarget;
@@ -182,7 +179,8 @@ namespace SG
 
         public virtual void GrantWeaponAttackingPoiseBonus()
         {
-            characterStatsManager.totalPoiseDefense = characterStatsManager.totalPoiseDefense + attackingWeapon.offensivePoiseBonus;
+            WeaponItem currentWeaponBeingUsed = characterInventoryManager.currentItemBeingUsed as WeaponItem;
+            characterStatsManager.totalPoiseDefense = characterStatsManager.totalPoiseDefense + currentWeaponBeingUsed.offensivePoiseBonus;
         }
 
         public virtual void ResetWeaponAttackingPoiseBonus()

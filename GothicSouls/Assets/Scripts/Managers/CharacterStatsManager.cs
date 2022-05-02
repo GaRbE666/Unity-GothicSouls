@@ -158,5 +158,10 @@ namespace SG
                 totalPoiseDefense = armorPoiseBonus;
             }
         }
+
+        public void DrainStaminaBasedOnAttackType()
+        {
+
+        }
     }
 }

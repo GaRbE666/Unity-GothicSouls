@@ -11,6 +11,7 @@ namespace SG
         CameraHandler cameraHandler;
         public InputHandler inputHandler;
         public PlayerWeaponSlotManager playerWeaponSlotManager;
+        public PlayerEquipmentManager playerEquipmentManager;
         public PlayerCombatManager playerCombatManager;
         public PlayerLocomotionManager playerLocomotion;
         public PlayerInventoryManager playerInventoryManager;
@@ -32,6 +33,7 @@ namespace SG
             animator = GetComponent<Animator>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerLocomotion = GetComponent<PlayerLocomotionManager>();
@@ -46,21 +48,17 @@ namespace SG
 
             isInteracting = animator.GetBool("isInteracting");
             canDoCombo = animator.GetBool("canDoCombo");
-            isUsingRightHand = animator.GetBool("isUsingRightHand");
-            isUsingLeftHand = animator.GetBool("isUsingLeftHand");
             isInvulnerable = animator.GetBool("isInvulnerable");
             isFiringSpell = animator.GetBool("isFiringSpell");
             animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
             animator.SetBool("isInAir", isInAir);
             animator.SetBool("isUnarmed", isUnarmed);
             animator.SetBool("isBlocking", isBlocking);
-            //anim.SetBool("isInAir", isInAir); //Jump
             animator.SetBool("isDead", playerStatsManager.isDead);
 
             inputHandler.TickInput(delta);
             playerAnimatorManager.canRotate = animator.GetBool("canRotate");
-            playerLocomotion.HandleRollingAndSprinting(delta);
-            //playerLocomotion.HandleJumping(); //Jump
+            playerLocomotion.HandleRollingAndSprinting();
             playerStatsManager.RegenerateStamina();
 
             CheckForInteractableObject();
@@ -69,29 +67,21 @@ namespace SG
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            float delta = Time.fixedDeltaTime;
 
-            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
-            playerLocomotion.HandleMovement(delta);
-            playerLocomotion.HandleRotation(delta);
+            playerLocomotion.HandleFalling(playerLocomotion.moveDirection);
+            playerLocomotion.HandleMovement();
+            playerLocomotion.HandleRotation();
             playerEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()
         {
-            inputHandler.rollFlag = false;
-            inputHandler.rb_Input = false;
-            inputHandler.rt_Input = false;
-            inputHandler.lt_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;
             inputHandler.d_Pad_Right = false;
             inputHandler.a_Input = false;
-            //inputHandler.jump_Input = false; //Jump
             inputHandler.inventory_Input = false;
-
-            float delta = Time.deltaTime;
 
             if (cameraHandler != null)
             {

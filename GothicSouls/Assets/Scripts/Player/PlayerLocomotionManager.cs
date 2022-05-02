@@ -65,7 +65,7 @@ namespace SG
         Vector3 normalVector;
         Vector3 targetPosition;
 
-        public void HandleRotation(float delta)
+        public void HandleRotation()
         {
             if (playerAnimationManager.canRotate)
             {
@@ -119,14 +119,14 @@ namespace SG
                     float rs = rotationSpeed;
 
                     Quaternion tr = Quaternion.LookRotation(targetDir);
-                    Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rs * delta);
+                    Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rs * Time.deltaTime);
 
                     myTransform.rotation = targetRotation;
                 }
             }
         }
 
-        public void HandleMovement(float delta)
+        public void HandleMovement()
         {
 
             if (inputHandler.rollFlag)
@@ -181,7 +181,7 @@ namespace SG
             }
         }
 
-        public void HandleRollingAndSprinting(float dleta)
+        public void HandleRollingAndSprinting()
         {
             if (playerAnimationManager.animator.GetBool("isInteracting"))
             {
@@ -195,6 +195,8 @@ namespace SG
 
             if (inputHandler.rollFlag)
             {
+                inputHandler.rollFlag = false;
+
                 moveDirection = cameraObject.forward * inputHandler.vertical;
                 moveDirection += cameraObject.right * inputHandler.horizontal;
 
@@ -216,7 +218,7 @@ namespace SG
             }
         }
 
-        public void HandleFalling(float delta, Vector3 moveDirection)
+        public void HandleFalling(Vector3 moveDirection)
         {
             playerManager.isGrounded = false;
             RaycastHit hit;
@@ -295,34 +297,6 @@ namespace SG
                 myTransform.position = targetPosition;
             }
         }
-
-        //Jump
-        //public void HandleJumping()
-        //{
-        //    if (playerManager.isInteracting)
-        //    {
-        //        return;
-        //    }
-
-        //    if (playerStats.currentStamina <= 0)
-        //    {
-        //        return;
-        //    }
-
-        //    if (inputHandler.jump_Input)
-        //    {
-        //        if (inputHandler.moveAmount > 0)
-        //        {
-        //            moveDirection = cameraObject.forward * inputHandler.vertical;
-        //            moveDirection += cameraObject.right * inputHandler.horizontal;
-        //            animatorHandler.PlayTargetAnimation("Jump", true);
-        //            playerAnimationManager.EraseHandIKForWeapon();
-        //            moveDirection.y = 0;
-        //            Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-        //            myTransform.rotation = jumpRotation;
-        //        }
-        //    }
-        //}
         #endregion
     }
 }

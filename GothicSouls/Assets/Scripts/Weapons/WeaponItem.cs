@@ -43,5 +43,15 @@ namespace SG
         public ItemAction hold_RT_Action;
         public ItemAction tap_LT_Action;
         public ItemAction hold_LT_Action;
+
+        //[Header("Two Handed Item Actions")]
+        //public ItemAction th_hold_RB_Action;
+        //public ItemAction th_tap_RB_Action;
+        //public ItemAction th_tap_LB_Action;
+        //public ItemAction th_hold_LB_Action;
+        //public ItemAction th_tap_RT_Action;
+        //public ItemAction th_hold_RT_Action;
+        //public ItemAction th_tap_LT_Action;
+        //public ItemAction th_hold_LT_Action;
     }
 }

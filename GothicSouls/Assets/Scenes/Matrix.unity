@@ -472,7 +472,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19340
+  m_Name: pb_Mesh20162
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -744,7 +744,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19678
+  m_Name: pb_Mesh20512
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2090,7 +2090,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19736
+  m_Name: pb_Mesh20568
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3086,7 +3086,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19816
+  m_Name: pb_Mesh20646
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4720,7 +4720,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19610
+  m_Name: pb_Mesh20450
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4933,7 +4933,7 @@ MonoBehaviour:
     m_HintWeight: 1
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
-  m_SourceObjectsGUIToggle: 0
+  m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 0
 --- !u!1 &630605163
 GameObject:
@@ -9833,7 +9833,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19584
+  m_Name: pb_Mesh20416
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10281,7 +10281,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19528
+  m_Name: pb_Mesh20352
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10609,7 +10609,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19268
+  m_Name: pb_Mesh20090
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11459,7 +11459,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19754
+  m_Name: pb_Mesh20586
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11980,7 +11980,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19698
+  m_Name: pb_Mesh20530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13382,7 +13382,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19774
+  m_Name: pb_Mesh20598
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13710,7 +13710,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19458
+  m_Name: pb_Mesh20282
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15506,7 +15506,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19482
+  m_Name: pb_Mesh20306
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16571,7 +16571,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19864
+  m_Name: pb_Mesh20700
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16792,7 +16792,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19710
+  m_Name: pb_Mesh20542
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17536,7 +17536,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19802
+  m_Name: pb_Mesh20626
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17700,7 +17700,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19500
+  m_Name: pb_Mesh20324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18140,7 +18140,6 @@ MonoBehaviour:
   backSlot: {fileID: 1057074976}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  attackingWeapon: {fileID: 0}
   rightHandIKTarget: {fileID: 0}
   leftHandIKTarget: {fileID: 0}
 --- !u!1 &729014436595444417
@@ -18721,6 +18720,7 @@ MonoBehaviour:
   pendingCriticalDamage: 0
   inputHandler: {fileID: 0}
   playerWeaponSlotManager: {fileID: 0}
+  playerEquipmentManager: {fileID: 0}
   playerCombatManager: {fileID: 0}
   playerLocomotion: {fileID: 0}
   playerInventoryManager: {fileID: 0}
@@ -18864,19 +18864,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a9ca88e5c1ed3409ad7c14cf0a8f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpell: {fileID: 11400000, guid: e3dcfbede5d714e4391dc8dffbfe1333, type: 2}
-  rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
-  leftWeapon: {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
+  currentItemBeingUsed: {fileID: 0}
+  currentSpell: {fileID: 11400000, guid: cc2bdf908b5832f46881e3c9c178269b, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   currentConsumable: {fileID: 11400000, guid: 3d3c1690872a1ef4b841959cedc84eb6, type: 2}
   currentHelmetEquipment: {fileID: 11400000, guid: 8a0a8b5959ad409439524ba0926d51b3, type: 2}
   currentTorsoEquipment: {fileID: 11400000, guid: be217778de4acc64f8cc9eb38f4c6e28, type: 2}
   currentLegEquipment: {fileID: 11400000, guid: ff8c4df058345f2428978d345709440e, type: 2}
   currentArmEquipment: {fileID: 11400000, guid: ba4f42a472a49f141b0c097a4ba3bc35, type: 2}
   weaponsInRightHandSlot:
-  - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
+  - {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
   - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   weaponsInLeftHandSlot:
-  - {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
+  - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   currentRightWeaponIndex: -1
   currentLeftWeaponIndex: -1
@@ -18934,11 +18935,12 @@ MonoBehaviour:
   a_Input: 0
   x_Input: 0
   y_Input: 0
-  rb_Input: 0
+  tap_rb_Input: 0
   hold_rb_Input: 0
-  rt_Input: 0
+  tap_rt_Input: 0
   lb_Input: 0
-  lt_Input: 0
+  tap_lb_Input: 0
+  tap_lt_Input: 0
   jump_Input: 0
   inventory_Input: 0
   d_Pad_Up: 0
@@ -19212,7 +19214,6 @@ MonoBehaviour:
   backSlot: {fileID: 729014437005593521}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  attackingWeapon: {fileID: 0}
   rightHandIKTarget: {fileID: 0}
   leftHandIKTarget: {fileID: 0}
 --- !u!114 &2722968769817386553
@@ -19246,9 +19247,11 @@ MonoBehaviour:
   oh_light_attack_01: OH_Light_Attack_01
   oh_light_attack_02: OH_Light_Attack_02
   oh_heavy_attack_01: OH_Heavy_Attack_01
+  oh_heavy_attack_02: OH_Heavy_Attack_02
   th_light_attack_01: TH_Light_Attack_01
   th_light_attack_02: TH_Light_Attack_02
   th_heavy_attack_01: TH_Heavy_Attack_01
+  th_heavy_attack_02: TH_Heavy_Attack_02
   weapon_art: Weapon_Art
   lastAttack: 
 --- !u!114 &2722968769817386555
@@ -27763,6 +27766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d27ba15066434a459f308d1cf562c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
   rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   leftWeapon: {fileID: 0}
@@ -38441,7 +38445,6 @@ MonoBehaviour:
   backSlot: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  attackingWeapon: {fileID: 0}
   rightHandIKTarget: {fileID: 0}
   leftHandIKTarget: {fileID: 0}
 --- !u!114 &7619793884549303466

@@ -11,6 +11,7 @@ namespace SG
         SpellCaster,
         Unarmed,
         StraightSword,
+        SmallShield,
         Shield
     }
 

@@ -288,6 +288,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TapLB",
+                    "type": "Button",
+                    "id": "753ca3d1-d955-4c66-9447-cb6df2abb7af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -552,6 +561,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Hold RB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51ba5570-f689-45a5-bce8-4265584a0174",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TapLB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c104a163-9c28-4579-b62a-d78c0ddff3df",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "TapLB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
