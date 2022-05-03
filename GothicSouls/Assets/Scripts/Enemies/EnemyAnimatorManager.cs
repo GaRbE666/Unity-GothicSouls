@@ -30,7 +30,7 @@ namespace SG
 
                 if (soulCountBar != null)
                 {
-                    soulCountBar.SetSoulSountText(playerStats.soulCount);
+                    soulCountBar.SetSoulSountText(playerStats.currentSoulCount);
                 }
             }
         }

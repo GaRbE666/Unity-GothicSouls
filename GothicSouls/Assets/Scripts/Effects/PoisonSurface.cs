@@ -38,7 +38,6 @@ namespace SG
                 {
                     return;
                 }
-                Debug.Log("Hago buildup");
                 character.poisonBuildup = character.poisonBuildup + poisonBuildUpAmoun * Time.deltaTime;
             }
         }

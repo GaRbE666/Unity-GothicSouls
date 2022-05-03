@@ -10,6 +10,7 @@ namespace SG
         Animator animator;
         CameraHandler cameraHandler;
         public InputHandler inputHandler;
+        public UIManager uiManager;
         public PlayerWeaponSlotManager playerWeaponSlotManager;
         public PlayerEquipmentManager playerEquipmentManager;
         public PlayerCombatManager playerCombatManager;
@@ -28,6 +29,7 @@ namespace SG
         {
             base.Awake();
             cameraHandler = FindObjectOfType<CameraHandler>();
+            uiManager = FindObjectOfType<UIManager>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
             inputHandler = GetComponent<InputHandler>();
             animator = GetComponent<Animator>();
