@@ -4928,7 +4928,6 @@ MonoBehaviour:
   backSlot: {fileID: 756071592898264111}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  attackingWeapon: {fileID: 0}
   rightHandIKTarget: {fileID: 0}
   leftHandIKTarget: {fileID: 0}
 --- !u!114 &1266503071349184036
@@ -4991,17 +4990,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamIDNumber: 1
-  healthLevel: 100
   maxHealth: 0
   currentHealth: 0
-  staminaLevel: 10
   maxStamina: 0
   currentStamina: 0
-  focusLevel: 10
   maxFocusPoints: 0
   currentFocusPoints: 0
   soulCount: 0
   soulsAwardedOnDeath: 50
+  healthLevel: 100
+  staminaLevel: 10
+  focusLevel: 10
+  poiseLevel: 10
+  strenghtLevel: 10
+  dexterityLevel: 10
+  intelligenceLevel: 10
+  faithLevel: 10
   totalPoiseDefense: 0
   offensivePoiseBonus: 0
   armorPoiseBonus: 0
@@ -5102,6 +5106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d27ba15066434a459f308d1cf562c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
   rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   leftWeapon: {fileID: 0}
