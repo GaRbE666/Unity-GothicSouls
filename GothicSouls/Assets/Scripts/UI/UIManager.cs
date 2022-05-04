@@ -8,7 +8,7 @@ namespace SG
     public class UIManager : MonoBehaviour
     {
         #region FIELDS
-        PlayerManager playerManager;
+        public PlayerManager player;
         public EquipmentWindowUI equipmentWindowUI;
         public QuickSlotsUI quickSlotsUI;
 
@@ -27,41 +27,57 @@ namespace SG
         public bool rightHandSlot02Selected;
         public bool leftHandSlot01Selected;
         public bool leftHandSlot02Selected;
+        public bool headEquipmentSlotSelected;
 
         [Header("Weapon Inventory")]
         public GameObject weaponInventorySlotPrefab;
         public Transform weaponInevntorySlotsParent;
         WeaponInventorySlot[] weaponInventorySlots;
+
+        [Header("Head Equipment Inventory")]
+        public GameObject headEquipmentInventorySlotPrefab;
+        public Transform headEquipmentInventorySlotParent;
+        HeadEquipmentInventorySlot[] headEquipmentInventorySlots;
         #endregion
 
         private void Awake()
         {
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
-            playerManager = FindObjectOfType<PlayerManager>();
+            player = FindObjectOfType<PlayerManager>();
+            weaponInventorySlots = weaponInevntorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+            headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
         }
 
         private void Start()
         {
-            weaponInventorySlots = weaponInevntorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
-            equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerManager.playerInventoryManager);
-            quickSlotsUI.UpdateCurrentSpellIcon(playerManager.playerInventoryManager.currentSpell);
-            quickSlotsUI.UpdateCurrentConsumableIcon(playerManager.playerInventoryManager.currentConsumable);
-            soulCount.text = playerManager.playerStatsManager.currentSoulCount.ToString();
+            equipmentWindowUI.LoadWeaponOnEquipmentScreen(player.playerInventoryManager);
+
+            if (player.playerInventoryManager.currentSpell != null)
+            {
+                quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
+            }
+
+            if (player.playerInventoryManager.currentConsumable != null)
+            {
+                quickSlotsUI.UpdateCurrentConsumableIcon(player.playerInventoryManager.currentConsumable);
+            }
+
+            soulCount.text = player.playerStatsManager.currentSoulCount.ToString();
         }
 
         public void UpdateUI()
         {
-            #region WEAPON INVENTORY SLOTS
+            //WEAPONS INVENTORY SLOTS
             for (int i = 0; i < weaponInventorySlots.Length; i++)
             {
-                if (i < playerManager.playerInventoryManager.weaponsInventory.Count)
+                if (i < player.playerInventoryManager.weaponsInventory.Count)
                 {
-                    if (weaponInventorySlots.Length < playerManager.playerInventoryManager.weaponsInventory.Count)
+                    if (weaponInventorySlots.Length < player.playerInventoryManager.weaponsInventory.Count)
                     {
                         Instantiate(weaponInventorySlotPrefab, weaponInevntorySlotsParent);
                         weaponInventorySlots = weaponInevntorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
                     }
-                    weaponInventorySlots[i].AddItem(playerManager.playerInventoryManager.weaponsInventory[i]);
+                    weaponInventorySlots[i].AddItem(player.playerInventoryManager.weaponsInventory[i]);
                 }
                 else
                 {
@@ -69,7 +85,23 @@ namespace SG
                 }
             }
 
-            #endregion
+            //HEAD EQUIPMENT INVENTORY SLOTS
+            for (int i = 0; i < headEquipmentInventorySlots.Length; i++)
+            {
+                if (i < player.playerInventoryManager.headEquipmentInventory.Count)
+                {
+                    if (headEquipmentInventorySlots.Length < player.playerInventoryManager.headEquipmentInventory.Count)
+                    {
+                        Instantiate(headEquipmentInventorySlotParent, headEquipmentInventorySlotParent);
+                        headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
+                    }
+                    headEquipmentInventorySlots[i].AddItem(player.playerInventoryManager.headEquipmentInventory[i]);
+                }
+                else
+                {
+                    headEquipmentInventorySlots[i].ClearInventorySlot();
+                }
+            }
         }
 
         public void OpenSelectWindow()
@@ -95,6 +127,8 @@ namespace SG
             rightHandSlot02Selected = false;
             leftHandSlot01Selected = false;
             leftHandSlot02Selected = false;
+
+            headEquipmentSlotSelected = false;
         }
 
     }

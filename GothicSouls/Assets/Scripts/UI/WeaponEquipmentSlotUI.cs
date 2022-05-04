@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace SG
 {
-    public class HandEquipmentSlotUI : MonoBehaviour
+    public class WeaponEquipmentSlotUI : MonoBehaviour
     {
         UIManager uiManager;
 

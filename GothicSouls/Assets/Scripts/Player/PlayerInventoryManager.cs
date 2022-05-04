@@ -8,6 +8,7 @@ namespace SG
     {
         #region FIELDS
         public List<WeaponItem> weaponsInventory;
+        public List<HelmetEquipment> headEquipmentInventory;
         #endregion
 
         public void ChangeRightWeapon()
