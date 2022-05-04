@@ -10,10 +10,12 @@ namespace SG
         InputHandler inputHandler;
         PlayerManager playerManager;
 
-        public Transform targetTransform;
+        public Transform targetTransform;  //The transform the camera follows The player
         public Transform cameraTransform;
         public Transform cameraPivotTransform;
-        private Transform myTransform;
+        public Transform myTransform;
+        public Camera cameraObject;
+
         private Vector3 cameraTransformPosition;
         public LayerMask ignoreLayers;
         public LayerMask enviromentLayer;

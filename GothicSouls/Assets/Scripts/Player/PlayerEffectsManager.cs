@@ -6,8 +6,7 @@ namespace SG
 {
     public class PlayerEffectsManager : CharacterEffectsManager
     {
-        PlayerStatsManager playerStatsManager;
-        PlayerWeaponSlotManager playerWeaponSlotManager;
+        PlayerManager player;
 
         PoisonBuildUpBar poisonBuildUpBar;
         PoisonAmountBar poisonAmountBar;
@@ -19,19 +18,17 @@ namespace SG
         protected override void Awake()
         {
             base.Awake();
-            playerStatsManager = GetComponent<PlayerStatsManager>();
-            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
-
+            player = GetComponent<PlayerManager>();
             poisonBuildUpBar = FindObjectOfType<PoisonBuildUpBar>();
             poisonAmountBar = FindObjectOfType<PoisonAmountBar>();
         }
 
         public void HealPlayerFromEffect()
         {
-            playerStatsManager.HealPlayer(amountToBeHealed);
-            GameObject healParticles = Instantiate(currentParticleFX, playerStatsManager.transform);
+            player.playerStatsManager.HealPlayer(amountToBeHealed);
+            GameObject healParticles = Instantiate(currentParticleFX, player.playerStatsManager.transform);
             Destroy(instantiatedFXModel.gameObject);
-            playerWeaponSlotManager.LoadBothWeaponOnSlots();
+            player.playerWeaponSlotManager.LoadBothWeaponOnSlots();
         }
 
         protected override void HandlePoisonBuildUp()

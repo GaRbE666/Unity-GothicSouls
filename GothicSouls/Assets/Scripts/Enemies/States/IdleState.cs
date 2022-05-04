@@ -10,10 +10,10 @@ namespace SG
 
         public LayerMask detectionLayer;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemy)
         {
             #region HANDLE ENEMY TARGET DETECTION
-            Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, enemy.detectionRadius, detectionLayer);
             
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -21,14 +21,14 @@ namespace SG
 
                 if (characterStats != null)
                 {
-                    if (characterStats.teamIDNumber != enemyStats.teamIDNumber)
+                    if (characterStats.teamIDNumber != enemy.enemyStatsManager.teamIDNumber)
                     {
                         Vector3 targetDirection = characterStats.transform.position - transform.position;
                         float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
 
-                        if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                        if (viewableAngle > enemy.minimumDetectionAngle && viewableAngle < enemy.maximumDetectionAngle)
                         {
-                            enemyManager.currentTarget = characterStats;
+                            enemy.currentTarget = characterStats;
                         }
                     }
                 }
@@ -36,7 +36,7 @@ namespace SG
             #endregion
 
             #region HANDLE SWITCHING TO NEXT STATE
-            if (enemyManager.currentTarget != null)
+            if (enemy.currentTarget != null)
             {
                 return pursueTargetState;
             }
@@ -45,11 +45,6 @@ namespace SG
                 return this;
             }
             #endregion
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, 10);
         }
     }
 }

@@ -63,7 +63,7 @@ namespace SG
         {
             if (player.inputHandler.comboFlag)
             {
-                player.playerAnimatorManager.animator.SetBool("canDoCombo", false);
+                player.animator.SetBool("canDoCombo", false);
 
                 if (player.isUsingLeftHand)
                 {

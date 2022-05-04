@@ -7,19 +7,29 @@ namespace SG
     public class PlayerManager : CharacterManager
     {
         #region FIELDS
-        Animator animator;
-        CameraHandler cameraHandler;
+        [Header("Camera")]
+        public CameraHandler cameraHandler;
+
+        [Header("Input")]
         public InputHandler inputHandler;
+
+        [Header("UI")]
         public UIManager uiManager;
+
+        [Header("Player")]
         public PlayerWeaponSlotManager playerWeaponSlotManager;
         public PlayerEquipmentManager playerEquipmentManager;
         public PlayerCombatManager playerCombatManager;
-        public PlayerLocomotionManager playerLocomotion;
+        public PlayerLocomotionManager playerLocomotionManager;
         public PlayerInventoryManager playerInventoryManager;
         public PlayerStatsManager playerStatsManager;
         public PlayerAnimatorManager playerAnimatorManager;
         public PlayerEffectsManager playerEffectsManager;
 
+        [Header("Colliders")]
+        public BlockingCollider blockingCollider;
+
+        [Header("Interactables")]
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableGameObject;
@@ -30,18 +40,20 @@ namespace SG
             base.Awake();
             cameraHandler = FindObjectOfType<CameraHandler>();
             uiManager = FindObjectOfType<UIManager>();
-            backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
+            interactableUI = FindObjectOfType<InteractableUI>();
             inputHandler = GetComponent<InputHandler>();
             animator = GetComponent<Animator>();
+
+            backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
+            blockingCollider = GetComponentInChildren<BlockingCollider>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
-            playerLocomotion = GetComponent<PlayerLocomotionManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
-            interactableUI = FindObjectOfType<InteractableUI>();
-            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
+            playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         }
 
         private void Update()
@@ -50,17 +62,17 @@ namespace SG
 
             isInteracting = animator.GetBool("isInteracting");
             canDoCombo = animator.GetBool("canDoCombo");
+            canRotate = animator.GetBool("canRotate");
             isInvulnerable = animator.GetBool("isInvulnerable");
             isFiringSpell = animator.GetBool("isFiringSpell");
             animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
             animator.SetBool("isInAir", isInAir);
             animator.SetBool("isUnarmed", isUnarmed);
             animator.SetBool("isBlocking", isBlocking);
-            animator.SetBool("isDead", playerStatsManager.isDead);
+            animator.SetBool("isDead", isDead);
 
             inputHandler.TickInput(delta);
-            playerAnimatorManager.canRotate = animator.GetBool("canRotate");
-            playerLocomotion.HandleRollingAndSprinting();
+            playerLocomotionManager.HandleRollingAndSprinting();
             playerStatsManager.RegenerateStamina();
 
             CheckForInteractableObject();
@@ -70,9 +82,9 @@ namespace SG
         {
             base.FixedUpdate();
 
-            playerLocomotion.HandleFalling(playerLocomotion.moveDirection);
-            playerLocomotion.HandleMovement();
-            playerLocomotion.HandleRotation();
+            playerLocomotionManager.HandleFalling(playerLocomotionManager.moveDirection);
+            playerLocomotionManager.HandleMovement();
+            playerLocomotionManager.HandleRotation();
             playerEffectsManager.HandleAllBuildUpEffects();
         }
 
@@ -93,7 +105,7 @@ namespace SG
 
             if (isInAir)
             {
-                playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
+                playerLocomotionManager.inAirTimer = playerLocomotionManager.inAirTimer + Time.deltaTime;
             }
         }
 
@@ -102,7 +114,7 @@ namespace SG
         public void CheckForInteractableObject()
         {
             RaycastHit hit;
-
+            
             if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers))
             {
                 if (hit.collider.CompareTag("Interactable"))
@@ -138,14 +150,14 @@ namespace SG
 
         public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)
         {
-            playerLocomotion.rigidbody.velocity = Vector3.zero; // Stop the player from ice skating
+            playerLocomotionManager.rigidbody.velocity = Vector3.zero; // Stop the player from ice skating
             transform.position = playerStandsHereWhenOpeningChest.transform.position;
             playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
         }
 
         public void PassThroughFogWallInteraction(Transform fogWallEntrance)
         {
-            playerLocomotion.rigidbody.velocity = Vector3.zero; // Stop the player from ice skating
+            playerLocomotionManager.rigidbody.velocity = Vector3.zero; // Stop the player from ice skating
 
             Vector3 rotationDirection = fogWallEntrance.transform.forward;
             Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);

@@ -147,7 +147,6 @@ namespace SG
             playerManager.uiManager.soulCount.text = playerManager.playerStatsManager.currentSoulCount.ToString();
 
             gameObject.SetActive(false);
-            Debug.Log("Nombre: " + gameObject.name + ", " + gameObject.activeSelf);
         }
 
         private void CalculateSoulCostToLevelUp()

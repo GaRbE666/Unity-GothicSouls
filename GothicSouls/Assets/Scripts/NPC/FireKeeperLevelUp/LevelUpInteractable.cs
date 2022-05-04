@@ -8,7 +8,6 @@ namespace SG
     {
         public override void Interact(PlayerManager playerManager)
         {
-            Debug.Log("Activo la pantalla");
             playerManager.uiManager.levelUpWindow.SetActive(true);
         }
     }

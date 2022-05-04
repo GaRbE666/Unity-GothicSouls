@@ -8,12 +8,12 @@ namespace SG
     {
         public override void GrantWeaponAttackingPoiseBonus()
         {
-            characterStatsManager.totalPoiseDefense = characterStatsManager.totalPoiseDefense + characterStatsManager.offensivePoiseBonus;
+            character.characterStatsManager.totalPoiseDefense = character.characterStatsManager.totalPoiseDefense + character.characterStatsManager.offensivePoiseBonus;
         }
 
         public override void ResetWeaponAttackingPoiseBonus()
         {
-            characterStatsManager.totalPoiseDefense = characterStatsManager.armorPoiseBonus;
+            character.characterStatsManager.totalPoiseDefense = character.characterStatsManager.armorPoiseBonus;
         }
     }
 }

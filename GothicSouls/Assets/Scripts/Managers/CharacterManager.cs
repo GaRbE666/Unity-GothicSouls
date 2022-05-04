@@ -7,8 +7,12 @@ namespace SG
     public class CharacterManager : MonoBehaviour
     {
         #region FIELDS
-        CharacterAnimatorManager characterAnimatorManager;
-        CharacterWeaponSlotManager characterWeaponSlotManager;
+        public Animator animator;
+        public CharacterAnimatorManager characterAnimatorManager;
+        public CharacterWeaponSlotManager characterWeaponSlotManager;
+        public CharacterStatsManager characterStatsManager;
+        public CharacterInventoryManager characterInventoryManager;
+        public CharacterEffectsManager characterEffectsManager;
 
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
@@ -19,6 +23,9 @@ namespace SG
 
         [Header("Interaction")]
         public bool isInteracting;
+
+        [Header("Status")]
+        public bool isDead;
 
         [Header("Combar Flags")]
         public bool canBeRiposted;
@@ -49,8 +56,12 @@ namespace SG
 
         protected virtual void Awake()
         {
+            animator = GetComponent<Animator>();
             characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
             characterWeaponSlotManager = GetComponent<CharacterWeaponSlotManager>();
+            characterStatsManager = GetComponent<CharacterStatsManager>();
+            characterInventoryManager = GetComponent<CharacterInventoryManager>();
+            characterEffectsManager = GetComponent<CharacterEffectsManager>();
         }
 
         protected virtual void FixedUpdate()

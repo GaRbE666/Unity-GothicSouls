@@ -7,9 +7,7 @@ namespace SG
     public class PlayerEquipmentManager : MonoBehaviour
     {
         #region FIELDS
-        InputHandler inputHandler;
-        PlayerInventoryManager playerInventory;
-        PlayerStatsManager playerStatsManager;
+        PlayerManager player;
 
         [Header("Equipment Model Changers")]
         HelmetModelChanger helmetModelChanger;
@@ -28,9 +26,7 @@ namespace SG
 
         private void Awake()
         {
-            inputHandler = GetComponent<InputHandler>();
-            playerInventory = GetComponent<PlayerInventoryManager>();
-            playerStatsManager = GetComponent<PlayerStatsManager>();
+            player = GetComponent<PlayerManager>();
 
             helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
             torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
@@ -47,75 +43,75 @@ namespace SG
         {
             //HELMET EQUIPMENT
             helmetModelChanger.UnEquipAllHelmetModels();
-            if (playerInventory.currentHelmetEquipment != null)
+            if (player.playerInventoryManager.currentHelmetEquipment != null)
             {
                 nakedHeadModel.SetActive(false);
-                helmetModelChanger.EquipHelmetModelByNAme(playerInventory.currentHelmetEquipment.helmetModelName);
-                playerStatsManager.physicialDamageAbsorptionHead = playerInventory.currentHelmetEquipment.physicalDefense;
+                helmetModelChanger.EquipHelmetModelByNAme(player.playerInventoryManager.currentHelmetEquipment.helmetModelName);
+                player.playerStatsManager.physicialDamageAbsorptionHead = player.playerInventoryManager.currentHelmetEquipment.physicalDefense;
             }
             else
             {
                 nakedHeadModel.SetActive(true);
-                playerStatsManager.physicialDamageAbsorptionHead = 0;
+                player.playerStatsManager.physicialDamageAbsorptionHead = 0;
             }
             
             //TORSO EQUIPMENT
             torsoModelChanger.UnEquipAllTorsoModels();
 
-            if (playerInventory.currentTorsoEquipment != null)
+            if (player.playerInventoryManager.currentTorsoEquipment != null)
             {
                 nakedTorsoModel.SetActive(false);
-                torsoModelChanger.EquipTorsoModelByNAme(playerInventory.currentTorsoEquipment.torsoModelName);
-                playerStatsManager.physicialDamageAbsorptionBody = playerInventory.currentTorsoEquipment.physicalDefense;
+                torsoModelChanger.EquipTorsoModelByNAme(player.playerInventoryManager.currentTorsoEquipment.torsoModelName);
+                player.playerStatsManager.physicialDamageAbsorptionBody = player.playerInventoryManager.currentTorsoEquipment.physicalDefense;
             }
             else
             {
                 nakedTorsoModel.SetActive(true);
-                playerStatsManager.physicialDamageAbsorptionBody = 0;
+                player.playerStatsManager.physicialDamageAbsorptionBody = 0;
             }
 
             //HIP EQUIPMENT
             hipModelChanger.UnEquipAllHipModels();
 
-            if (playerInventory.currentLegEquipment != null)
+            if (player.playerInventoryManager.currentLegEquipment != null)
             {
                 nakedHipModel.SetActive(false);
-                hipModelChanger.EquipHipModelByNAme(playerInventory.currentLegEquipment.hipModelName);
-                playerStatsManager.physicialDamageAbsorptionLegs = playerInventory.currentLegEquipment.physicalDefense;
+                hipModelChanger.EquipHipModelByNAme(player.playerInventoryManager.currentLegEquipment.hipModelName);
+                player.playerStatsManager.physicialDamageAbsorptionLegs = player.playerInventoryManager.currentLegEquipment.physicalDefense;
             }
             else
             {
                 nakedHipModel.SetActive(true);
-                playerStatsManager.physicialDamageAbsorptionLegs = 0;
+                player.playerStatsManager.physicialDamageAbsorptionLegs = 0;
             }
 
             //ARMS EQUIPMENT
             armsModelChanger.UnEquipAllArmsModels();
 
-            if (playerInventory.currentArmEquipment != null)
+            if (player.playerInventoryManager.currentArmEquipment != null)
             {
                 nakedArmsModel.SetActive(false);
-                armsModelChanger.EquipArmsModelByNAme(playerInventory.currentArmEquipment.armsModelName);
-                playerStatsManager.physicialDamageAbsorptionHands = playerInventory.currentArmEquipment.physicalDefense;
+                armsModelChanger.EquipArmsModelByNAme(player.playerInventoryManager.currentArmEquipment.armsModelName);
+                player.playerStatsManager.physicialDamageAbsorptionHands = player.playerInventoryManager.currentArmEquipment.physicalDefense;
             }
             else
             {
                 nakedArmsModel.SetActive(true);
-                playerStatsManager.physicialDamageAbsorptionHands = 0;
+                player.playerStatsManager.physicialDamageAbsorptionHands = 0;
             }
             
         }
 
         public void OpenBlockingCollider()
         {
-            if (inputHandler.twoHandFlag)
+            if (player.inputHandler.twoHandFlag)
             {
-                blockingCollider.SetColliderDamageAbsorption(playerInventory.rightWeapon);
+                blockingCollider.SetColliderDamageAbsorption(player.playerInventoryManager.rightWeapon);
             }
             else
             {
-                Debug.Log(playerInventory.leftWeapon);
-                blockingCollider.SetColliderDamageAbsorption(playerInventory.leftWeapon);
+                Debug.Log(player.playerInventoryManager.leftWeapon);
+                blockingCollider.SetColliderDamageAbsorption(player.playerInventoryManager.leftWeapon);
             }
             
             blockingCollider.EnableBlockingCollider();

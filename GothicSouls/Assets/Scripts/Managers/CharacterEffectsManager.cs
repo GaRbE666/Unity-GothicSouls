@@ -6,8 +6,7 @@ namespace SG
 {
     public class CharacterEffectsManager : MonoBehaviour
     {
-        CharacterStatsManager characterStatsManager;
-        PlayerEquipmentManager playerEquipmentManager;
+        CharacterManager character;
         public WeaponFX rightWeaponFX;
         public WeaponFX leftWeaponFX;
 
@@ -23,8 +22,7 @@ namespace SG
 
         protected virtual void Awake()
         {
-            characterStatsManager = GetComponent<CharacterStatsManager>();
-            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
+            character = GetComponent<CharacterManager>();
         }
 
         public virtual void PlayWeaponFX(bool isLeft)
@@ -48,7 +46,7 @@ namespace SG
         public virtual void HandleAllBuildUpEffects()
         {
 
-            if (characterStatsManager.isDead)
+            if (character.isDead)
             {
                 return;
             }
@@ -86,7 +84,7 @@ namespace SG
 
                     if (timer >= poisonTimer)
                     {
-                        characterStatsManager.TakePoisonDamage(poisonDamage);
+                        character.characterStatsManager.TakePoisonDamage(poisonDamage);
                         timer = 0;
                     }
                     

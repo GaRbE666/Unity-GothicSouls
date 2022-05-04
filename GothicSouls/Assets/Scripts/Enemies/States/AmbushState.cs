@@ -15,14 +15,14 @@ namespace SG
 
         public PursueTargetState pursueTargetState;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemy)
         {
-            if (isSleeping && enemyManager.isInteracting == false)
+            if (isSleeping && enemy.isInteracting == false)
             {
-                enemyAnimatorManager.PlayTargetAnimation(sleepAnimation, true);
+                enemy.enemyAnimatorManager.PlayTargetAnimation(sleepAnimation, true);
             }
             #region HANDLE TARGET DETECTION
-            Collider[] colliders = Physics.OverlapSphere(enemyManager.transform.position, detectionRadius, detectionLayer);
+            Collider[] colliders = Physics.OverlapSphere(enemy.transform.position, detectionRadius, detectionLayer);
 
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -30,15 +30,15 @@ namespace SG
 
                 if (CharacterStats != null)
                 {
-                    Vector3 targetsDirection = CharacterStats.transform.position - enemyManager.transform.position;
-                    float viewableAngle = Vector3.Angle(targetsDirection, enemyManager.transform.forward);
+                    Vector3 targetsDirection = CharacterStats.transform.position - enemy.transform.position;
+                    float viewableAngle = Vector3.Angle(targetsDirection, enemy.transform.forward);
 
-                    if (viewableAngle > enemyManager.minimumDetectionAngle 
-                        && viewableAngle < enemyManager.maximumDetectionAngle)
+                    if (viewableAngle > enemy.minimumDetectionAngle 
+                        && viewableAngle < enemy.maximumDetectionAngle)
                     {
-                        enemyManager.currentTarget = CharacterStats;
+                        enemy.currentTarget = CharacterStats;
                         isSleeping = false;
-                        enemyAnimatorManager.PlayTargetAnimation(wakeAnimation, true);
+                        enemy.enemyAnimatorManager.PlayTargetAnimation(wakeAnimation, true);
                     }
                 }
             }
@@ -47,7 +47,7 @@ namespace SG
             #endregion
 
             #region HANDLE STATE CHANGE
-            if (enemyManager.currentTarget != null)
+            if (enemy.currentTarget != null)
             {
                 return pursueTargetState;
             }

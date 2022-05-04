@@ -10,7 +10,7 @@ namespace SG
         #region FIELDS
         PlayerManager playerManager;
         public EquipmentWindowUI equipmentWindowUI;
-        private QuickSlotsUI quickSlotsUI;
+        public QuickSlotsUI quickSlotsUI;
 
         [Header("HUD")]
         public Text soulCount;

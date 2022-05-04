@@ -7,7 +7,10 @@ namespace SG
     public class CharacterStatsManager : MonoBehaviour
     {
         #region FIELDS
-        CharacterAnimatorManager characterAnimatorManager;
+        CharacterManager character;
+
+        [Header("Name")]
+        public string characterName = "Nameless";
 
         [Header("Team I.D")]
         public int teamIDNumber = 0;
@@ -56,12 +59,11 @@ namespace SG
         //LightingAbsorption
         //Magic Absoprtion
         //Dark Absorption
-        public bool isDead;
         #endregion
 
         protected virtual void Awake()
         {
-            characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+            character = GetComponent<CharacterManager>();
         }
 
         protected virtual void Update()
@@ -76,12 +78,12 @@ namespace SG
 
         public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
         {
-            if (isDead)
+            if (character.isDead)
             {
                 return;
             }
 
-            characterAnimatorManager.EraseHandIKForWeapon();
+            character.characterAnimatorManager.EraseHandIKForWeapon();
 
             float totalPhysicalDamageAbsorption = 1 -
                 (1 - physicialDamageAbsorptionHead / 100) *
@@ -106,13 +108,13 @@ namespace SG
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                character.isDead = true;
             }
         }
 
         public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
-            if (isDead)
+            if (character.isDead)
             {
                 return;
             }
@@ -140,7 +142,7 @@ namespace SG
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                character.isDead = true;
             }
         }
 
@@ -151,7 +153,7 @@ namespace SG
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                character.isDead = true;
             }
         }
 
