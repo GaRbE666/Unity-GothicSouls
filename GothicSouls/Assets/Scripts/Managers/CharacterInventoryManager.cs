@@ -19,9 +19,9 @@ namespace SG
 
         [Header("Current Equipment")]
         public HelmetEquipment currentHelmetEquipment;
-        public TorsoEquipment currentTorsoEquipment;
-        public HipEquipment currentLegEquipment;
-        public ArmsEquipment currentArmEquipment;
+        public BodyEquipment currentBodyEquipment;
+        public LegEquipment currentLegEquipment;
+        public HandEquipment currentHandEquipment;
 
         public WeaponItem[] weaponsInRightHandSlot = new WeaponItem[1];
         public WeaponItem[] weaponsInLeftHandSlot = new WeaponItem[1];

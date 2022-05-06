@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c5e969d56f52b40935f599b6833527, type: 3}
-  m_Name: BasicArms
+  m_Script: {fileID: 11500000, guid: 1c0ce4556851c664db7bd7b66ffedd93, type: 3}
+  m_Name: BasicHand
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
-  itemName: Arm basic
-  physicalDefense: 6.5
-  armsModelName: ArmsDefault
+  itemIcon: {fileID: 21300000, guid: c887ed2a931c29040bc544cd8c546e9f, type: 3}
+  itemName: Basic Hand
+  physicalDefense: 0
+  handModelName: HandDefault

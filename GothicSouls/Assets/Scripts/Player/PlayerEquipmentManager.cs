@@ -58,11 +58,11 @@ namespace SG
             //TORSO EQUIPMENT
             torsoModelChanger.UnEquipAllTorsoModels();
 
-            if (player.playerInventoryManager.currentTorsoEquipment != null)
+            if (player.playerInventoryManager.currentBodyEquipment != null)
             {
                 nakedTorsoModel.SetActive(false);
-                torsoModelChanger.EquipTorsoModelByNAme(player.playerInventoryManager.currentTorsoEquipment.torsoModelName);
-                player.playerStatsManager.physicialDamageAbsorptionBody = player.playerInventoryManager.currentTorsoEquipment.physicalDefense;
+                torsoModelChanger.EquipTorsoModelByNAme(player.playerInventoryManager.currentBodyEquipment.bodyModelName);
+                player.playerStatsManager.physicialDamageAbsorptionBody = player.playerInventoryManager.currentBodyEquipment.physicalDefense;
             }
             else
             {
@@ -76,7 +76,7 @@ namespace SG
             if (player.playerInventoryManager.currentLegEquipment != null)
             {
                 nakedHipModel.SetActive(false);
-                hipModelChanger.EquipHipModelByNAme(player.playerInventoryManager.currentLegEquipment.hipModelName);
+                hipModelChanger.EquipHipModelByNAme(player.playerInventoryManager.currentLegEquipment.legModelName);
                 player.playerStatsManager.physicialDamageAbsorptionLegs = player.playerInventoryManager.currentLegEquipment.physicalDefense;
             }
             else
@@ -88,11 +88,11 @@ namespace SG
             //ARMS EQUIPMENT
             armsModelChanger.UnEquipAllArmsModels();
 
-            if (player.playerInventoryManager.currentArmEquipment != null)
+            if (player.playerInventoryManager.currentHandEquipment != null)
             {
                 nakedArmsModel.SetActive(false);
-                armsModelChanger.EquipArmsModelByNAme(player.playerInventoryManager.currentArmEquipment.armsModelName);
-                player.playerStatsManager.physicialDamageAbsorptionHands = player.playerInventoryManager.currentArmEquipment.physicalDefense;
+                armsModelChanger.EquipArmsModelByNAme(player.playerInventoryManager.currentHandEquipment.handModelName);
+                player.playerStatsManager.physicialDamageAbsorptionHands = player.playerInventoryManager.currentHandEquipment.physicalDefense;
             }
             else
             {

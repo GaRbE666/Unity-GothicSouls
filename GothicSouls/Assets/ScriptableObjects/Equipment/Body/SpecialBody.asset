@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 175b92350f10c774abbf9d2276a466e8, type: 3}
-  m_Name: BasicTorso
+  m_Name: SpecialBody
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
-  itemName: Basic Torso
-  physicalDefense: 12.5
-  torsoModelName: TorsoDefault
+  itemIcon: {fileID: 21300000, guid: fd098fb4cf57bad419701c802e442b7e, type: 3}
+  itemName: Special Torso
+  physicalDefense: 0
+  bodyModelName: BodySpecial

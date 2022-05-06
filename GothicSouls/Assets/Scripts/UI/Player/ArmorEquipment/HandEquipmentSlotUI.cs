@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 namespace SG
 {
-    public class HeadEquipmentSlotUI : MonoBehaviour
+    public class HandEquipmentSlotUI : MonoBehaviour
     {
         UIManager uiManager;
 
         public Image icon;
-        HelmetEquipment helmetItem;
+        HandEquipment item;
 
         private void Awake()
         {
             uiManager = FindObjectOfType<UIManager>();
         }
 
-        public void AddItem(HelmetEquipment helmetEquipment)
+        public void AddItem(HandEquipment armsEquipment)
         {
-            if (helmetEquipment != null)
+            if (armsEquipment != null)
             {
-                this.helmetItem = helmetEquipment;
-                icon.sprite = this.helmetItem.itemIcon;
+                this.item = armsEquipment;
+                icon.sprite = this.item.itemIcon;
                 icon.enabled = true;
                 gameObject.SetActive(true);
             }
@@ -35,14 +35,14 @@ namespace SG
 
         public void ClearItem()
         {
-            helmetItem = null;
+            item = null;
             icon.sprite = null;
             icon.enabled = false;
         }
 
         public void SelectThisSlot()
         {
-            uiManager.headEquipmentSlotSelected = true;
+            uiManager.handEquipmentSlotSelected = true;
         }
     }
 }

@@ -9,6 +9,9 @@ namespace SG
         #region FIELDS
         public List<WeaponItem> weaponsInventory;
         public List<HelmetEquipment> headEquipmentInventory;
+        public List<BodyEquipment> bodyEquipmentInventory;
+        public List<LegEquipment> legEquipmentInventory;
+        public List<HandEquipment> handEquipmentInventory;
         #endregion
 
         public void ChangeRightWeapon()
