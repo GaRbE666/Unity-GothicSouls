@@ -21,6 +21,10 @@ namespace SG
         public GameObject equipmentScreenWindow;
         public GameObject weaponInventoryWindow;
         public GameObject levelUpWindow;
+        public GameObject headEquipmentWindow;
+        public GameObject bodyEquipmentWindow;
+        public GameObject legEquipmentWindow;
+        public GameObject handEquipmentWindow;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -200,6 +204,13 @@ namespace SG
             ResetAllSelectedSlots();
             weaponInventoryWindow.SetActive(false);
             equipmentScreenWindow.SetActive(false);
+            hudWindow.SetActive(false);
+            selectWindow.SetActive(false);
+            levelUpWindow.SetActive(false);
+            headEquipmentWindow.SetActive(false);
+            bodyEquipmentWindow.SetActive(false);
+            legEquipmentWindow.SetActive(false);
+            handEquipmentWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()
