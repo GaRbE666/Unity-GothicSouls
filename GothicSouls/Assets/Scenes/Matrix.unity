@@ -18611,7 +18611,7 @@ GameObject:
   - component: {fileID: 631291250}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18701,9 +18701,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 631291245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eafb729dda7104bbdaae9fd8f49f2f, type: 3}
+  m_Script: {fileID: 11500000, guid: d99ae20cac360c84eaa15d1c2dd518a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 1
+  teamIDNumber: 1
+  poiseBreak: 0
+  offensivePoiseDefence: 0
+  physicalDamage: 50
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  dakrDamage: 0
 --- !u!43 &631732258
 Mesh:
   m_ObjectHideFlags: 0
@@ -78153,6 +78163,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 529323012}
     m_Modifications:
+    - target: {fileID: 1266503071349184036, guid: c168763279ac2d940b06c8822da45d28, type: 3}
+      propertyPath: isUsingRightHand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295787154655477885, guid: c168763279ac2d940b06c8822da45d28, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9ca3e9ae97420414db0b7b21937a6eb8, type: 2}
+    - target: {fileID: 5559582492812733336, guid: c168763279ac2d940b06c8822da45d28, type: 3}
+      propertyPath: rightWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 21c65af186cf11740be833828ee12224, type: 2}
+    - target: {fileID: 5559582492812733336, guid: c168763279ac2d940b06c8822da45d28, type: 3}
+      propertyPath: weaponsInRightHandSlot.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 21c65af186cf11740be833828ee12224, type: 2}
     - target: {fileID: 8782457466719183333, guid: c168763279ac2d940b06c8822da45d28, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -84311,14 +84337,18 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 5630615239560984261}
+    - target: {fileID: 139502229593646820, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
+      propertyPath: healthLevel
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
       propertyPath: leftWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+      objectReference: {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
     - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
       propertyPath: rightWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
+      objectReference: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
     - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
       propertyPath: currentConsumable
       value: 
@@ -84362,7 +84392,7 @@ PrefabInstance:
     - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
       propertyPath: weaponsInLeftHandSlot.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+      objectReference: {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
     - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
       propertyPath: bodyEquipmentInventory.Array.data[0]
       value: 
@@ -84390,7 +84420,7 @@ PrefabInstance:
     - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
       propertyPath: weaponsInRightHandSlot.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
+      objectReference: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
     - target: {fileID: 139502229593646840, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
       propertyPath: interactableUIGameObject
       value: 

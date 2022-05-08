@@ -40,13 +40,11 @@ namespace SG
 
         public void EnableDamageCollider()
         {
-            Debug.Log("Activo el collider" + damageCollider.gameObject.name);
             damageCollider.enabled = true;
         }
 
         public void DisableDamageCollider()
         {
-            Debug.Log("Desactivo el collider" + damageCollider.gameObject.name);
             damageCollider.enabled = false;
         }
 
@@ -93,7 +91,6 @@ namespace SG
 
                     characterStats.poiseResetTimer = characterStats.totalPoiseResetTime;
                     characterStats.totalPoiseDefense = characterStats.totalPoiseDefense - poiseBreak;
-                    Debug.Log("PoiseBreak: " + poiseBreak + ", TotalPoiseDefense: " + characterStats.totalPoiseDefense);
                     float directionHitFrom = (Vector3.SignedAngle(characterManager.transform.forward, characterManager.transform.forward, Vector3.up));
                     ChooseWichDirectionDamageCameFrom(directionHitFrom);
 
@@ -103,7 +100,6 @@ namespace SG
                     }
                     else
                     {
-                        Debug.Log("Hago daño: " + characterManager.gameObject.name);
                         characterStats.TakeDamage(physicalDamage, 0, currentDamageAnimation);
                     }
                     bloodPrefabs.InstantiateBlood(bloodPrefabs.bloodInstancePosition);

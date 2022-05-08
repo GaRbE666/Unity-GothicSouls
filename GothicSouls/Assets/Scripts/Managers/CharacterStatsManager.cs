@@ -137,7 +137,7 @@ namespace SG
 
             float finalDamage = physicalDamage + fireDamage; // + magicDamage + lighting Damage + darkDamage;
 
-            currentHealth -= Mathf.RoundToInt(currentHealth - finalDamage);
+            currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
 
             if (currentHealth <= 0)
             {

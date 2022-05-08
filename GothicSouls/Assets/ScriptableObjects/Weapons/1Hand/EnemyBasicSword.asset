@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: cfad2f55ad567934dbac0967e360f40a, type: 3}
   itemName: Sword
-  modelPrefab: {fileID: 1484801985591626985, guid: 230e996dc1b537f488da5a6f85a5f352, type: 3}
+  modelPrefab: {fileID: 1484801985591626985, guid: 705e9fe91c567f14c9a9a3600e2a2ae1, type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 5b92ec5b33070f14a90a4bda3c0215c8, type: 2}
   offHandIdleAnimation: Left_Arm_Idle_01
