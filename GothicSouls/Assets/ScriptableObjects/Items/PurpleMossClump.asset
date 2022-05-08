@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e1e6274243ad64698fbeb921e82ff4, type: 3}
   m_Name: PurpleMossClump
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: 21300000, guid: 1163d777a8a1e7c469829cc71f9bbea5, type: 3}
   itemName: Moss Clump
   maxItemAmount: 10
   currentItemAmount: 10

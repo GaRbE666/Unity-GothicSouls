@@ -40,41 +40,43 @@ namespace SG
 
         public void EnableDamageCollider()
         {
+            Debug.Log("Activo el collider" + damageCollider.gameObject.name);
             damageCollider.enabled = true;
         }
 
         public void DisableDamageCollider()
         {
+            Debug.Log("Desactivo el collider" + damageCollider.gameObject.name);
             damageCollider.enabled = false;
         }
 
         protected virtual void OnTriggerEnter(Collider collision)
         {
-            if (collision.tag == "Character")
+            if (collision.CompareTag("Character"))
             {
                 shieldHasBeenHit = false;
                 hasBeenParried = false;
 
-                CharacterStatsManager enemyStats = collision.GetComponent<CharacterStatsManager>();
-                CharacterManager enemyManager = collision.GetComponent<CharacterManager>();
+                CharacterStatsManager characterStats = collision.GetComponent<CharacterStatsManager>();
+                CharacterManager characterManager = collision.GetComponent<CharacterManager>();
                 BloodPrefabs bloodPrefabs = collision.GetComponent<BloodPrefabs>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
-                if (enemyManager != null)
+                if (characterManager != null)
                 {
-                    if (enemyStats.teamIDNumber == teamIDNumber)
+                    if (characterStats.teamIDNumber == teamIDNumber)
                     {
                         return;
                     }
 
-                    CheckForParry(enemyManager);
+                    CheckForParry(characterManager);
 
-                    CheckForBlock(enemyManager, enemyStats, shield);
+                    CheckForBlock(characterManager, characterStats, shield);
                 }
 
-                if (enemyStats != null)
+                if (characterStats != null)
                 {
-                    if (enemyStats.teamIDNumber == teamIDNumber)
+                    if (characterStats.teamIDNumber == teamIDNumber)
                     {
                         return;
                     }
@@ -89,26 +91,26 @@ namespace SG
                         return;
                     }
 
-                    enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
-                    enemyStats.totalPoiseDefense = enemyStats.totalPoiseDefense - poiseBreak;
-                    Debug.Log("PoiseBreak: " + poiseBreak + ", TotalPoiseDefense: " + enemyStats.totalPoiseDefense);
-                    float directionHitFrom = (Vector3.SignedAngle(characterManager.transform.forward, enemyManager.transform.forward, Vector3.up));
+                    characterStats.poiseResetTimer = characterStats.totalPoiseResetTime;
+                    characterStats.totalPoiseDefense = characterStats.totalPoiseDefense - poiseBreak;
+                    Debug.Log("PoiseBreak: " + poiseBreak + ", TotalPoiseDefense: " + characterStats.totalPoiseDefense);
+                    float directionHitFrom = (Vector3.SignedAngle(characterManager.transform.forward, characterManager.transform.forward, Vector3.up));
                     ChooseWichDirectionDamageCameFrom(directionHitFrom);
 
-                    if (enemyStats.totalPoiseDefense > poiseBreak)
+                    if (characterStats.totalPoiseDefense > poiseBreak)
                     {
-                        enemyStats.TakeDamageNoAnimation(physicalDamage, 0);                      
+                        characterStats.TakeDamageNoAnimation(physicalDamage, 0);                      
                     }
                     else
                     {
-                        Debug.Log(physicalDamage);
-                        enemyStats.TakeDamage(physicalDamage, 0, currentDamageAnimation);
+                        Debug.Log("Hago daño: " + characterManager.gameObject.name);
+                        characterStats.TakeDamage(physicalDamage, 0, currentDamageAnimation);
                     }
                     bloodPrefabs.InstantiateBlood(bloodPrefabs.bloodInstancePosition);
                 }
             }
 
-            if (collision.tag == "Illusionary Wall")
+            if (collision.CompareTag("Illusionary Wall"))
             {
                 IllusionaryWall illusionaryWall = collision.GetComponent<IllusionaryWall>();
                 illusionaryWall.wallHasBeenHit = true;

@@ -47,6 +47,7 @@ namespace SG
         {
             enemy.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
             enemy.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
+            enemy.UpdateWhichHandCharacterIsUsing(currentAttack.comboAction.isRightHandedAction);
             enemy.enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
             enemy.enemyAnimatorManager.PlayWeaponTrailFX();
             enemy.currentRecoveryTime = currentAttack.recoveryTime;

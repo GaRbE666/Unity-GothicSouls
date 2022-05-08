@@ -38,7 +38,7 @@ namespace SG
 
             if (alpha <= 0)
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
     }
