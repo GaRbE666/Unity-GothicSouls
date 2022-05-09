@@ -11,6 +11,7 @@ namespace SG
         public Image currentConsumableIcon;
         public Image leftWeaponIcon;
         public Image rightWeaponIcon;
+        public Text consumableCount;
 
         public void UpdateWeaponQuickSlotsUI(bool isleft, WeaponItem weapon)
         {
@@ -67,6 +68,18 @@ namespace SG
             {
                 currentConsumableIcon.sprite = null;
                 currentConsumableIcon.enabled = false;
+            }
+        }
+
+        public void UpdateCurrentConsumableText(int consumable)
+        {
+            if (consumable > 0)
+            {
+                consumableCount.text = consumable.ToString();
+            }
+            else
+            {
+                consumableCount.text = "0";
             }
         }
     }

@@ -15,7 +15,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: a945eaa89cba1fe4099e40cce4023b70, type: 3}
   itemName: Estus Ashen
   maxItemAmount: 10
-  currentItemAmount: 10
+  currentItemAmount: 9
   itemModel: {fileID: 2390267159192912458, guid: c835340eb0f49d142a4852d694191df3, type: 3}
   consumeAnimation: Drink
   isInteracting: 0
@@ -23,4 +23,4 @@ MonoBehaviour:
   ashenFlask: 1
   healthRecoveryAmount: 250
   focusPointsRecoveryAmount: 200
-  recoveryFX: {fileID: 7875656324637187418, guid: e3c46affb782340418bb192ac7824d9e, type: 3}
+  recoveryFX: {fileID: 7875656324637187418, guid: 6b7a7578d3012d7428634f7115a087a9, type: 3}

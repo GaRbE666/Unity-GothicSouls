@@ -6,7 +6,7 @@ namespace SG
 {
     public class CharacterInventoryManager : MonoBehaviour
     {
-        protected CharacterWeaponSlotManager characterWeaponSlotManager;
+        public CharacterWeaponSlotManager characterWeaponSlotManager;
 
         [Header("Current Item Being Used")]
         public Item currentItemBeingUsed;
@@ -28,6 +28,7 @@ namespace SG
 
         public int currentRightWeaponIndex = 0;
         public int currentLeftWeaponIndex = 0;
+        public int currentConsumableIndex = 0;
 
         private void Awake()
         {

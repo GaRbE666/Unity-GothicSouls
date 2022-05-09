@@ -32,6 +32,11 @@ namespace SG
             LoadWeaponHolderSlots();
         }
 
+        private void Start()
+        {
+            LoadBothWeaponOnSlots();
+        }
+
         protected virtual void LoadWeaponHolderSlots()
         {
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();

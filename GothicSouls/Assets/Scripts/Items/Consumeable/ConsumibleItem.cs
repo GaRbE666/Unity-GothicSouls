@@ -17,7 +17,7 @@ namespace SG
         public string consumeAnimation;
         public bool isInteracting;
 
-        public virtual void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
+        public virtual void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager, PlayerManager player)
         {
             if (currentItemAmount > 0)
             {
@@ -25,7 +25,7 @@ namespace SG
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation("Shrug", true);
+                playerAnimatorManager.PlayTargetAnimation("No", true);
             }
         }
     }

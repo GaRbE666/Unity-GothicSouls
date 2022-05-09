@@ -4885,7 +4885,7 @@ Animator:
   m_GameObject: {fileID: 8782457467267481326}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 10af0e89d0888024f92cbb8f99f511ca, type: 3}
-  m_Controller: {fileID: 9100000, guid: 27a5f13745f24874a8c56e68e3402f1a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9ca3e9ae97420414db0b7b21937a6eb8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4906,8 +4906,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860b990ae348b9a46943b248d7f7ef0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  canRotate: 1
   leftHandConstraint: {fileID: 756071593844269473}
   rightHandConstraint: {fileID: 756071594055678353}
 --- !u!114 &3917433724160597353
@@ -4942,17 +4940,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8518aeaf6280634fa972dfc8fbdeecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  characterAnimatorManager: {fileID: 0}
+  characterWeaponSlotManager: {fileID: 0}
+  characterStatsManager: {fileID: 0}
+  characterInventoryManager: {fileID: 0}
+  characterEffectsManager: {fileID: 0}
   lockOnTransform: {fileID: 1266503070591822163}
   backStabCollider: {fileID: 8782457465483917926}
   riposteCollider: {fileID: 8782457466342287250}
   isInteracting: 0
+  isDead: 0
   canBeRiposted: 1
   canBeParried: 0
   canDoCombo: 0
   isParrying: 0
   isBlocking: 0
   isInvulnerable: 0
-  isUsingRightHand: 0
+  isUsingRightHand: 1
   isUsingLeftHand: 0
   isTwoHandingWeapon: 0
   isUnarmed: 0
@@ -4963,6 +4968,11 @@ MonoBehaviour:
   isGrounded: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
+  enemyBossManager: {fileID: 0}
+  enemyLocomotionManager: {fileID: 0}
+  enemyAnimatorManager: {fileID: 0}
+  enemyStatsManager: {fileID: 0}
+  enemyEffectsManager: {fileID: 0}
   currentState: {fileID: 1266503070414041200}
   currentTarget: {fileID: 0}
   navmeshAgent: {fileID: 0}
@@ -4989,6 +4999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6def71bf63bee9f43a1dabff00f65c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: Nameless
   teamIDNumber: 1
   maxHealth: 0
   currentHealth: 0
@@ -4996,8 +5007,9 @@ MonoBehaviour:
   currentStamina: 0
   maxFocusPoints: 0
   currentFocusPoints: 0
-  soulCount: 0
+  currentSoulCount: 0
   soulsAwardedOnDeath: 50
+  playerLevel: 1
   healthLevel: 100
   staminaLevel: 10
   focusLevel: 10
@@ -5019,7 +5031,6 @@ MonoBehaviour:
   fireDamageAbsorptionBody: 0
   fireDamageAbsorptionLegs: 0
   fireDamageAbsorptionHands: 0
-  isDead: 0
   enemyHealthBar: {fileID: 8782457466461233021}
   isBoss: 0
 --- !u!114 &5488009860881772925
@@ -5106,21 +5117,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d27ba15066434a459f308d1cf562c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterWeaponSlotManager: {fileID: 0}
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
-  rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 21c65af186cf11740be833828ee12224, type: 2}
   leftWeapon: {fileID: 0}
   currentConsumable: {fileID: 0}
   currentHelmetEquipment: {fileID: 0}
-  currentTorsoEquipment: {fileID: 0}
+  currentBodyEquipment: {fileID: 0}
   currentLegEquipment: {fileID: 0}
-  currentArmEquipment: {fileID: 0}
+  currentHandEquipment: {fileID: 0}
   weaponsInRightHandSlot:
-  - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
+  - {fileID: 11400000, guid: 21c65af186cf11740be833828ee12224, type: 2}
   weaponsInLeftHandSlot:
   - {fileID: 0}
   currentRightWeaponIndex: -1
   currentLeftWeaponIndex: -1
+  currentConsumableIndex: 0
 --- !u!114 &5559582492812733335
 MonoBehaviour:
   m_ObjectHideFlags: 0

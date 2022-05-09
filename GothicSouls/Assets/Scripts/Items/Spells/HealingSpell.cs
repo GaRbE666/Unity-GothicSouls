@@ -22,8 +22,6 @@ namespace SG
             base.SucsessfullyCastSpell(animatorHandler, playerStats, cameraHandler, weaponSlotManager, isLeftHanded);
             GameObject instantiatedSpellFX = Instantiate(spellCastFX, animatorHandler.transform);
             playerStats.HealPlayer(healAmount);
-            Debug.Log("Spell cast successful");
-
         }
     }
 }

@@ -88,6 +88,7 @@ namespace SG
             if (player.playerInventoryManager.currentConsumable != null)
             {
                 quickSlotsUI.UpdateCurrentConsumableIcon(player.playerInventoryManager.currentConsumable);
+                quickSlotsUI.UpdateCurrentConsumableText(player.playerInventoryManager.currentConsumable.currentItemAmount);
             }
 
             soulCount.text = player.playerStatsManager.currentSoulCount.ToString();

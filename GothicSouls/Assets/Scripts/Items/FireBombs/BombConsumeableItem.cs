@@ -19,10 +19,12 @@ namespace SG
         public int baseDamage = 200;
         public int explosiveDamage = 75;
 
-        public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
+        public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager, PlayerManager player)
         {
             if (currentItemAmount > 0)
             {
+                currentItemAmount--;
+                player.uiManager.quickSlotsUI.UpdateCurrentConsumableText(currentItemAmount);
                 weaponSlotManager.rightHandSlot.UnloadWeapon();
                 playerAnimatorManager.PlayTargetAnimation(consumeAnimation, true);
                 GameObject bombModel = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform.position, Quaternion.identity, weaponSlotManager.rightHandSlot.transform);
@@ -30,7 +32,7 @@ namespace SG
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation("Shrug", true);
+                playerAnimatorManager.PlayTargetAnimation("No", true);
             }
         }
     }

@@ -51,6 +51,7 @@ namespace SG
 
         Vector2 movementInput;
         Vector2 cameraInput;
+        public bool canConsume = true;
         #endregion
 
         private void Awake()
@@ -79,6 +80,7 @@ namespace SG
                 inputActions.PlayerActions.RT.performed += i => tap_rt_Input = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
+                inputActions.PlayerQuickSlots.DPadDown.performed += i => d_Pad_Down = true;
                 inputActions.PlayerActions.A.performed += i => a_Input = true;
                 inputActions.PlayerActions.X.performed += i => x_Input = true;
                 inputActions.PlayerActions.Roll.performed += i => b_Input = true;
@@ -299,11 +301,15 @@ namespace SG
         {
             if (d_Pad_Right)
             {
-                player.playerInventoryManager.ChangeRightWeapon();
+                player.playerAnimatorManager.PlayTargetAnimation("WeaponSwitchRight", false);
             }
             else if (d_Pad_Left)
             {
-                player.playerInventoryManager.ChangeLeftWeapon();
+                player.playerAnimatorManager.PlayTargetAnimation("WeaponSwitchLeft", false);
+            }
+            else if (d_Pad_Down)
+            {
+                player.playerInventoryManager.ChangeConsumableItem();
             }
         }
 
@@ -387,14 +393,16 @@ namespace SG
 
                 twoHandFlag = !twoHandFlag;
 
-                if (twoHandFlag/* && !player.playerInventoryManager.rightWeapon.isUnarmed*/)
+                if (twoHandFlag)
                 {
+                    player.playerAnimatorManager.PlayTargetAnimation("WeaponSwitchLeftBack", false);
                     player.isTwoHandingWeapon = true;
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.rightWeapon, false);
                     player.playerWeaponSlotManager.LoadTwoHandIKTarget(true);
                 }
                 else
                 {
+                    player.playerAnimatorManager.PlayTargetAnimation("WeaponSwitchLeftBack", false);
                     player.isTwoHandingWeapon = false;
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.rightWeapon, false);
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.leftWeapon, true);
@@ -408,8 +416,17 @@ namespace SG
             if (x_Input)
             {
                 x_Input = false;
-                player.playerInventoryManager.currentConsumable.AttemptToConsumeItem(player.playerAnimatorManager, player.playerWeaponSlotManager, player.playerEffectsManager);
+                if (canConsume)
+                {
+                    canConsume = false;
+                    player.playerInventoryManager.currentConsumable.AttemptToConsumeItem(player.playerAnimatorManager, player.playerWeaponSlotManager, player.playerEffectsManager, player);
+                }  
             }
+        }
+
+        public void CanUseConsumableAgain()
+        {
+            canConsume = true;
         }
     }
 }

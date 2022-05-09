@@ -708,6 +708,7 @@ MonoBehaviour:
   inventoryFlag: 0
   rollInputTimer: 0
   critialAttackRayCastStartPoint: {fileID: 139502229572863613}
+  canConsume: 1
 --- !u!114 &139502229593646821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,32 +721,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a9ca88e5c1ed3409ad7c14cf0a8f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterWeaponSlotManager: {fileID: 3331410170774394688}
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 11400000, guid: cc2bdf908b5832f46881e3c9c178269b, type: 2}
-  rightWeapon: {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
-  leftWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
-  currentConsumable: {fileID: 11400000, guid: 3d3c1690872a1ef4b841959cedc84eb6, type: 2}
-  currentHelmetEquipment: {fileID: 11400000, guid: 8a0a8b5959ad409439524ba0926d51b3, type: 2}
-  currentBodyEquipment: {fileID: 11400000, guid: be217778de4acc64f8cc9eb38f4c6e28, type: 2}
-  currentLegEquipment: {fileID: 11400000, guid: b64e1aa73e3245945a96db12b475e76b, type: 2}
-  currentHandEquipment: {fileID: 11400000, guid: 3f0a3fc803cc1324d8edb3a2af07bcbe, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
+  currentConsumable: {fileID: 11400000, guid: c7087d9af53a9d14d999e68f4c6d7b87, type: 2}
+  currentHelmetEquipment: {fileID: 11400000, guid: 55c776595098907448f8f0492550db88, type: 2}
+  currentBodyEquipment: {fileID: 11400000, guid: fafe2198b063fc746871ca8fffa5712c, type: 2}
+  currentLegEquipment: {fileID: 11400000, guid: 2f1bef5b93ccade4da56bea6eba4ee57, type: 2}
+  currentHandEquipment: {fileID: 11400000, guid: e15ec427c2960d64a9ffea1825e91b15, type: 2}
   weaponsInRightHandSlot:
-  - {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
+  - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   weaponsInLeftHandSlot:
-  - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
+  - {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
   - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
+  currentConsumableIndex: 0
   weaponsInventory: []
-  headEquipmentInventory:
-  - {fileID: 11400000, guid: ed2b1ecd58b0f6646979797598aa1cbb, type: 2}
-  bodyEquipmentInventory:
-  - {fileID: 11400000, guid: 0acb21fd378c5554cb45d2723ef1eacc, type: 2}
-  legEquipmentInventory:
-  - {fileID: 11400000, guid: 312561f89c2c6f8489b38a57e37d22e7, type: 2}
-  handEquipmentInventory:
-  - {fileID: 11400000, guid: 28d9fdeb18552bf4ca14a918be6ba3f1, type: 2}
+  consumablesInventory:
+  - {fileID: 11400000, guid: c7087d9af53a9d14d999e68f4c6d7b87, type: 2}
+  - {fileID: 11400000, guid: e28dba7d26c094c438704c4d6d56b15c, type: 2}
+  - {fileID: 11400000, guid: 3d3c1690872a1ef4b841959cedc84eb6, type: 2}
+  - {fileID: 11400000, guid: 226d1ff9a925e3246adf798a5f0214a0, type: 2}
+  headEquipmentInventory: []
+  bodyEquipmentInventory: []
+  legEquipmentInventory: []
+  handEquipmentInventory: []
+  player: {fileID: 0}
 --- !u!114 &139502229593646822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,7 +803,7 @@ MonoBehaviour:
   currentSoulCount: 8500
   soulsAwardedOnDeath: 50
   playerLevel: 1
-  healthLevel: 10
+  healthLevel: 100
   staminaLevel: 10
   focusLevel: 10
   poiseLevel: 10
@@ -8761,7 +8766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6178599330778045905}
   m_Layer: 9
-  m_Name: HeadNaked
+  m_Name: HelmetNaked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

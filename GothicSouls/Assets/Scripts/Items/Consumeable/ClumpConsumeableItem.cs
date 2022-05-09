@@ -15,21 +15,28 @@ namespace SG
         //cure Bleed
         //Cure cursed
 
-        public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
+        public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager, PlayerManager player)
         {
-            base.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
-            GameObject clump = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
-            playerEffectsManager.currentParticleFX = clumpConsumeFX;
-            playerEffectsManager.instantiatedFXModel = clump;
+            base.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager, player);
 
-            if (curePoison)
+            if (currentItemAmount > 0)
             {
-                playerEffectsManager.poisonBuildup = 0;
-                playerEffectsManager.poisonAmount = playerEffectsManager.defaultPoisonAmount;
-                playerEffectsManager.isPoisoned = false;
-                //Desactivar efecto de envenenado
+                currentItemAmount--;
+                player.uiManager.quickSlotsUI.UpdateCurrentConsumableText(currentItemAmount);
+                GameObject clump = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
+                playerEffectsManager.currentParticleFX = clumpConsumeFX;
+                playerEffectsManager.instantiatedFXModel = clump;
+
+                if (curePoison)
+                {
+                    playerEffectsManager.poisonBuildup = 0;
+                    playerEffectsManager.poisonAmount = playerEffectsManager.defaultPoisonAmount;
+                    playerEffectsManager.isPoisoned = false;
+                    //Desactivar efecto de envenenado
+                }
+                weaponSlotManager.rightHandSlot.UnloadWeapon();
             }
-            weaponSlotManager.rightHandSlot.UnloadWeapon();
+
         }
     }
 }
