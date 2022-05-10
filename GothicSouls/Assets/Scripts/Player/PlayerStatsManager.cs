@@ -103,6 +103,7 @@ namespace SG
         public void TakeStaminaDamage(float damage)
         {
             currentStamina -= damage;
+            Debug.Log("Gasto estamina: " + currentStamina);
             staminaBar.SetCurrentStamina(currentStamina);
         }
 

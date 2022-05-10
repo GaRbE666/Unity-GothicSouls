@@ -169,7 +169,12 @@ namespace SG
 
         public void DrainStaminaBasedOnAttackType()
         {
+            if (character.characterWeaponSlotManager.leftHandSlot.isLeftHandSlot)
+            {
 
+            }
+            PlayerStatsManager playerStats = character.characterStatsManager.GetComponent<PlayerStatsManager>();
+            playerStats.staminaBar.SetCurrentStamina(character.characterWeaponSlotManager.leftHandSlot.currentWeapon.baseStamina);
         }
 
         public float SetMaxHealthFromHealthLevel()

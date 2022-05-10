@@ -41,7 +41,7 @@ namespace SG
             {
                 player.playerAnimatorManager.PlayTargetAnimation(player.playerCombatManager.oh_heavy_attack_01, true, false);
                 player.playerCombatManager.lastAttack = player.playerCombatManager.oh_heavy_attack_01;
-
+                player.playerStatsManager.TakeStaminaDamage(player.playerInventoryManager.leftWeapon.baseStamina * player.playerInventoryManager.leftWeapon.heavyAttackMultiplier);
             }
             else if (player.isUsingRightHand)
             {
@@ -55,6 +55,7 @@ namespace SG
                     player.playerAnimatorManager.PlayTargetAnimation(player.playerCombatManager.oh_heavy_attack_01, true);
                     player.playerCombatManager.lastAttack = player.playerCombatManager.oh_heavy_attack_01;
                 }
+                player.playerStatsManager.TakeStaminaDamage(player.playerInventoryManager.rightWeapon.baseStamina * player.playerInventoryManager.rightWeapon.heavyAttackMultiplier);
             }
         }
 
@@ -70,11 +71,13 @@ namespace SG
                     {
                         player.playerAnimatorManager.PlayTargetAnimation(player.playerCombatManager.oh_heavy_attack_02, true, false);
                         player.playerCombatManager.lastAttack = player.playerCombatManager.oh_heavy_attack_02;
+                        player.playerStatsManager.TakeStaminaDamage(player.playerInventoryManager.leftWeapon.baseStamina * player.playerInventoryManager.leftWeapon.heavyAttackMultiplier);
                     }
                     else
                     {
                         player.playerAnimatorManager.PlayTargetAnimation(player.playerCombatManager.oh_heavy_attack_01, true, false);
                         player.playerCombatManager.lastAttack = player.playerCombatManager.oh_heavy_attack_01;
+                        player.playerStatsManager.TakeStaminaDamage(player.playerInventoryManager.leftWeapon.baseStamina * player.playerInventoryManager.leftWeapon.heavyAttackMultiplier);
                     }
                 }
                 else if (player.isUsingRightHand)
@@ -85,11 +88,13 @@ namespace SG
                         {
                             player.playerAnimatorManager.PlayTargetAnimation(player.playerCombatManager.th_heavy_attack_02, true);
                             player.playerCombatManager.lastAttack = player.playerCombatManager.th_heavy_attack_02;
+                            player.playerStatsManager.TakeStaminaDamage(player.playerInventoryManager.rightWeapon.baseStamina * player.playerInventoryManager.rightWeapon.heavyAttackMultiplier);
                         }
                         else
                         {
                             player.playerAnimatorManager.PlayTargetAnimation(player.playerCombatManager.th_heavy_attack_01, true);
                             player.playerCombatManager.lastAttack = player.playerCombatManager.th_heavy_attack_01;
+                            player.playerStatsManager.TakeStaminaDamage(player.playerInventoryManager.rightWeapon.baseStamina * player.playerInventoryManager.rightWeapon.heavyAttackMultiplier);
                         }
                     }
                     else
@@ -98,11 +103,13 @@ namespace SG
                         {
                             player.playerAnimatorManager.PlayTargetAnimation(player.playerCombatManager.oh_heavy_attack_02, true);
                             player.playerCombatManager.lastAttack = player.playerCombatManager.oh_heavy_attack_02;
+                            player.playerStatsManager.TakeStaminaDamage(player.playerInventoryManager.rightWeapon.baseStamina * player.playerInventoryManager.rightWeapon.heavyAttackMultiplier);
                         }
                         else
                         {
                             player.playerAnimatorManager.PlayTargetAnimation(player.playerCombatManager.oh_heavy_attack_01, true);
                             player.playerCombatManager.lastAttack = player.playerCombatManager.th_heavy_attack_01;
+                            player.playerStatsManager.TakeStaminaDamage(player.playerInventoryManager.rightWeapon.baseStamina * player.playerInventoryManager.rightWeapon.heavyAttackMultiplier);
                         }
                     }
                 }
