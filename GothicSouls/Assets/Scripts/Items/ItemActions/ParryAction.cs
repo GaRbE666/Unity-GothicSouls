@@ -14,8 +14,6 @@ namespace SG
                 return;
             }
 
-            player.playerAnimatorManager.EraseHandIKForWeapon();
-
             WeaponItem parryingWeapon = player.playerInventoryManager.currentItemBeingUsed as WeaponItem;
 
             if (parryingWeapon.weaponType == WeaponType.SmallShield)

@@ -189,7 +189,6 @@ namespace SG
                 if (player.inputHandler.moveAmount > 0)
                 {
                     player.playerAnimatorManager.PlayTargetAnimation("Rolling", true);
-                    player.playerAnimatorManager.EraseHandIKForWeapon();
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     player.transform.rotation = rollRotation;
@@ -198,7 +197,6 @@ namespace SG
                 else
                 {
                     player.playerAnimatorManager.PlayTargetAnimation("Backstep", true);
-                    player.playerAnimatorManager.EraseHandIKForWeapon();
                     player.playerStatsManager.TakeStaminaDamage(backstepStaminaCost);
                 }
             }

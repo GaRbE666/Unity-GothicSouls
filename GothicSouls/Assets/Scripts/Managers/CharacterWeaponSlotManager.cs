@@ -20,10 +20,6 @@ namespace SG
         [Header("Damage Colliders")]
         public DamageCollider leftHandDamageCollider;
         public DamageCollider rightHandDamageCollider;
-
-        [Header("Hand IK Targets")]
-        public RightHandIKTarget rightHandIKTarget;
-        public LeftHandIKTarget leftHandIKTarget;
         #endregion
 
         protected virtual void Awake()
@@ -90,7 +86,6 @@ namespace SG
                     rightHandSlot.currentWeapon = weaponItem;
                     rightHandSlot.LoadWeaponModel(weaponItem);
                     LoadRightWeaponDamageCollider();
-                    LoadTwoHandIKTarget(character.isTwoHandingWeapon);
                     character.animator.runtimeAnimatorController = weaponItem.weaponController;
                 }
             }
@@ -143,14 +138,6 @@ namespace SG
 
             rightHandDamageCollider.poiseBreak = character.characterInventoryManager.rightWeapon.poiseBreak;
             character.characterEffectsManager.rightWeaponFX = rightHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
-        }
-
-        public virtual void LoadTwoHandIKTarget(bool isTwoHandingWeapon)
-        {
-            leftHandIKTarget = rightHandSlot.currentWeaponModel.GetComponentInChildren<LeftHandIKTarget>();
-            rightHandIKTarget = rightHandSlot.currentWeaponModel.GetComponentInChildren<RightHandIKTarget>();
-
-            character.characterAnimatorManager.SetHandIKForWeapon(rightHandIKTarget, leftHandIKTarget, isTwoHandingWeapon);
         }
 
         public virtual void OpenDamageCollider()

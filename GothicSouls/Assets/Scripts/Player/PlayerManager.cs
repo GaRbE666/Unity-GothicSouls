@@ -78,9 +78,8 @@ namespace SG
             CheckForInteractableObject();
         }
 
-        protected override void FixedUpdate()
+        protected void FixedUpdate()
         {
-            base.FixedUpdate();
 
             playerLocomotionManager.HandleFalling(playerLocomotionManager.moveDirection);
             playerLocomotionManager.HandleMovement();

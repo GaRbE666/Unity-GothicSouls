@@ -398,7 +398,6 @@ namespace SG
                     player.playerAnimatorManager.PlayTargetAnimation("WeaponSwitchLeftBack", false);
                     player.isTwoHandingWeapon = true;
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.rightWeapon, false);
-                    player.playerWeaponSlotManager.LoadTwoHandIKTarget(true);
                 }
                 else
                 {
@@ -406,7 +405,6 @@ namespace SG
                     player.isTwoHandingWeapon = false;
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.rightWeapon, false);
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.leftWeapon, true);
-                    player.playerWeaponSlotManager.LoadTwoHandIKTarget(false);
                 }
             }
         }

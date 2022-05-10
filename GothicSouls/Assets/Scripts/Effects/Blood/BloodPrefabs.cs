@@ -17,45 +17,22 @@ public class BloodPrefabs : MonoBehaviour
         return prefabs[index];
     }
 
-    private Transform GetNearestObject(Transform hit, Vector3 hitPosition)
-    {
-        System.Single closetPos = 100f;
-        Transform closetbone = null;
-        Transform childs = hit.GetComponentInChildren<Transform>();
-
-        foreach (Transform child in childs)
-        {
-            System.Single distance = Vector3.Distance(child.position, hitPosition);
-
-            if (distance < closetPos)
-            {
-                closetPos = distance;
-                closetbone = child;
-            }
-        }
-
-        System.Single distanceRoot = Vector3.Distance(hit.position, hitPosition);
-
-        if (distanceRoot < closetPos)
-        {
-            closetPos = distanceRoot;
-            closetbone = hit;
-        }
-
-        return closetbone;
-    }
-
     public void InstantiateBlood(Transform hit)
     {
-        float angle = Mathf.Atan2(hit.position.normalized.x, hit.position.normalized.z) * Mathf.Rad2Deg + 100;
+        float angle;
 
-        GameObject bloodClone = Instantiate(prefabs[GenerateRandomNum()], hit.position, Quaternion.Euler(0, angle + 90, 0));
-        //bloodClone.transform.SetParent(bloodInstancePosition);
-        BFX_BloodSettings settings = bloodClone.GetComponent<BFX_BloodSettings>();
-        settings.LightIntensityMultiplier = directional.intensity;
+        if (hit != null)
+        {
+            angle = Mathf.Atan2(hit.position.normalized.x, hit.position.normalized.z) * Mathf.Rad2Deg + 100;
+            GameObject bloodClone = Instantiate(prefabs[GenerateRandomNum()], hit.position, Quaternion.Euler(0, angle + 90, 0));
+        }
+        else
+        {
+            angle = 0;
+            GameObject bloodClone = Instantiate(prefabs[GenerateRandomNum()], bloodInstancePosition.position, Quaternion.Euler(0, angle + 90, 0));
+        }
 
-        Transform nearestBone = GetNearestObject(hit.root, hit.position);
-        if (nearestBone != null)
+        if (bloodInstancePosition != null)
         {
             GameObject attackBloodInstance = Instantiate(bloodDecal);
             Transform bloodT = attackBloodInstance.transform;
@@ -64,7 +41,7 @@ public class BloodPrefabs : MonoBehaviour
             bloodT.localScale = Vector3.one * Random.Range(0.75f, 1.2f);
             bloodT.LookAt(hit.position + hit.position.normalized, direction);
             bloodT.Rotate(90, 0, 0);
-            bloodT.transform.parent = nearestBone;
+            bloodT.transform.parent = bloodInstancePosition;
         }
 
     }

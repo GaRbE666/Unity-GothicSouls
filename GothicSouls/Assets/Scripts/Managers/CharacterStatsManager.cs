@@ -83,8 +83,6 @@ namespace SG
                 return;
             }
 
-            character.characterAnimatorManager.EraseHandIKForWeapon();
-
             float totalPhysicalDamageAbsorption = 1 -
                 (1 - physicialDamageAbsorptionHead / 100) *
                 (1 - physicialDamageAbsorptionBody / 100) *

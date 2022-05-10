@@ -64,11 +64,6 @@ namespace SG
             characterEffectsManager = GetComponent<CharacterEffectsManager>();
         }
 
-        protected virtual void FixedUpdate()
-        {
-            characterAnimatorManager.CheckHandIKWeight(characterWeaponSlotManager.rightHandIKTarget, characterWeaponSlotManager.leftHandIKTarget, isTwoHandingWeapon);
-        }
-
         public virtual void UpdateWhichHandCharacterIsUsing(bool usingRightHand)
         {
             if (usingRightHand)

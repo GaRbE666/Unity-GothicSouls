@@ -13,7 +13,6 @@ namespace SG
             {
                 return;
             }
-            player.playerAnimatorManager.EraseHandIKForWeapon();
             player.playerEffectsManager.PlayWeaponFX(false);
 
             if (player.canDoCombo)

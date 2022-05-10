@@ -69,11 +69,11 @@ namespace SG
             animator.SetBool("isDead", isDead);
         }
 
-        protected override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            enemyEffectsManager.HandleAllBuildUpEffects();
-        }
+        //protected override void FixedUpdate()
+        //{
+        //    base.FixedUpdate();
+        //    enemyEffectsManager.HandleAllBuildUpEffects();
+        //}
 
         private void LateUpdate()
         {
