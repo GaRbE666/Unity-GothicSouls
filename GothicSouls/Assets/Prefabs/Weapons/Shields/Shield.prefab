@@ -108,7 +108,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99ae20cac360c84eaa15d1c2dd518a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponDamage: 0
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  teamIDNumber: 0
+  poiseBreak: 0
+  offensivePoiseDefence: 0
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  dakrDamage: 0
 --- !u!1 &6717115832495663379
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,11 +172,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7368647901749184787}
-  m_LocalRotation: {x: 0.28225777, y: 0.6297685, z: 0.4700736, w: 0.5502299}
-  m_LocalPosition: {x: -0.038, y: -0.011, z: -0.031}
+  m_LocalRotation: {x: 0.5004082, y: 0.37074402, z: -0.43690917, w: -0.64903855}
+  m_LocalPosition: {x: 0.038, y: -0.05, z: 0.017}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4273310471627583980}
   m_Father: {fileID: 2479417137538368009}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -16.347, y: 87.166, z: 65.448}
+  m_LocalEulerAnglesHint: {x: -19.002, y: -76.278, z: -277.133}

@@ -7,6 +7,8 @@ namespace SG
     public class WeaponHolderSlot : MonoBehaviour
     {
         public Transform parentOverride;
+        public Transform shieldParentOverride;
+        public Transform staffParentOverride;
         public WeaponItem currentWeapon;
         public bool isLeftHandSlot;
         public bool isRightHandSlot;
@@ -44,14 +46,41 @@ namespace SG
 
             if (model != null)
             {
-                if (parentOverride != null)
+                if (model.name.Equals("Shield(Clone)"))
                 {
-                    model.transform.parent = parentOverride;
+                    if (shieldParentOverride != null)
+                    {
+                        model.transform.parent = shieldParentOverride;
+                    }
+                    else
+                    {
+                        model.transform.parent = transform;
+                    }
+                }
+                else if (model.name.Equals("Staff(Clone)"))
+                {
+                    if (staffParentOverride != null)
+                    {
+                        model.transform.parent = staffParentOverride;
+                    }
+                    else
+                    {
+                        model.transform.parent = transform;
+                    }
                 }
                 else
                 {
-                    model.transform.parent = transform;
+                    if (parentOverride != null)
+                    {
+                        model.transform.parent = parentOverride;
+                    }
+                    else
+                    {
+                        model.transform.parent = transform;
+                    }
                 }
+
+
 
                 model.transform.localPosition = Vector3.zero;
                 model.transform.localRotation = Quaternion.identity;

@@ -80,7 +80,11 @@ namespace SG
             equipmentWindowUI.LoadWeaponOnEquipmentScreen(player.playerInventoryManager);
             equipmentWindowUI.LoadArmorOnEquipmentScreen(player.playerInventoryManager);
 
-            if (player.playerInventoryManager.currentSpell != null)
+            if (player.playerInventoryManager.currentSpell != null 
+                && player.playerInventoryManager.leftWeapon.weaponType == WeaponType.FaithCaster 
+                || player.playerInventoryManager.leftWeapon.weaponType == WeaponType.PyromancyCaster
+                || player.playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster
+                || player.playerInventoryManager.rightWeapon.weaponType == WeaponType.PyromancyCaster)
             {
                 quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
             }
