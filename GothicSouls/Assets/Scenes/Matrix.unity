@@ -62471,10 +62471,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1315404251, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315404251, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 765716829553938782, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 765716829553938782, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616957395483860349, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616957395483860349, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2829594849639836794, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
       propertyPath: playerManager
       value: 
       objectReference: {fileID: 729014438402649984}
+    - target: {fileID: 5175042248012416803, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5175042248012416803, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6760322870012625418, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
       propertyPath: m_Name
       value: PlayerUI
@@ -62561,6 +62593,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6760322870012625422, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782620292622327810, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782620292622327810, guid: f47dc02de258b7646a017ceea1e7580a, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -83282,6 +83322,34 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 5630615239560984261}
+    - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
+      propertyPath: leftWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
+    - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
+      propertyPath: currentSpell
+      value: 
+      objectReference: {fileID: 11400000, guid: e3dcfbede5d714e4391dc8dffbfe1333, type: 2}
+    - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
+      propertyPath: spellInventory.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
+      propertyPath: spellInventory.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: cc2bdf908b5832f46881e3c9c178269b, type: 2}
+    - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
+      propertyPath: spellInventory.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e3dcfbede5d714e4391dc8dffbfe1333, type: 2}
+    - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
+      propertyPath: weaponsInLeftHandSlot.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
+    - target: {fileID: 139502229593646821, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
+      propertyPath: weaponsInLeftHandSlot.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
     - target: {fileID: 139502229593646840, guid: 3e291526901a07c44b4c7d21e0e9b90e, type: 3}
       propertyPath: interactableUIGameObject
       value: 

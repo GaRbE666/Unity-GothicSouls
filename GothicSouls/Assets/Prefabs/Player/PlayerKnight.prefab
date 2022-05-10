@@ -723,9 +723,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterWeaponSlotManager: {fileID: 3331410170774394688}
   currentItemBeingUsed: {fileID: 0}
-  currentSpell: {fileID: 11400000, guid: cc2bdf908b5832f46881e3c9c178269b, type: 2}
+  currentSpell: {fileID: 11400000, guid: e3dcfbede5d714e4391dc8dffbfe1333, type: 2}
   rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
-  leftWeapon: {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
   currentConsumable: {fileID: 11400000, guid: c7087d9af53a9d14d999e68f4c6d7b87, type: 2}
   currentHelmetEquipment: {fileID: 11400000, guid: 55c776595098907448f8f0492550db88, type: 2}
   currentBodyEquipment: {fileID: 11400000, guid: fafe2198b063fc746871ca8fffa5712c, type: 2}
@@ -735,12 +735,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   weaponsInLeftHandSlot:
-  - {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
-  - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+  - {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
+  - {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   currentConsumableIndex: 0
   weaponsInventory: []
+  spellInventory:
+  - {fileID: 11400000, guid: cc2bdf908b5832f46881e3c9c178269b, type: 2}
+  - {fileID: 11400000, guid: e3dcfbede5d714e4391dc8dffbfe1333, type: 2}
   consumablesInventory:
   - {fileID: 11400000, guid: c7087d9af53a9d14d999e68f4c6d7b87, type: 2}
   - {fileID: 11400000, guid: e28dba7d26c094c438704c4d6d56b15c, type: 2}
