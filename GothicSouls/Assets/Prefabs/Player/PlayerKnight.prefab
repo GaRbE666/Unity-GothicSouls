@@ -989,6 +989,7 @@ MonoBehaviour:
   currentParticleFX: {fileID: 0}
   instantiatedFXModel: {fileID: 0}
   amountToBeHealed: 0
+  amountToBeFocusUp: 0
 --- !u!114 &1026036501
 MonoBehaviour:
   m_ObjectHideFlags: 0

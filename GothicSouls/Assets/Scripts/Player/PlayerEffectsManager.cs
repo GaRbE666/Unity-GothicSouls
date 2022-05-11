@@ -14,6 +14,8 @@ namespace SG
         public GameObject currentParticleFX; //The particles that will play of the current effect that is effecting the player (drinking estus, poison etc...)
         public GameObject instantiatedFXModel;
         public int amountToBeHealed;
+        public int amountToBeFocusUp;
+        public bool isHealth;
 
         protected override void Awake()
         {
@@ -23,13 +25,30 @@ namespace SG
             poisonAmountBar = FindObjectOfType<PoisonAmountBar>();
         }
 
-        public void HealPlayerFromEffect()
+        public void DrinkEstusFromEffect()
         {
-            player.playerStatsManager.HealPlayer(amountToBeHealed);
+            if (isHealth)
+            {
+                player.playerStatsManager.HealPlayer(amountToBeHealed);
+            }
+            else
+            {
+                player.playerStatsManager.FocusUpPlayer(amountToBeFocusUp);
+            }
+            
             GameObject healParticles = Instantiate(currentParticleFX, player.playerStatsManager.transform);
             Destroy(instantiatedFXModel.gameObject);
             player.playerWeaponSlotManager.LoadBothWeaponOnSlots();
+            isHealth = false;
         }
+
+        //public void FocusUpPlayerFromEffect()
+        //{
+        //    //player.playerStatsManager.FocusUpPlayer(amountToBeFocusUp);
+        //    GameObject healParticles = Instantiate(currentParticleFX, player.playerStatsManager.transform);
+        //    Destroy(instantiatedFXModel.gameObject);
+        //    player.playerWeaponSlotManager.LoadBothWeaponOnSlots();
+        //}
 
         protected override void HandlePoisonBuildUp()
         {

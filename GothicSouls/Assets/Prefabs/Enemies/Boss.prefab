@@ -11692,6 +11692,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 1895494348100941833}
+  shieldParentOverride: {fileID: 0}
+  staffParentOverride: {fileID: 0}
   currentWeapon: {fileID: 0}
   isLeftHandSlot: 1
   isRightHandSlot: 0
@@ -12265,10 +12267,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8518aeaf6280634fa972dfc8fbdeecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  characterAnimatorManager: {fileID: 0}
+  characterWeaponSlotManager: {fileID: 0}
+  characterStatsManager: {fileID: 0}
+  characterInventoryManager: {fileID: 0}
+  characterEffectsManager: {fileID: 0}
   lockOnTransform: {fileID: 1895494349543488411}
   backStabCollider: {fileID: 1895494347692898281}
   riposteCollider: {fileID: 1895494349234727334}
   isInteracting: 0
+  isDead: 0
   canBeRiposted: 1
   canBeParried: 0
   canDoCombo: 0
@@ -12286,6 +12295,11 @@ MonoBehaviour:
   isGrounded: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
+  enemyBossManager: {fileID: 0}
+  enemyLocomotionManager: {fileID: 0}
+  enemyAnimatorManager: {fileID: 0}
+  enemyStatsManager: {fileID: 0}
+  enemyEffectsManager: {fileID: 0}
   currentState: {fileID: 1895494347827933895}
   currentTarget: {fileID: 0}
   navmeshAgent: {fileID: 0}
@@ -12343,6 +12357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6def71bf63bee9f43a1dabff00f65c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: Nameless
   teamIDNumber: 0
   maxHealth: 0
   currentHealth: 0
@@ -12350,8 +12365,9 @@ MonoBehaviour:
   currentStamina: 0
   maxFocusPoints: 0
   currentFocusPoints: 0
-  soulCount: 0
+  currentSoulCount: 0
   soulsAwardedOnDeath: 50
+  playerLevel: 1
   healthLevel: 10
   staminaLevel: 10
   focusLevel: 10
@@ -12373,7 +12389,6 @@ MonoBehaviour:
   fireDamageAbsorptionBody: 0
   fireDamageAbsorptionLegs: 0
   fireDamageAbsorptionHands: 0
-  isDead: 0
   enemyHealthBar: {fileID: 0}
   isBoss: 0
 --- !u!114 &3359209471147519477
@@ -12388,10 +12403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860b990ae348b9a46943b248d7f7ef0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  canRotate: 1
-  leftHandConstraint: {fileID: 0}
-  rightHandConstraint: {fileID: 0}
 --- !u!114 &3359209471147519478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12410,8 +12421,6 @@ MonoBehaviour:
   backSlot: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  rightHandIKTarget: {fileID: 0}
-  leftHandIKTarget: {fileID: 0}
 --- !u!1 &1895494348844838613
 GameObject:
   m_ObjectHideFlags: 0
@@ -13623,6 +13632,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 1895494349500122964}
+  shieldParentOverride: {fileID: 0}
+  staffParentOverride: {fileID: 0}
   currentWeapon: {fileID: 0}
   isLeftHandSlot: 0
   isRightHandSlot: 1

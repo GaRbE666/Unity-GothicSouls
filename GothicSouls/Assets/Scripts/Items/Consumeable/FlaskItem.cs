@@ -28,7 +28,19 @@ namespace SG
                 player.uiManager.quickSlotsUI.UpdateCurrentConsumableText(currentItemAmount);
                 GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
                 playerEffectsManager.currentParticleFX = recoveryFX;
-                playerEffectsManager.amountToBeHealed = healthRecoveryAmount;
+                if (estusFlask)
+                {
+                    playerEffectsManager.amountToBeHealed = healthRecoveryAmount;
+                    //player.playerStatsManager.HealPlayer(healthRecoveryAmount);
+                    playerEffectsManager.isHealth = true;
+                }
+                else if (ashenFlask)
+                {
+                    playerEffectsManager.amountToBeFocusUp = focusPointsRecoveryAmount;
+                    //player.playerStatsManager.FocusUpPlayer(focusPointsRecoveryAmount);
+                    playerEffectsManager.isHealth = false;
+                }
+                
                 playerEffectsManager.instantiatedFXModel = flask;
                 weaponSlotManager.rightHandSlot.UnloadWeapon();
             }

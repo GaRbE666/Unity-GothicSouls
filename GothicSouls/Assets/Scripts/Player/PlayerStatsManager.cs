@@ -103,7 +103,6 @@ namespace SG
         public void TakeStaminaDamage(float damage)
         {
             currentStamina -= damage;
-            Debug.Log("Gasto estamina: " + currentStamina);
             staminaBar.SetCurrentStamina(currentStamina);
         }
 
@@ -135,6 +134,18 @@ namespace SG
             }
 
             healthBar.SetCurrentHealth(currentHealth);
+        }
+
+        public void FocusUpPlayer(int focusAmount)
+        {
+            currentFocusPoints = currentFocusPoints + focusAmount;
+
+            if (currentFocusPoints > maxFocusPoints)
+            {
+                currentFocusPoints = maxFocusPoints;
+            }
+
+            focusPointsBar.SetCurrentFocusPoints(currentFocusPoints); 
         }
 
         public void DeductFocusPoints(int focusPoints)

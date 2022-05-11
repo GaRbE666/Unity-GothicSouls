@@ -8,6 +8,9 @@ TagManager:
   - Interactable
   - Illusionary Wall
   - Character
+  - a_Listener
+  - Head
+  - charaVoiceOverAudioSource
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - PostFx
   - 
   - Enviroment
   - Character
