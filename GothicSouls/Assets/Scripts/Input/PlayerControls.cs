@@ -649,6 +649,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""969edd3e-f4a7-46ba-a2ea-c4dff1aad03c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -739,6 +748,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""D-Pad Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b49c8bd-df34-4434-9ea8-f47b76ab5fc8"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -783,6 +803,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerQuickSlots_DPadDown = m_PlayerQuickSlots.FindAction("D-Pad Down", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadLeft = m_PlayerQuickSlots.FindAction("D-Pad Left", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadRight = m_PlayerQuickSlots.FindAction("D-Pad Right", throwIfNotFound: true);
+        m_PlayerQuickSlots_Newaction = m_PlayerQuickSlots.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1032,6 +1053,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerQuickSlots_DPadDown;
     private readonly InputAction m_PlayerQuickSlots_DPadLeft;
     private readonly InputAction m_PlayerQuickSlots_DPadRight;
+    private readonly InputAction m_PlayerQuickSlots_Newaction;
     public struct PlayerQuickSlotsActions
     {
         private @PlayerControls m_Wrapper;
@@ -1040,6 +1062,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @DPadDown => m_Wrapper.m_PlayerQuickSlots_DPadDown;
         public InputAction @DPadLeft => m_Wrapper.m_PlayerQuickSlots_DPadLeft;
         public InputAction @DPadRight => m_Wrapper.m_PlayerQuickSlots_DPadRight;
+        public InputAction @Newaction => m_Wrapper.m_PlayerQuickSlots_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_PlayerQuickSlots; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1061,6 +1084,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @DPadRight.started -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadRight;
                 @DPadRight.performed -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadRight;
                 @DPadRight.canceled -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadRight;
+                @Newaction.started -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1077,6 +1103,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @DPadRight.started += instance.OnDPadRight;
                 @DPadRight.performed += instance.OnDPadRight;
                 @DPadRight.canceled += instance.OnDPadRight;
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -1128,5 +1157,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDPadDown(InputAction.CallbackContext context);
         void OnDPadLeft(InputAction.CallbackContext context);
         void OnDPadRight(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

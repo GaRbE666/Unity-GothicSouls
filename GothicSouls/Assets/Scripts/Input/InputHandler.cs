@@ -105,24 +105,65 @@ namespace SG
             {
                 return;
             }
-            HandleMoveInput();
-            HandleRollInput();
 
-            HandleHoldRBInput();
-            HandleHoldLBInput();
+            if (!UIWindowIsActive())
+            {
+                HandleMoveInput();
+                HandleRollInput();
 
-            HandleTapLBInput();
-            HandleTapRBInput();
-            HandleTapRTInput();
-            HandleTapLTInput();
+                HandleHoldRBInput();
+                HandleHoldLBInput();
 
-            HandleQuickSlotsInput();
+                HandleTapLBInput();
+                HandleTapRBInput();
+                HandleTapRTInput();
+                HandleTapLTInput();
+
+                HandleLockOnInput();
+                HandleTwoHandInput();
+                HandleUseConsumableInput();
+
+                HandleQuickSlotsInput();
+            }
+
             HandleInventoryInput();
 
-            HandleLockOnInput();
-            HandleTwoHandInput();
-            HandleUseConsumableInput();
-            
+        }
+
+        public bool UIWindowIsActive()
+        {
+            if (player.uiManager.equipmentScreenWindow.activeSelf)
+            {
+                return true;
+            }
+            else if (player.uiManager.headEquipmentWindow.activeSelf)
+            {
+                return true;
+            }
+            else if (player.uiManager.weaponInventoryWindow.activeSelf)
+            {
+                return true;
+            }
+            else if (player.uiManager.bodyEquipmentWindow.activeSelf)
+            {
+                return true;
+            }
+            else if (player.uiManager.handEquipmentWindow.activeSelf)
+            {
+                return true;
+            }
+            else if (player.uiManager.legEquipmentWindow.activeSelf)
+            {
+                return true;
+            }
+            else if (player.uiManager.selectWindow.activeSelf)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void HandleMoveInput()
@@ -326,12 +367,14 @@ namespace SG
 
                 if (inventoryFlag)
                 {
+                    player.isInteracting = true;
                     player.uiManager.OpenSelectWindow();
                     player.uiManager.UpdateUI();
                     player.uiManager.hudWindow.SetActive(false);
                 }
                 else
                 {
+                    player.isInteracting = false;
                     player.uiManager.CloseSelectWindow();
                     player.uiManager.CloseAllInventoryWindows();
                     player.uiManager.hudWindow.SetActive(true);
