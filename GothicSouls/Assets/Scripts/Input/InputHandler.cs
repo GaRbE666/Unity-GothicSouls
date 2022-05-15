@@ -160,6 +160,10 @@ namespace SG
             {
                 return true;
             }
+            else if (player.uiManager.levelUpWindow.activeSelf)
+            {
+                return true;
+            }
             else
             {
                 return false;

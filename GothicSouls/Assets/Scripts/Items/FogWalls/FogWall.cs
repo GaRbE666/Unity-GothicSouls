@@ -6,9 +6,14 @@ namespace SG
 {
     public class FogWall : MonoBehaviour
     {
+        public bool alwaysActive;
+
         private void Awake()
         {
-            gameObject.SetActive(false);
+            if (!alwaysActive)
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         public void ActiveFogWall()

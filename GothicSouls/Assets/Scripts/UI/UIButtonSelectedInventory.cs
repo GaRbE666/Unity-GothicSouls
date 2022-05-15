@@ -9,7 +9,6 @@ public class UIButtonSelectedInventory : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("me acitvo " + gameObject.name);
         initialButton.Select();
         initialButton.OnSelect(null);
     }

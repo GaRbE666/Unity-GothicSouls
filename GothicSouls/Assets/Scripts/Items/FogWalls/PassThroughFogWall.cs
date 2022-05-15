@@ -18,6 +18,7 @@ namespace SG
             base.Interact(playerManager);
             playerManager.PassThroughFogWallInteraction(transform);
             worldEventManager.ActivateBossFight();
+            Destroy(this);
         }
     }
 }
