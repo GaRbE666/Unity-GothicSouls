@@ -14,7 +14,12 @@ namespace SG
         public string oh_light_attack_02 = "OH_Light_Attack_02";
         public string oh_heavy_attack_01 = "OH_Heavy_Attack_01";
         public string oh_heavy_attack_02 = "OH_Heavy_Attack_02";
-         
+
+        public string oh_light_attack_01_Left = "OH_Light_Attack_01_Left";
+        public string oh_light_attack_02_Left = "OH_Light_Attack_02_Left";
+        public string oh_heavy_attack_01_Left = "OH_Heavy_Attack_01_Left";
+        public string oh_heavy_attack_02_Left = "OH_Heavy_Attack_02_Left";
+
 
         public string th_light_attack_01 = "TH_Light_Attack_01";
         public string th_light_attack_02 = "TH_Light_Attack_02";

@@ -31,6 +31,7 @@ namespace SG
             {
                 if (rightWeaponFX != null)
                 {
+                    Debug.Log("Ejecuto efecto derecho");
                     rightWeaponFX.PlayWeaponFX();
                 }
             }
@@ -38,6 +39,7 @@ namespace SG
             {
                 if (leftWeaponFX != null)
                 {
+                    Debug.Log("Ejecuto efecto izquierdo");
                     leftWeaponFX.PlayWeaponFX();
                 }
             }
