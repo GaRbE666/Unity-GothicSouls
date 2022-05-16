@@ -251,7 +251,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-19700
+  m_Name: pb_Mesh-349730
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -558,8 +558,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398028784}
-  m_LocalRotation: {x: -0.0000000038126013, y: 0.00000002235174, z: -0.0000000013969838, w: 1}
-  m_LocalPosition: {x: -0.017317116, y: -0.051082592, z: -0.40833893}
+  m_LocalRotation: {x: -0.20125438, y: -0.68135935, z: 0.20448008, w: -0.6733751}
+  m_LocalPosition: {x: 0.10656117, y: 7.662293, z: -3.1120021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3943,7 +3943,6 @@ MonoBehaviour:
   backSlot: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  attackingWeapon: {fileID: 0}
 --- !u!1 &1511393987046402105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3993,6 +3992,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 1511393987045913629}
+  shieldParentOverride: {fileID: 0}
+  staffParentOverride: {fileID: 0}
   currentWeapon: {fileID: 0}
   isLeftHandSlot: 0
   isRightHandSlot: 1
@@ -4028,6 +4029,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 5828012317058973447}
+  shieldParentOverride: {fileID: 0}
+  staffParentOverride: {fileID: 0}
   currentWeapon: {fileID: 0}
   isLeftHandSlot: 1
   isRightHandSlot: 0
@@ -5322,6 +5325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireBomb
       objectReference: {fileID: 0}
+    - target: {fileID: 3728505168432409539, guid: 15ad6f0d1890f35459e9b3f13e5bd056, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3728505168432409540, guid: 15ad6f0d1890f35459e9b3f13e5bd056, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -5414,6 +5421,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3bfda9c65e3ba4e8004b02ab106ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oh_light_attack_01: OH_Light_Attack_01
+  oh_light_attack_02: OH_Light_Attack_02
+  oh_heavy_attack_01: OH_Heavy_Attack_01
+  oh_heavy_attack_02: OH_Heavy_Attack_02
+  oh_light_attack_01_Left: OH_Light_Attack_01_Left
+  oh_light_attack_02_Left: OH_Light_Attack_02_Left
+  oh_heavy_attack_01_Left: OH_Heavy_Attack_01_Left
+  oh_heavy_attack_02_Left: OH_Heavy_Attack_02_Left
+  th_light_attack_01: TH_Light_Attack_01
+  th_light_attack_02: TH_Light_Attack_02
+  th_heavy_attack_01: TH_Heavy_Attack_01
+  th_heavy_attack_02: TH_Heavy_Attack_02
+  weapon_art: Weapon_Art
   lastAttack: 
 --- !u!114 &5828012317418732081
 MonoBehaviour:
@@ -5427,21 +5447,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a9ca88e5c1ed3409ad7c14cf0a8f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterWeaponSlotManager: {fileID: 0}
+  currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
   rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   leftWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
   currentConsumable: {fileID: 0}
   currentHelmetEquipment: {fileID: 0}
-  currentTorsoEquipment: {fileID: 0}
+  currentBodyEquipment: {fileID: 0}
   currentLegEquipment: {fileID: 0}
-  currentArmEquipment: {fileID: 0}
+  currentHandEquipment: {fileID: 0}
   weaponsInRightHandSlot:
   - {fileID: 0}
   weaponsInLeftHandSlot:
   - {fileID: 0}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
+  currentConsumableIndex: 0
   weaponsInventory: []
+  spellInventory: []
+  consumablesInventory: []
+  headEquipmentInventory: []
+  bodyEquipmentInventory: []
+  legEquipmentInventory: []
+  handEquipmentInventory: []
+  player: {fileID: 0}
 --- !u!114 &5828012317418732082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5454,10 +5484,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce93b28c9edd3544b9464631b868b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  characterAnimatorManager: {fileID: 0}
+  characterWeaponSlotManager: {fileID: 0}
+  characterStatsManager: {fileID: 0}
+  characterInventoryManager: {fileID: 0}
+  characterEffectsManager: {fileID: 0}
   lockOnTransform: {fileID: 0}
   backStabCollider: {fileID: 0}
   riposteCollider: {fileID: 0}
   isInteracting: 0
+  isDead: 0
   canBeRiposted: 0
   canBeParried: 0
   canDoCombo: 0
@@ -5466,6 +5503,8 @@ MonoBehaviour:
   isInvulnerable: 0
   isUsingRightHand: 0
   isUsingLeftHand: 0
+  isTwoHandingWeapon: 0
+  isUnarmed: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isSprinting: 0
@@ -5473,6 +5512,18 @@ MonoBehaviour:
   isGrounded: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
+  cameraHandler: {fileID: 0}
+  inputHandler: {fileID: 0}
+  uiManager: {fileID: 0}
+  playerWeaponSlotManager: {fileID: 0}
+  playerEquipmentManager: {fileID: 0}
+  playerCombatManager: {fileID: 0}
+  playerLocomotionManager: {fileID: 0}
+  playerInventoryManager: {fileID: 0}
+  playerStatsManager: {fileID: 0}
+  playerAnimatorManager: {fileID: 0}
+  playerEffectsManager: {fileID: 0}
+  blockingCollider: {fileID: 0}
   interactableUIGameObject: {fileID: 0}
   itemInteractableGameObject: {fileID: 0}
 --- !u!114 &5828012317418732083
@@ -5496,11 +5547,12 @@ MonoBehaviour:
   a_Input: 0
   x_Input: 0
   y_Input: 0
-  rb_Input: 0
-  rt_Input: 0
+  tap_rb_Input: 0
+  hold_rb_Input: 0
+  tap_rt_Input: 0
   lb_Input: 0
-  lt_Input: 0
-  critical_Attack_Input: 0
+  tap_lb_Input: 0
+  tap_lt_Input: 0
   jump_Input: 0
   inventory_Input: 0
   d_Pad_Up: 0
@@ -5515,9 +5567,11 @@ MonoBehaviour:
   sprintFlag: 0
   comboFlag: 0
   lockOnFlag: 0
+  fireFlag: 0
   inventoryFlag: 0
   rollInputTimer: 0
   critialAttackRayCastStartPoint: {fileID: 0}
+  canConsume: 1
 --- !u!114 &5828012317418732084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5531,10 +5585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: 0}
-  myTransform: {fileID: 0}
-  playerAnimationManager: {fileID: 0}
   rigidbody: {fileID: 0}
-  normalCamera: {fileID: 0}
   groundDetectionRayStartPoint: 0.5
   minimumDistanceNeededToBeginFall: 1
   groundDirectionRayDistance: 0.2
@@ -5631,17 +5682,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689859250334764db86d90477ee6a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthLevel: 10
+  characterName: Nameless
+  teamIDNumber: 0
   maxHealth: 0
   currentHealth: 0
-  staminaLevel: 10
   maxStamina: 0
   currentStamina: 0
-  focusLevel: 10
   maxFocusPoints: 0
   currentFocusPoints: 0
-  soulCount: 0
+  currentSoulCount: 0
   soulsAwardedOnDeath: 50
+  playerLevel: 1
+  healthLevel: 10
+  staminaLevel: 10
+  focusLevel: 10
+  poiseLevel: 10
+  strenghtLevel: 10
+  dexterityLevel: 10
+  intelligenceLevel: 10
+  faithLevel: 10
   totalPoiseDefense: 0
   offensivePoiseBonus: 0
   armorPoiseBonus: 0
@@ -5651,7 +5710,13 @@ MonoBehaviour:
   physicialDamageAbsorptionBody: 0
   physicialDamageAbsorptionLegs: 0
   physicialDamageAbsorptionHands: 0
-  isDead: 0
+  fireDamageAbsorptionHead: 0
+  fireDamageAbsorptionBody: 0
+  fireDamageAbsorptionLegs: 0
+  fireDamageAbsorptionHands: 0
+  healthBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  focusPointsBar: {fileID: 0}
   staminaRegenerationAmount: 1
   staminaRegenTimer: 0
 --- !u!1 &9020844720359664492
