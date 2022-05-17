@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ff18f93f67c50408c5a020e774e2f6, type: 3}
   m_Name: SpecialLeg
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 17035c204825f6340a252046ab6476fd, type: 3}
+  itemIcon: {fileID: 21300000, guid: 393301b608598bb48bd1f47732497a05, type: 3}
   itemName: Special Leg
   physicalDefense: 0
   legModelName: Leg Special

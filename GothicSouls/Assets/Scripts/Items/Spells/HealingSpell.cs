@@ -13,8 +13,14 @@ namespace SG
         {
             base.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager, isLeftHanded);
             GameObject instatiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, animatorHandler.transform);
-            animatorHandler.PlayTargetAnimation(spellAnimation, true, false, isLeftHanded);
-            Debug.Log("Attempting to cast spell...");
+            if (isLeftHanded)
+            {
+                animatorHandler.PlayTargetAnimation(spellLeftAnimation, true, false, isLeftHanded);
+            }
+            else
+            {
+                animatorHandler.PlayTargetAnimation(spellAnimation, true, false, isLeftHanded);
+            }
         }
 
         public override void SucsessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, CameraHandler cameraHandler, PlayerWeaponSlotManager weaponSlotManager, bool isLeftHanded)

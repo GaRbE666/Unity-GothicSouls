@@ -146,6 +146,10 @@ namespace SG
             playerManager.playerStatsManager.currentSoulCount = playerManager.playerStatsManager.currentSoulCount - soulsRequiredToLevelUp;
             playerManager.uiManager.soulCount.text = playerManager.playerStatsManager.currentSoulCount.ToString();
 
+            GameObject levelUpEffectClone = Instantiate(playerManager.playerEffectsManager.levelUpEffectPrefab, playerManager.playerEffectsManager.levelUpEffectPosition);
+
+            Destroy(levelUpEffectClone, 5f);
+
             gameObject.SetActive(false);
         }
 

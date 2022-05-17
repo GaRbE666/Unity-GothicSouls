@@ -39,6 +39,17 @@ namespace SG
                 
                 rightWeapon = weaponsInRightHandSlot[currentRightWeaponIndex];
                 characterWeaponSlotManager.LoadWeaponOnSlot(weaponsInRightHandSlot[currentRightWeaponIndex], false);
+
+                if (rightWeapon.weaponType == WeaponType.FaithCaster)
+                {
+                    player.playerInventoryManager.currentSpell = spellInventory[0];
+                    player.uiManager.quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
+                }
+                else if (rightWeapon.weaponType == WeaponType.PyromancyCaster)
+                {
+                    player.playerInventoryManager.currentSpell = spellInventory[1];
+                    player.uiManager.quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
+                }
             }
             else if(currentRightWeaponIndex == 0 && weaponsInRightHandSlot[0] == null)
             {
@@ -48,6 +59,17 @@ namespace SG
             {
                 rightWeapon = weaponsInRightHandSlot[currentRightWeaponIndex];
                 characterWeaponSlotManager.LoadWeaponOnSlot(weaponsInRightHandSlot[currentRightWeaponIndex], false);
+
+                if (rightWeapon.weaponType == WeaponType.FaithCaster)
+                {
+                    player.playerInventoryManager.currentSpell = spellInventory[0];
+                    player.uiManager.quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
+                }
+                else if (rightWeapon.weaponType == WeaponType.PyromancyCaster)
+                {
+                    player.playerInventoryManager.currentSpell = spellInventory[1];
+                    player.uiManager.quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
+                }
             }
             else if (currentRightWeaponIndex == 1 && weaponsInRightHandSlot[1] == null)
             {
@@ -59,6 +81,17 @@ namespace SG
                 currentRightWeaponIndex = 0;
                 rightWeapon = weaponsInRightHandSlot[currentRightWeaponIndex];
                 characterWeaponSlotManager.LoadWeaponOnSlot(weaponsInRightHandSlot[currentRightWeaponIndex], false);
+
+                if (rightWeapon.weaponType == WeaponType.FaithCaster)
+                {
+                    player.playerInventoryManager.currentSpell = spellInventory[0];
+                    player.uiManager.quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
+                }
+                else if (rightWeapon.weaponType == WeaponType.PyromancyCaster)
+                {
+                    player.playerInventoryManager.currentSpell = spellInventory[1];
+                    player.uiManager.quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
+                }
             }
         }
 

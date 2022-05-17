@@ -32,7 +32,7 @@ namespace SG
                     playerEffectsManager.poisonBuildup = 0;
                     playerEffectsManager.poisonAmount = playerEffectsManager.defaultPoisonAmount;
                     playerEffectsManager.isPoisoned = false;
-                    //Desactivar efecto de envenenado
+                    Destroy(playerEffectsManager.poisonEffectClone);
                 }
                 weaponSlotManager.rightHandSlot.UnloadWeapon();
             }

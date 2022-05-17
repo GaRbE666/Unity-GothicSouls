@@ -16,6 +16,8 @@ namespace SG
         public int amountToBeHealed;
         public int amountToBeFocusUp;
         public bool isHealth;
+        public Transform levelUpEffectPosition;
+        public GameObject levelUpEffectPrefab;
 
         protected override void Awake()
         {

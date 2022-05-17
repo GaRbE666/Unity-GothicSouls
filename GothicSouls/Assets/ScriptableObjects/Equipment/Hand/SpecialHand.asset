@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0ce4556851c664db7bd7b66ffedd93, type: 3}
   m_Name: SpecialHand
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 8325d4ef0a6eb3d43952aff8a06d9f45, type: 3}
+  itemIcon: {fileID: 21300000, guid: d1ba9ba77656d284b9388098e9773cf0, type: 3}
   itemName: Special Hand
   physicalDefense: 0
   handModelName: HandSpecial
