@@ -372,6 +372,9 @@ namespace SG
                 if (inventoryFlag)
                 {
                     player.isInteracting = true;
+                    //player.playerLocomotionManager.enabled = false;
+                    //player.playerLocomotionManager.rigidbody.isKinematic = true;
+                    //player.animator.enabled = false;
                     player.uiManager.OpenSelectWindow();
                     player.uiManager.UpdateUI();
                     player.uiManager.hudWindow.SetActive(false);
@@ -379,6 +382,9 @@ namespace SG
                 else
                 {
                     player.isInteracting = false;
+                    //player.playerLocomotionManager.enabled = true;
+                    //player.playerLocomotionManager.rigidbody.isKinematic = false;
+                    //player.animator.enabled = true;
                     player.uiManager.CloseSelectWindow();
                     player.uiManager.CloseAllInventoryWindows();
                     player.uiManager.hudWindow.SetActive(true);

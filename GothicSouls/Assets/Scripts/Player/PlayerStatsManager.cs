@@ -89,6 +89,7 @@ namespace SG
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
+                GetComponent<CapsuleCollider>().enabled = false;
                 player.isDead = true;
                 player.playerAnimatorManager.PlayTargetAnimation("Dead", true);
             }

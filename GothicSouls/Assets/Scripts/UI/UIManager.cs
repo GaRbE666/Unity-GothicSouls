@@ -20,6 +20,7 @@ namespace SG
         public GameObject selectWindow;
         public GameObject equipmentScreenWindow;
         public GameObject weaponInventoryWindow;
+        public GameObject optionsWindow;
         public GameObject levelUpWindow;
         public GameObject headEquipmentWindow;
         public GameObject bodyEquipmentWindow;
@@ -216,6 +217,7 @@ namespace SG
             bodyEquipmentWindow.SetActive(false);
             legEquipmentWindow.SetActive(false);
             handEquipmentWindow.SetActive(false);
+            optionsWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()

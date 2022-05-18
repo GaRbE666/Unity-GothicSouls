@@ -42,7 +42,7 @@ namespace SG
             animator.SetBool(isRotatingWithRootMotion, isrotatingWithRootMotionStatus);
             animator.SetBool(canRotate, canRotateStatus);
             animator.SetBool(isInvulnerable, isInvulnerableStatus);
-            animator.SetBool(isMirroredBool, isMirroredStatus);
+            //animator.SetBool(isMirroredBool, isMirroredStatus);
         }
     }
 }
