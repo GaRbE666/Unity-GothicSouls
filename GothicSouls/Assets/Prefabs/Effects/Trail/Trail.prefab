@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5288043407087572000}
   - component: {fileID: 5249358816469839392}
+  - component: {fileID: -2569598488836448995}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -58,6 +59,19 @@ MonoBehaviour:
   subdivisions: 4
   _base: {fileID: 5288043407087572000}
   _tip: {fileID: 2493960367792991523}
+--- !u!114 &-2569598488836448995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6299068674800778194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257f991932c6c974fa04d4f779bce0a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 5
 --- !u!1 &8552189848263760767
 GameObject:
   m_ObjectHideFlags: 0

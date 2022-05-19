@@ -376,7 +376,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 150
@@ -4849,7 +4849,7 @@ MonoBehaviour:
   currentSoulCount: 0
   soulsAwardedOnDeath: 50
   playerLevel: 1
-  healthLevel: 100
+  healthLevel: 10
   staminaLevel: 10
   focusLevel: 10
   poiseLevel: 10
@@ -4905,11 +4905,14 @@ MonoBehaviour:
   leftWeaponFX: {fileID: 0}
   body: {fileID: 0}
   isPoisoned: 0
+  poisonEffect: {fileID: 0}
+  poisonEffectPosition: {fileID: 0}
   poisonBuildup: 0
   poisonAmount: 100
   defaultPoisonAmount: 0
   poisonTimer: 2
   poisonDamage: 1
+  poisonEffectClone: {fileID: 0}
 --- !u!114 &571978434
 MonoBehaviour:
   m_ObjectHideFlags: 0

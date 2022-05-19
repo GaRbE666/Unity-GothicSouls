@@ -25,5 +25,10 @@ namespace SG
         {
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider);
         }
+
+        private void Update()
+        {
+            enemy.enemyRigidBody.AddForce(Vector3.down * 50);
+        }
     }
 }

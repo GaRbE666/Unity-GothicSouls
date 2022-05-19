@@ -19,6 +19,7 @@ namespace SG
             if (useStartPoint)
             {
                 player.transform.position = startPoint.position;
+                player.transform.rotation = startPoint.rotation;
                 StartingNewGame();
             }
         }
