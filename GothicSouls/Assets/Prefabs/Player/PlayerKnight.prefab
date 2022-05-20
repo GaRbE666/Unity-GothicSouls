@@ -24,11 +24,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250020394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.024, z: 1.263}
+  m_LocalPosition: {x: 0, y: 0.024, z: 0.304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 139502229593646819}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &760812525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 760812526}
+  m_Layer: 11
+  m_Name: PoisonEffectPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &760812526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760812525}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.155, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 139502229593646819}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1811976675
 GameObject:
@@ -652,6 +682,7 @@ Transform:
   - {fileID: 139502229560430278}
   - {fileID: 139502228415850479}
   - {fileID: 250020395}
+  - {fileID: 760812526}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -765,19 +796,19 @@ MonoBehaviour:
   characterWeaponSlotManager: {fileID: 3331410170774394688}
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 11400000, guid: e3dcfbede5d714e4391dc8dffbfe1333, type: 2}
-  rightWeapon: {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
-  leftWeapon: {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   currentConsumable: {fileID: 11400000, guid: c7087d9af53a9d14d999e68f4c6d7b87, type: 2}
   currentHelmetEquipment: {fileID: 11400000, guid: 55c776595098907448f8f0492550db88, type: 2}
   currentBodyEquipment: {fileID: 11400000, guid: fafe2198b063fc746871ca8fffa5712c, type: 2}
   currentLegEquipment: {fileID: 11400000, guid: 2f1bef5b93ccade4da56bea6eba4ee57, type: 2}
   currentHandEquipment: {fileID: 11400000, guid: e15ec427c2960d64a9ffea1825e91b15, type: 2}
   weaponsInRightHandSlot:
-  - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
-  - {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
+  - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+  - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   weaponsInLeftHandSlot:
-  - {fileID: 11400000, guid: 39062812778a1d142a2d5585d946d7f5, type: 2}
-  - {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
+  - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+  - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   currentConsumableIndex: 0
@@ -846,7 +877,7 @@ MonoBehaviour:
   currentFocusPoints: 0
   currentSoulCount: 8500
   soulsAwardedOnDeath: 50
-  playerLevel: 1
+  playerLevel: 10
   healthLevel: 10
   staminaLevel: 10
   focusLevel: 10
@@ -1016,11 +1047,14 @@ MonoBehaviour:
   leftWeaponFX: {fileID: 0}
   body: {fileID: 0}
   isPoisoned: 0
+  poisonEffect: {fileID: 4277938209589020901, guid: 51db09293450c1e4f919b32f46f09ea9, type: 3}
+  poisonEffectPosition: {fileID: 760812526}
   poisonBuildup: 0
   poisonAmount: 100
   defaultPoisonAmount: 100
   poisonTimer: 2
   poisonDamage: 15
+  poisonEffectClone: {fileID: 0}
   currentParticleFX: {fileID: 0}
   instantiatedFXModel: {fileID: 0}
   amountToBeHealed: 0
