@@ -7,6 +7,7 @@ public class LevelNamePart : MonoBehaviour
     public TextMeshProUGUI levelText;
     public string nameLevelText;
     public Animator animatorText;
+    public AudioSource audioSource;
 
     private bool hasEntered;
 
@@ -33,6 +34,7 @@ public class LevelNamePart : MonoBehaviour
     private IEnumerator LevelTextNameCoroutine()
     {
         animatorText.SetBool("textAppear", true);
+        audioSource.Play();
         yield return new WaitForSeconds(3f);
         animatorText.SetBool("textAppear", false);
         yield return new WaitForSeconds(2f);

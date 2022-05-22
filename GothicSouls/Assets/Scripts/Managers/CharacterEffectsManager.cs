@@ -9,6 +9,7 @@ namespace SG
         CharacterManager character;
         public WeaponFX rightWeaponFX;
         public WeaponFX leftWeaponFX;
+        BloodPrefabs bloodPrefabs;
 
         [Header("Poison")]
         public GameObject body;
@@ -27,6 +28,7 @@ namespace SG
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();
+            bloodPrefabs = GetComponent<BloodPrefabs>();
         }
 
         public virtual void PlayWeaponFX(bool isLeft)
@@ -45,6 +47,12 @@ namespace SG
                     leftWeaponFX.PlayWeaponFX();
                 }
             }
+            
+        }
+
+        public void InstantiateBloodAnim()
+        {
+            bloodPrefabs.InstantiateBlood(bloodPrefabs.bloodInstancePosition);
         }
 
         public virtual void HandleAllBuildUpEffects()

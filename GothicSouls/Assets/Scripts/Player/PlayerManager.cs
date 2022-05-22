@@ -25,6 +25,7 @@ namespace SG
         public PlayerStatsManager playerStatsManager;
         public PlayerAnimatorManager playerAnimatorManager;
         public PlayerEffectsManager playerEffectsManager;
+        public PlayerAudioManager playerAudioManager;
 
         [Header("Colliders")]
         public BlockingCollider blockingCollider;
@@ -54,6 +55,7 @@ namespace SG
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
+            playerAudioManager = GetComponent<PlayerAudioManager>();
         }
 
         private void Update()

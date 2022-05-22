@@ -69,12 +69,6 @@ namespace SG
             animator.SetBool("isDead", isDead);
         }
 
-        //protected override void FixedUpdate()
-        //{
-        //    base.FixedUpdate();
-        //    enemyEffectsManager.HandleAllBuildUpEffects();
-        //}
-
         private void LateUpdate()
         {
             navmeshAgent.transform.localPosition = Vector3.zero;

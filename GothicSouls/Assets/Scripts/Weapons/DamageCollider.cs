@@ -60,6 +60,11 @@ namespace SG
                 BloodPrefabs bloodPrefabs = collision.GetComponent<BloodPrefabs>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
+                if (characterManager.isDead)
+                {
+                    return;
+                }
+
                 if (characterManager != null)
                 {
                     if (characterStats.teamIDNumber == teamIDNumber)

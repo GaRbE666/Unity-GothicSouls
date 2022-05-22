@@ -17,6 +17,8 @@ namespace SG
         public Rigidbody bombRigidBody;
         private bool hasCollided = false;
         public GameObject impactParticles;
+        public AudioSource audioSource;
+        public AudioClip explosion;
         #endregion
 
         protected override void Awake()
@@ -30,6 +32,7 @@ namespace SG
             if (!hasCollided)
             {
                 hasCollided = true;
+                audioSource.PlayOneShot(explosion);
                 impactParticles = Instantiate(impactParticles, transform.position, Quaternion.identity);
                 Explode();
 

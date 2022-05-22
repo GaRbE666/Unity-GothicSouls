@@ -106,7 +106,12 @@ namespace SG
         {
             currentHealth = 0;
             enemy.enemyAnimatorManager.PlayTargetAnimation("Dead", true);
-            enemy.isDead = true; 
+            enemy.isDead = true;
+            enemy.enabled = false;
+            enemy.backStabCollider = null;
+            enemy.riposteCollider = null;
+            enemy.characterAudioManager.audioSource.Stop();
+            enemy.characterAudioManager.audioSource.enabled = false;
         }
     }
 }

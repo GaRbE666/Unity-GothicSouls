@@ -26,6 +26,7 @@ namespace SG
         public GameObject bodyEquipmentWindow;
         public GameObject legEquipmentWindow;
         public GameObject handEquipmentWindow;
+        public GameObject deathTextWindow;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;

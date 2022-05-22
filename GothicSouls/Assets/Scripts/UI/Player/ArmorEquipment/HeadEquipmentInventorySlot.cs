@@ -8,13 +8,15 @@ namespace SG
     public class HeadEquipmentInventorySlot : MonoBehaviour
     {
         UIManager uiManager;
+        PlayerManager player;
 
         public Image icon;
         HelmetEquipment item;
 
         private void Awake()
         {
-            uiManager = GetComponentInParent<UIManager>(); ;
+            uiManager = GetComponentInParent<UIManager>();
+            player = FindObjectOfType<PlayerManager>();
         }
 
         public void AddItem(HelmetEquipment newItem)
@@ -39,6 +41,7 @@ namespace SG
             {
                 if (uiManager.player.playerInventoryManager.currentHelmetEquipment != null)
                 {
+                    player.playerAudioManager.PlayEquipArmor();
                     uiManager.player.playerInventoryManager.headEquipmentInventory.Add(uiManager.player.playerInventoryManager.currentHelmetEquipment);
                 }
 

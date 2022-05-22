@@ -6,17 +6,17 @@ namespace SG
 {
     public class EnemyEffectsManager : CharacterEffectsManager
     {
-        BloodPrefabs bloodPrefabs;
+        //BloodPrefabs bloodPrefabs;
 
         protected override void Awake()
         {
             base.Awake();
-            bloodPrefabs = GetComponent<BloodPrefabs>();
+            //bloodPrefabs = GetComponent<BloodPrefabs>();
         }
 
-        public void InstantiateBloodAnim()
-        {
-            bloodPrefabs.InstantiateBlood(bloodPrefabs.bloodInstancePosition);
-        }
+        //public void InstantiateBloodAnim()
+        //{
+        //    bloodPrefabs.InstantiateBlood(bloodPrefabs.bloodInstancePosition);
+        //}
     }
 }

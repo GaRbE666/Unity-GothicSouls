@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace SG
 {
@@ -10,6 +11,7 @@ namespace SG
         [SerializeField] private bool useStartPoint;
         [SerializeField] private Transform startPoint;
         [SerializeField] private PlayerManager player;
+        public UIManager uiManager;
         public bool isNewGame;
         public float timePlayed;
         public string timeFormated;
@@ -43,6 +45,11 @@ namespace SG
             float seconds = Mathf.FloorToInt(timePlayed % 60);
 
             timeFormated = string.Format("{0:00} : {0:00} : {1:00}", minutes, seconds);
+        }
+
+        public void ResetLevel()
+        {
+            SceneManager.LoadScene("Level01");
         }
     }
 }

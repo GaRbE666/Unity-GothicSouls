@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace SG
 {
@@ -10,6 +11,13 @@ namespace SG
     {
         public Image loadingScreen;
         public GameObject loadingIcon;
+        public EventSystem inputsSystem;
+        public Animator fadeAnimator;
+
+        private void Awake()
+        {
+            fadeAnimator.SetTrigger("fadeOut");
+        }
 
         private void Start()
         {
@@ -27,7 +35,22 @@ namespace SG
 
         public void GoToStartNewGame(string sceneName)
         {
-            StartCoroutine(LoadAsynchronously(sceneName));
+            StartCoroutine(Delay(LoadAsynchronously(sceneName)));
+        }
+
+        public void GoToMainMenu(string sceneName)
+        {
+            StartCoroutine(Delay(LoadAsynchronously(sceneName)));
+        }
+
+        public void GoToOptionsScene(string sceneName)
+        {
+            StartCoroutine(Delay(LoadAsynchronously(sceneName)));
+        }
+
+        public void GoToExitGame()
+        {
+            Application.Quit();
         }
 
         private IEnumerator LoadAsynchronously(string sceneName)
@@ -41,19 +64,13 @@ namespace SG
             }
         }
 
-        public void GoToMainMenu(string sceneName)
+        private IEnumerator Delay(IEnumerator coroutine)
         {
-            StartCoroutine(LoadAsynchronously(sceneName));
-        }
-
-        public void GoToOptionsScene(string sceneName)
-        {
-            StartCoroutine(LoadAsynchronously(sceneName));
-        }
-
-        public void GoToExitGame()
-        {
-            Application.Quit();
+            fadeAnimator.SetTrigger("fadeIn");
+            inputsSystem.enabled = false;
+            yield return new WaitForSeconds(2f);
+            inputsSystem.enabled = true;
+            StartCoroutine(coroutine);
         }
     }
 }

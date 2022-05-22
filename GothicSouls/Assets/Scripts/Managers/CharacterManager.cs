@@ -13,11 +13,12 @@ namespace SG
         public CharacterStatsManager characterStatsManager;
         public CharacterInventoryManager characterInventoryManager;
         public CharacterEffectsManager characterEffectsManager;
+        public CharacterAudioManager characterAudioManager;
 
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
 
-        [Header("Combar Colliders")]
+        [Header("Combat Colliders")]
         public CriticalDamageCollider backStabCollider;
         public CriticalDamageCollider riposteCollider;
 
@@ -62,6 +63,7 @@ namespace SG
             characterStatsManager = GetComponent<CharacterStatsManager>();
             characterInventoryManager = GetComponent<CharacterInventoryManager>();
             characterEffectsManager = GetComponent<CharacterEffectsManager>();
+            characterAudioManager = GetComponent<CharacterAudioManager>();
         }
 
         public virtual void UpdateWhichHandCharacterIsUsing(bool usingRightHand)

@@ -73,6 +73,10 @@ namespace SG
                 currentHealth = 0;
                 player.isDead = true;
                 player.playerAnimatorManager.PlayTargetAnimation("Dead", true);
+                player.enabled = false;
+                player.backStabCollider = null;
+                player.riposteCollider = null;
+                player.uiManager.deathTextWindow.SetActive(true);
             }
         }
 
@@ -92,6 +96,10 @@ namespace SG
                 GetComponent<CapsuleCollider>().enabled = false;
                 player.isDead = true;
                 player.playerAnimatorManager.PlayTargetAnimation("Dead", true);
+                player.enabled = false;
+                player.backStabCollider = null;
+                player.riposteCollider = null;
+                player.uiManager.deathTextWindow.SetActive(true);
             }
         }
 

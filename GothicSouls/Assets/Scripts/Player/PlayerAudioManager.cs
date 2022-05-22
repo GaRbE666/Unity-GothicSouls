@@ -4,16 +4,8 @@ using UnityEngine;
 
 namespace SG
 {
-    public class PlayerAudioManager : MonoBehaviour
+    public class PlayerAudioManager : CharacterAudioManager
     {
-        public AudioSource audioSource;
-
-        [Header("FotSteps")]
-        public AudioClip walkStepGround;
-        public AudioClip runStepGround;
-        public AudioClip walkStepWood;
-        public AudioClip runStepWood;
-
         [Header("Inventory")]
         public AudioClip openInventory;
         public AudioClip equipArmor;
@@ -30,29 +22,7 @@ namespace SG
         public AudioClip drinkEstus;
         public AudioClip illusionaryWall;
         public AudioClip openChest;
-
-
-        #region STEPS
-        public void PlayWalkStepGround()
-        {
-            audioSource.PlayOneShot(walkStepGround, 0.3f);
-        }
-
-        public void PlayRunStepGround()
-        {
-            audioSource.PlayOneShot(runStepGround, 0.3f);
-        }
-
-        public void PlayWalkStepWood()
-        {
-            audioSource.PlayOneShot(walkStepWood);
-        }
-
-        public void PlayRunStepWood()
-        {
-            audioSource.PlayOneShot(runStepWood);
-        }
-        #endregion
+        public AudioClip explosion;
 
         #region INVENTORY
         public void PlayOpenInventory()
@@ -104,6 +74,11 @@ namespace SG
         public void PlayOpenChest()
         {
             audioSource.PlayOneShot(openChest);
+        }
+
+        public void PlayExplosion()
+        {
+            audioSource.PlayOneShot(explosion);
         }
         #endregion
     }
