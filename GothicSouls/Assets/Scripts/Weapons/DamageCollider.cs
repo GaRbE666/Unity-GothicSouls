@@ -107,6 +107,7 @@ namespace SG
                     {
                         characterStats.TakeDamage(physicalDamage, 0, currentDamageAnimation);
                     }
+                    characterManager.characterAudioManager.PlayRandomHit();
                     bloodPrefabs.InstantiateBlood(bloodPrefabs.bloodInstancePosition);
                 }
             }

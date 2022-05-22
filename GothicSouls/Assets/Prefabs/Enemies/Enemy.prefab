@@ -5000,6 +5000,12 @@ MonoBehaviour:
   criticalHit1: {fileID: 8300000, guid: e5096b3af2fb9e5488ba791dff9194d9, type: 3}
   criticalHit2: {fileID: 8300000, guid: 06628d9a5e2add54591df58a1ca00b2c, type: 3}
   backstep: {fileID: 8300000, guid: 831bd3ab2224a37478a8c8b121282f89, type: 3}
+  spinEffect: {fileID: 8300000, guid: 8799ba83f4292e04096b69080c57a3c3, type: 3}
+  hits:
+  - {fileID: 8300000, guid: 7b4fa96cb5e947648aac309de7c5ab14, type: 3}
+  - {fileID: 8300000, guid: ba964302daa940846a55214be58e5f8b, type: 3}
+  - {fileID: 8300000, guid: c6964fe8421cbfe45b3ebf0566712dd9, type: 3}
+  - {fileID: 8300000, guid: af9c1f52447000a48bd8acb7821875ff, type: 3}
 --- !u!82 &1284098230
 AudioSource:
   m_ObjectHideFlags: 0

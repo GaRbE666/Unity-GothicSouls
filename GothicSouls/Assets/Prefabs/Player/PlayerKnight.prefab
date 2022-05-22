@@ -806,11 +806,11 @@ MonoBehaviour:
   currentLegEquipment: {fileID: 11400000, guid: 2f1bef5b93ccade4da56bea6eba4ee57, type: 2}
   currentHandEquipment: {fileID: 11400000, guid: e15ec427c2960d64a9ffea1825e91b15, type: 2}
   weaponsInRightHandSlot:
-  - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
-  - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+  - {fileID: 11400000, guid: 104199d2bb4078d40b6a8ac9fb491a46, type: 2}
+  - {fileID: 11400000, guid: 86819549b2d1b5c4995c266beef6ec1e, type: 2}
   weaponsInLeftHandSlot:
   - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
-  - {fileID: 11400000, guid: 8cf4a16bccfe64b49b416d760cca3b25, type: 2}
+  - {fileID: 11400000, guid: 19c4f7871f8787a49a5f9a6a385782d6, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   currentConsumableIndex: 0
@@ -823,10 +823,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e28dba7d26c094c438704c4d6d56b15c, type: 2}
   - {fileID: 11400000, guid: 3d3c1690872a1ef4b841959cedc84eb6, type: 2}
   - {fileID: 11400000, guid: 226d1ff9a925e3246adf798a5f0214a0, type: 2}
-  headEquipmentInventory: []
-  bodyEquipmentInventory: []
-  legEquipmentInventory: []
-  handEquipmentInventory: []
+  headEquipmentInventory:
+  - {fileID: 11400000, guid: 8a0a8b5959ad409439524ba0926d51b3, type: 2}
+  bodyEquipmentInventory:
+  - {fileID: 11400000, guid: be217778de4acc64f8cc9eb38f4c6e28, type: 2}
+  legEquipmentInventory:
+  - {fileID: 11400000, guid: b64e1aa73e3245945a96db12b475e76b, type: 2}
+  handEquipmentInventory:
+  - {fileID: 11400000, guid: 3f0a3fc803cc1324d8edb3a2af07bcbe, type: 2}
   player: {fileID: 0}
 --- !u!114 &139502229593646822
 MonoBehaviour:
@@ -1117,17 +1121,26 @@ MonoBehaviour:
   runStepGround: {fileID: 8300000, guid: a41888a2532a08b41b6ac29f7e04f8a4, type: 3}
   walkStepWood: {fileID: 8300000, guid: d98db764b50a0aa4895f05d2d1c87a10, type: 3}
   runStepWood: {fileID: 8300000, guid: 3f98374712a1eae4b91964cb3ffb30d1, type: 3}
+  parried: {fileID: 8300000, guid: d74f46c6858af8143be17e78a2703c70, type: 3}
+  criticalHit1: {fileID: 8300000, guid: e5096b3af2fb9e5488ba791dff9194d9, type: 3}
+  criticalHit2: {fileID: 8300000, guid: 06628d9a5e2add54591df58a1ca00b2c, type: 3}
+  backstep: {fileID: 8300000, guid: 831bd3ab2224a37478a8c8b121282f89, type: 3}
+  spinEffect: {fileID: 8300000, guid: 8799ba83f4292e04096b69080c57a3c3, type: 3}
+  hits:
+  - {fileID: 8300000, guid: 7b4fa96cb5e947648aac309de7c5ab14, type: 3}
+  - {fileID: 8300000, guid: ba964302daa940846a55214be58e5f8b, type: 3}
+  - {fileID: 8300000, guid: c6964fe8421cbfe45b3ebf0566712dd9, type: 3}
+  - {fileID: 8300000, guid: af9c1f52447000a48bd8acb7821875ff, type: 3}
   openInventory: {fileID: 8300000, guid: 039de82af74374a4e8087b2f6136bf64, type: 3}
   equipArmor: {fileID: 8300000, guid: c5ec4a88f93e8bf48a0a97ed399514bb, type: 3}
   healMagic: {fileID: 8300000, guid: 860d9f725fbf1194c81fa80ea7dc1878, type: 3}
   fireMagic: {fileID: 8300000, guid: 68945c9687aa9804791447072f1f43a4, type: 3}
   drawSword: {fileID: 8300000, guid: 07febf6818133a74ba1d02a2477a4630, type: 3}
   shieldBlock: {fileID: 8300000, guid: e779c42dae2b4e84f9aebb90ac1d96b0, type: 3}
-  spinEffect: {fileID: 0}
   drinkEstus: {fileID: 8300000, guid: 544c7d06fd65e474a8c9e25f090d4a68, type: 3}
   illusionaryWall: {fileID: 8300000, guid: 70c8b46970832554f96455e56c0378fc, type: 3}
   openChest: {fileID: 8300000, guid: 3219573dc608109498aa77514b33342c, type: 3}
-  explosion: {fileID: 0}
+  explosion: {fileID: 8300000, guid: dedd9285ee22d6d4fa4b43e36b9ffbb0, type: 3}
 --- !u!82 &511714134
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5129,7 +5142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2629126421582484229}
   m_LocalRotation: {x: -0.73925686, y: -0.12013469, z: -0.1231325, w: -0.65108013}
-  m_LocalPosition: {x: 0.0026168823, y: -0.014576018, z: 0.6834745}
+  m_LocalPosition: {x: 0.0026245117, y: -0.014576018, z: 0.6834745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2629126421582385019}

@@ -7,6 +7,7 @@ namespace SG
     public class PassThroughFogWall : Interactable
     {
         WorldEventManager worldEventManager;
+        public AudioSource audioSource;
 
         private void Awake()
         {
@@ -17,6 +18,7 @@ namespace SG
         {
             base.Interact(playerManager);
             playerManager.PassThroughFogWallInteraction(transform);
+            audioSource.Play();
             worldEventManager.ActivateBossFight();
             Destroy(this);
         }

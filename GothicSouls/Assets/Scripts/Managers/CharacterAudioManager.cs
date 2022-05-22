@@ -22,6 +22,7 @@ namespace SG
 
         [Header("Weapon")]
         public AudioClip spinEffect;
+        public List<AudioClip> hits;
 
         #region STEPS
         public void PlayWalkStepGround()
@@ -71,6 +72,13 @@ namespace SG
         public void PlaySpinEffect()
         {
             audioSource.PlayOneShot(spinEffect, .5f);
+        }
+
+        public void PlayRandomHit()
+        {
+            int random = Random.Range(0, hits.Count);
+
+            audioSource.PlayOneShot(hits[random]);
         }
         #endregion
     }

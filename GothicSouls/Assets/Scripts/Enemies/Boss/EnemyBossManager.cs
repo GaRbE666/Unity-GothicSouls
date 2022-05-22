@@ -10,6 +10,8 @@ namespace SG
         public string bossName;
         UIBossHealthBar bossHealthBar;
         BossCombatStanceState bossCombatStanceState;
+        public WorldEventManager worldEventManager;
+        public bool hasPhaseShifted;
 
         [Header("Second Phase FX")]
         public GameObject particleFX;
@@ -31,10 +33,17 @@ namespace SG
         {
             bossHealthBar.SetBossCurrentHealth(currentHealth);
 
-            if (currentHealth <= maxHealth / 2 && !bossCombatStanceState.hasPhaseShifted)
+            if (currentHealth <= maxHealth / 2 && !hasPhaseShifted)
             {
-                bossCombatStanceState.hasPhaseShifted = true;
+                hasPhaseShifted = true;
                 ShiftToSecondPhase();
+            }
+
+            if (currentHealth <= 0)
+            {
+                enemy.enemyAnimatorManager.PlayTargetAnimation("Dead", true);
+                worldEventManager.BossHasBeenDefeated();
+                bossHealthBar.gameObject.SetActive(false);
             }
         }
 
