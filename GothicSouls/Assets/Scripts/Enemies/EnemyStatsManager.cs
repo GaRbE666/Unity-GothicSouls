@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SG
+namespace JS
 {
     public class EnemyStatsManager : CharacterStatsManager
     {
         #region FIELDS
         EnemyManager enemy;
         public EnemyHealthBar enemyHealthBar;
+        public CameraHandler cameraHandler;
+        public PlayerManager player;
 
         public bool isBoss;
         #endregion
@@ -18,6 +20,8 @@ namespace SG
         {
             base.Awake();
             enemy = GetComponent<EnemyManager>();
+            cameraHandler = FindObjectOfType<CameraHandler>();
+            player = FindObjectOfType<PlayerManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
         }
@@ -102,8 +106,9 @@ namespace SG
             }
         }
 
-        private void HandleDeath()
+        public void HandleDeath()
         {
+            ClearLockOnTargetEnemy();
             currentHealth = 0;
             enemy.enemyAnimatorManager.PlayTargetAnimation("Dead", true);
             enemy.isDead = true;
@@ -112,6 +117,33 @@ namespace SG
             enemy.riposteCollider = null;
             enemy.characterAudioManager.audioSource.Stop();
             enemy.characterAudioManager.audioSource.enabled = false;
+            StartCoroutine(DestroyThisEnemy());
+        }
+
+        public void HandleDeadAnimation()
+        {
+            ClearLockOnTargetEnemy();
+            currentHealth = 0;
+            enemy.isDead = true;
+            enemy.enabled = false;
+            enemy.backStabCollider = null;
+            enemy.riposteCollider = null;
+            enemy.characterAudioManager.audioSource.Stop();
+            enemy.characterAudioManager.audioSource.enabled = false;
+            StartCoroutine(DestroyThisEnemy());
+        }
+
+        public IEnumerator DestroyThisEnemy()
+        {
+            yield return new WaitForSeconds(3f);
+            Destroy(this.gameObject);
+        }
+
+        public void ClearLockOnTargetEnemy()
+        {
+            player.inputHandler.lockOnInput = false;
+            player.inputHandler.lockOnFlag = false;
+            cameraHandler.ClearLockOnTargets();
         }
     }
 }

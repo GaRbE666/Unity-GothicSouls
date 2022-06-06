@@ -16,23 +16,23 @@ MonoBehaviour:
   itemName: Viking Sword
   modelPrefab: {fileID: 1924920441546308, guid: 4b64f29b658691645b21cd47ffcf8d53, type: 3}
   isUnarmed: 0
-  weaponController: {fileID: 0}
+  weaponController: {fileID: 22100000, guid: 5b92ec5b33070f14a90a4bda3c0215c8, type: 2}
   offHandIdleAnimation: Left_Arm_Idle_01
   weaponType: 4
   physicalDamage: 25
   fireDamage: 0
   criticalDamageMultiplier: 4
-  poiseBreak: 0
-  offensivePoiseBonus: 0
-  physicalDamageAbsorption: 80
+  poiseBreak: 25
+  offensivePoiseBonus: 10
+  physicalDamageAbsorption: 0
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
   hold_RB_Action: {fileID: 11400000, guid: d690f7ae57352bb4098bc49f68efa972, type: 2}
   tap_RB_Action: {fileID: 11400000, guid: 9f1988463b1b60f49a9f9d507dcf666f, type: 2}
-  tap_LB_Action: {fileID: 0}
+  tap_LB_Action: {fileID: 11400000, guid: 13d5656c65199854ca23de16b79639eb, type: 2}
   hold_LB_Action: {fileID: 0}
   tap_RT_Action: {fileID: 11400000, guid: 30fc0f32ffd40864bba50f94e7a28fed, type: 2}
   hold_RT_Action: {fileID: 0}
-  tap_LT_Action: {fileID: 11400000, guid: 9f1988463b1b60f49a9f9d507dcf666f, type: 2}
+  tap_LT_Action: {fileID: 11400000, guid: bfbcc394f697c0b43ba730e6e0545d35, type: 2}
   hold_LT_Action: {fileID: 0}

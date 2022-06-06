@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace SG
+namespace JS
 {
     public class MenuController : MonoBehaviour
     {
@@ -13,6 +13,7 @@ namespace SG
         public GameObject loadingIcon;
         public EventSystem inputsSystem;
         public Animator fadeAnimator;
+        public AudioSource audioSource;
 
         private void Awake()
         {
@@ -31,6 +32,11 @@ namespace SG
                 loadingIcon.SetActive(false);
             }
 
+            if (audioSource != null)
+            {
+                StartCoroutine(FadeSong(audioSource, 1f, 1));
+            }
+           
         }
 
         public void GoToStartNewGame(string sceneName)
@@ -62,6 +68,12 @@ namespace SG
             {
                 yield return null;
             }
+
+            if (audioSource != null)
+            {
+                StartCoroutine(FadeSong(audioSource, 1f, 0));
+            }
+            
         }
 
         private IEnumerator Delay(IEnumerator coroutine)
@@ -71,6 +83,21 @@ namespace SG
             yield return new WaitForSeconds(2f);
             inputsSystem.enabled = true;
             StartCoroutine(coroutine);
+        }
+
+        private IEnumerator FadeSong(AudioSource audioSource, float duration, float targetVolume)
+        {
+            float currentTime = 0;
+            float start = audioSource.volume;
+
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+                yield return null;
+            }
+
+            yield break;
         }
     }
 }

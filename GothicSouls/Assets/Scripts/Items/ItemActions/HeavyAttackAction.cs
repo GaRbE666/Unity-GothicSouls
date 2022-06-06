@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SG
+namespace JS
 {
     [CreateAssetMenu(menuName = "Item Actions/Heavy Attack Action")]
     public class HeavyAttackAction : ItemAction

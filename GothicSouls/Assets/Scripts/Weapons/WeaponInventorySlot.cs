@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SG
+namespace JS
 {
     public class WeaponInventorySlot : MonoBehaviour
     {
@@ -64,6 +64,7 @@ namespace SG
                 return;
             }
 
+            uiManager.player.playerAudioManager.PlayDrawSword();
             uiManager.player.playerInventoryManager.rightWeapon = uiManager.player.playerInventoryManager.weaponsInRightHandSlot[uiManager.player.playerInventoryManager.currentRightWeaponIndex];
             uiManager.player.playerInventoryManager.leftWeapon = uiManager.player.playerInventoryManager.weaponsInLeftHandSlot[uiManager.player.playerInventoryManager.currentLeftWeaponIndex];
 

@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SG
+namespace JS
 {
     public class LegEquipmentInventorySlot : MonoBehaviour
     {
         UIManager uiManager;
+        PlayerManager player;
 
         public Image icon;
         LegEquipment item;
 
         private void Awake()
         {
-            uiManager = GetComponentInParent<UIManager>(); ;
+            uiManager = GetComponentInParent<UIManager>();
+            player = FindObjectOfType<PlayerManager>();
         }
 
         public void AddItem(LegEquipment newItem)
@@ -39,6 +41,7 @@ namespace SG
             {
                 if (uiManager.player.playerInventoryManager.currentLegEquipment != null)
                 {
+                    player.playerAudioManager.PlayEquipArmor();
                     uiManager.player.playerInventoryManager.legEquipmentInventory.Add(uiManager.player.playerInventoryManager.currentLegEquipment);
                 }
 

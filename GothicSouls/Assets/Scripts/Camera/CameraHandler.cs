@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SG
+namespace JS
 {
     public class CameraHandler : MonoBehaviour
     {
@@ -170,8 +170,7 @@ namespace SG
                     {
                         if (Physics.Linecast(playerManager.lockOnTransform.position, character.lockOnTransform.position, out hit))
                         {
-                            Debug.DrawLine(playerManager.lockOnTransform.position, character.lockOnTransform.position);
-
+                            
                             if (hit.transform.gameObject.layer == enviromentLayer)
                             {
                                 //Cannot lock onto target, object in the way
@@ -197,9 +196,6 @@ namespace SG
 
                 if (inputHandler.lockOnFlag)
                 {
-                    //Vector3 relativeEnemyPosition = currentLockOnTarget.transform.InverseTransformPoint(availableTargets[h].transform.position);
-                    //var distanceFromLeftTarget = currentLockOnTarget.transform.position.x - availableTargets[h].transform.position.x;
-                    //var distanceFromRightTarget = currentLockOnTarget.transform.position.x + availableTargets[h].transform.position.x;
                     Vector3 relativeEnemyPosition = inputHandler.transform.InverseTransformPoint(availableTargets[h].transform.position);
                     var distanceFromLeftTarget = relativeEnemyPosition.x;
                     var distanceFromRightTarget = relativeEnemyPosition.x;

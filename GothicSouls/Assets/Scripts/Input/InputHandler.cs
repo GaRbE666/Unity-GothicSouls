@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SG
+namespace JS
 {
     public class InputHandler : MonoBehaviour
     {

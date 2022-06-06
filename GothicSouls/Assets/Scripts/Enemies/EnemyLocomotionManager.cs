@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace SG
+namespace JS
 {
     public class EnemyLocomotionManager : MonoBehaviour
     {

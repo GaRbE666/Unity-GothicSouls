@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SG
+namespace JS
 {
     [CreateAssetMenu(menuName = "Item Actions/Parry Action")]
     public class ParryAction : ItemAction

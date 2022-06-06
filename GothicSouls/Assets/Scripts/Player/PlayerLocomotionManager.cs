@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SG
+namespace JS
 {
     public class PlayerLocomotionManager : MonoBehaviour
     {
@@ -28,7 +28,7 @@ namespace SG
         [Header("Stamina Costs")]
         [SerializeField] private int rollStaminaCost = 15;
         private int backstepStaminaCost = 12;
-        float sprintStaminaCost = .6f;
+        public float sprintStaminaCost = 1f;
 
         Vector3 normalVector;
         Vector3 targetPosition;

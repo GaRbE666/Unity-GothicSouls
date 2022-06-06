@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SG
+namespace JS
 {
     [CreateAssetMenu(menuName = "A.I/Enemy Actions/Attack Action")]
     public class EnemyAttackAction : EnemyAction

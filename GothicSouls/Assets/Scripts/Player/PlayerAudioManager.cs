@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SG
+namespace JS
 {
     public class PlayerAudioManager : CharacterAudioManager
     {
@@ -23,6 +23,9 @@ namespace SG
         public AudioClip illusionaryWall;
         public AudioClip openChest;
         public AudioClip explosion;
+
+        [Header("Dead")]
+        public AudioClip deadClip;
 
         #region INVENTORY
         public void PlayOpenInventory()
@@ -79,6 +82,13 @@ namespace SG
         public void PlayExplosion()
         {
             audioSource.PlayOneShot(explosion);
+        }
+        #endregion
+
+        #region DEAD
+        public void PlayDeadSound()
+        {
+            audioSource.PlayOneShot(deadClip);
         }
         #endregion
     }
